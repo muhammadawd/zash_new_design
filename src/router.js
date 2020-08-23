@@ -73,6 +73,7 @@ router.afterEach(() => {
 
 router.beforeEach((to, from, next) => {
     // If auth required, check login. If login fails redirect to login page
+    document.title = to.meta.pageTitle;
     next();
 });
 
