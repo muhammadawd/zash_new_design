@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-left">
-                    <h1 class="collection_title fun_font">{{$t('new_arrival')}}</h1>
+                    <h1 class="collection_title fun_font">{{$t('you_may_like')}}</h1>
                 </div>
             </div>
         </div>
@@ -14,11 +14,19 @@
                         <slide class="pointer" @click="$router.push({name:'show_item',params:{id:1}})">
                             <div class="collection_slide p-2 " @click="$router.push({name:'show_item',params:{id:1}})">
                                 <img :src="require('@/assets/img/1.png')" class="w-100" alt="">
+                                <div class="p-1">
+                                    <div class="font-weight-bold text-black">Women's Dolman Sleeve Bodysuit</div>
+                                    <h4 class="font-weight-bold text-black">$ 25</h4>
+                                </div>
                             </div>
                         </slide>
                         <slide class="pointer" @click="$router.push({name:'show_item',params:{id:1}})">
                             <div class="collection_slide p-2 " @click="$router.push({name:'show_item',params:{id:1}})">
                                 <img :src="require('@/assets/img/2.png')" class="w-100" alt="">
+                                <div class="p-1">
+                                    <div class="font-weight-bold text-black">Women's Dolman Sleeve Bodysuit</div>
+                                    <h4 class="font-weight-bold text-black">$ 25</h4>
+                                </div>
                             </div>
                         </slide>
                         <hooper-navigation class="black_navigation" slot="hooper-addons"></hooper-navigation>

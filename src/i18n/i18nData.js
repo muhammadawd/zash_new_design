@@ -20,6 +20,7 @@ export default {
         subscribe_p: 'اشترك ليصلك كل جديد',
         email_here: 'ادخل بريدك الالكتروني هنا',
         subscribe: 'اشترك',
+        you_may_like: 'منتجات قد تعجبك',
     },
     en: {
         ar: 'AR',
@@ -41,5 +42,6 @@ export default {
         subscribe_p: 'Subscribe for latest stories and promotions.',
         email_here: 'Enter Your E-mail Here',
         subscribe: 'Subscribe',
+        you_may_like: 'you may like that',
     }
 }

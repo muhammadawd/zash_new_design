@@ -48,6 +48,16 @@ const router = new Router({
                         isAdmin: false,
                     }
                 },
+                {
+                    path: '/item/:id',
+                    name: 'show_item',
+                    component: () => import('./views/userLayout/ShowItem.vue'),
+                    meta: {
+                        pageTitle: 'show Item',
+                        authRequired: false,
+                        isAdmin: false,
+                    }
+                },
             ],
         },
         // =============================================================================

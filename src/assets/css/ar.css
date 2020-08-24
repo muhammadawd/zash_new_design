@@ -376,6 +376,10 @@ html[lang=ar] [type="radio"]:not(:checked) + label:after {
     cursor: pointer;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 .controller .arrows i {
     font-size: 15px;
 }
@@ -454,7 +458,7 @@ html[lang=ar] [type="radio"]:not(:checked) + label:after {
 
 /*slider progress*/
 .bg-black {
-    background: #000!important;
+    background: #000 !important;
 }
 
 .slider_pagination {
@@ -538,4 +542,24 @@ html[lang=ar] [type="radio"]:not(:checked) + label:after {
 .black_navigation .hooper-prev {
     top: 50% !important;
     background: #aaa !important;
+}
+
+/*show item*/
+.zoomImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroller-at-left .preview-box {
+    width: 100%;
+}
+
+.scroller-at-left .thumb-list {
+    margin-right: 10px;
+}
+
+.zoomer-control{
+    width: 40px!important;
+    height: 40px!important;
 }

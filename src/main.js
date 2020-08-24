@@ -16,10 +16,19 @@ import axios from "./axios.js"
 
 Vue.prototype.$http = axios;
 
-import { VueHammer } from 'vue2-hammer'
+import {VueHammer} from 'vue2-hammer'
+
 Vue.use(VueHammer)
 
 import gsap from "gsap";
+
+import PicZoom from 'vue-piczoom'
+
+Vue.component('pic-zoom', PicZoom)
+
+import ProductZoomer from 'vue-product-zoomer'
+
+Vue.use(ProductZoomer)
 
 
 // service worker

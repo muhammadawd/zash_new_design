@@ -2,11 +2,11 @@
     <div class="mt-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 ">
+                <div class="col-md-12 text-left">
                     <h1 class="collection_title fun_font">{{$t('man_collection')}}</h1>
                 </div>
             </div>
-            <div class="row">
+            <div class="row direction">
                 <div class="col-md-7">
                     <div class="row text-left">
                         <div class="col-md-5">
@@ -39,6 +39,7 @@
                 </div>
                 <div class="col-md-4">
                     <hooper :centerMode="true" pagination="no" style="height: auto" :progress="true" :autoPlay="true"
+                            dir="ltr"
                             :playSpeed="2000">
                         <slide>
                             <div class="collection_slide">
