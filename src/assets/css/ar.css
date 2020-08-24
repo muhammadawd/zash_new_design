@@ -11,6 +11,10 @@ body {
     zoom: 90%;
 }
 
+.zoom110 {
+    zoom: 110%;
+}
+
 .text-black {
     color: #000 !important;
 }
@@ -559,7 +563,75 @@ html[lang=ar] [type="radio"]:not(:checked) + label:after {
     margin-right: 10px;
 }
 
-.zoomer-control{
-    width: 40px!important;
-    height: 40px!important;
+.zoomer-control {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+/*search*/
+.search_background {
+    background: #bae7c2;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.opacity-50 {
+    opacity: 0.7;
+}
+
+.grid_list a.active {
+    color: #e66300;
+}
+
+.border-shadow {
+    border: 1px solid #ccc;
+    box-shadow: 1px 2px 15px #ccc;
+}
+
+.vue-slider-dot-handle {
+    background-color: #fff;
+    box-shadow: 1px 2px 15px #aaa;
+}
+
+.vue-slider-rail {
+    background-color: #eee !important;
+}
+
+.vue-slider-process {
+    background-color: #000 !important;
+}
+
+.color-choose div {
+    display: inline-block;
+}
+
+.color-choose input[type="radio"]:before,
+.color-choose input[type="radio"]:after,
+.color-choose [type="radio"]:checked + label:after,
+.color-choose [type="radio"]:checked + label:before,
+.color-choose [type="radio"]:not(:checked) + label:before,
+.color-choose input[type="radio"] {
+    display: none;
+}
+
+.color-choose [type="radio"]:checked + label,
+.color-choose [type="radio"]:not(:checked) + label {
+    padding: 4px;
+}
+
+.color-choose input[type="radio"] + label span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: -1px 4px 0 0;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+
+.color-choose input[type="radio"]:checked + label span {
+    box-shadow: 1px 1px 10px #555;
 }

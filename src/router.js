@@ -49,6 +49,16 @@ const router = new Router({
                     }
                 },
                 {
+                    path: '/search',
+                    name: 'search',
+                    component: () => import('./views/userLayout/Search.vue'),
+                    meta: {
+                        pageTitle: 'Search',
+                        authRequired: false,
+                        isAdmin: false,
+                    }
+                },
+                {
                     path: '/item/:id',
                     name: 'show_item',
                     component: () => import('./views/userLayout/ShowItem.vue'),

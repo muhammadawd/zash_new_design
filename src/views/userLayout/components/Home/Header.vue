@@ -26,7 +26,7 @@
             </div>
             <div class="row justify-content-start text-center" style="position:absolute;width: 100%;bottom: 0;">
                 <div class="col-md-9">
-                    <div class="new_collection">
+                    <div class="new_collection pointer" @click="$router.push({name:'search'})">
                         <div class="border_collection"></div>
                         {{$t('new_collection')}}
                         <i class="ti-arrow-right"></i>
@@ -40,7 +40,8 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-black" role="progressbar" :style="{'width': getProgressVal+'%'}"
+                                    <div class="progress-bar bg-black" role="progressbar"
+                                         :style="{'width': getProgressVal+'%'}"
                                          aria-valuenow="25"
                                          aria-valuemin="0"
                                          aria-valuemax="100"></div>
@@ -69,8 +70,8 @@
         mounted() {
             this.getProgressPercent()
         },
-        computed:{
-            getProgressVal(){
+        computed: {
+            getProgressVal() {
                 return this.progress;
             }
         },

@@ -21,6 +21,12 @@ export default {
         email_here: 'ادخل بريدك الالكتروني هنا',
         subscribe: 'اشترك',
         you_may_like: 'منتجات قد تعجبك',
+        showing: 'معروض',
+        results: 'نتائج',
+        by_categories: 'بالتصنيفات',
+        by_price: 'بالاسعار',
+        by_size: 'بالمقاسات',
+        by_color: 'بالالوان',
     },
     en: {
         ar: 'AR',
@@ -43,5 +49,11 @@ export default {
         email_here: 'Enter Your E-mail Here',
         subscribe: 'Subscribe',
         you_may_like: 'you may like that',
+        showing: 'Showing',
+        results: 'Results',
+        by_categories: 'By Categories',
+        by_price: 'By Price',
+        by_size: 'By Size',
+        by_color: 'By Color',
     }
 }
