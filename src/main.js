@@ -16,6 +16,12 @@ import axios from "./axios.js"
 
 Vue.prototype.$http = axios;
 
+import { VueHammer } from 'vue2-hammer'
+Vue.use(VueHammer)
+
+import gsap from "gsap";
+
+
 // service worker
 // import './registerServiceWorker'
 

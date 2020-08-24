@@ -34,7 +34,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #2ea033;
+    background: #555;
 }
 
 /* Handle on hover */
@@ -113,6 +113,7 @@
     width: 80px;
     height: 80px;
 }
+
 .lds-hourglass:after {
     content: " ";
     display: block;
@@ -125,6 +126,7 @@
     border-color: #000 transparent #000 transparent;
     animation: lds-hourglass 1.2s infinite;
 }
+
 @keyframes lds-hourglass {
     0% {
         transform: rotate(0);
@@ -1218,7 +1220,7 @@ html body .text-themecolor {
 }
 
 .lists-4.color li:before, .lists-3.color li:before, .lists-2.color li:before, .lists-1.color li:before {
-    color: #D70040;
+    color: #e02020;
 }
 
 .lists-1 li:before {
@@ -1608,7 +1610,7 @@ label.btn {
 
 .btn-group .btn-secondary .nav-link.active, .btn-group .btn-secondary .nav-link:hover, .btn-group .btn-secondary .nav-link:focus {
     color: #fff;
-    background-color: #D70040 !important;
+    background-color: #e02020 !important;
 }
 
 /*------------- GLobal Settings: Badge ----------------*/
@@ -2804,7 +2806,7 @@ a.btn-trans-video i {
 }
 
 .color-heading .sec-heading h2 {
-    color: #D70040;
+    color: #e02020;
 }
 
 .sec-heading p {
@@ -3587,11 +3589,37 @@ nav a:hover {
     padding: 12px 15px 12px 26px
 }
 
-.nav-menu > .active > a,
-.nav-menu > .focus > a,
-.nav-menu > li:hover > a {
-    color: #D70040 !important;
+.nav-menu > .active > a {
+    color: #e02020;
     font-weight: bold;
+}
+
+.nav-menu,
+.nav-menu > li,
+.nav-menu > li > a {
+    transition: all 1.5s ease-in-out;
+    font-weight: bold;
+}
+.nav-menu > li > a {
+    padding: 35px 17px;
+}
+
+.nav-menu > li > a:after {
+    content: '';
+    transition: all 0.5s ease-in-out;
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #e02020;
+    bottom: 15px;
+    left: 10px;
+    font-weight: bold;
+    color: #000;
+}
+
+.nav-menu > li:hover > a:after {
+    width: 30px;
+    background: #000;
 }
 
 .nav-menu > li > a > [class*=ion-], .nav-menu > li > a > i {
@@ -3682,7 +3710,7 @@ nav a:hover {
 .nav-menu > .active > a .submenu-indicator-chevron,
 .nav-menu > .focus > a .submenu-indicator-chevron,
 .nav-menu > li:hover > a .submenu-indicator-chevron {
-    border-color: transparent #D70040 #D70040 transparent
+    border-color: transparent #e02020 #e02020 transparent
 }
 
 .navigation-portrait .submenu-indicator.submenu-indicator-up {
@@ -3767,7 +3795,7 @@ nav a:hover {
 }
 
 .nav-search-button:hover .nav-search-icon {
-    color: #D70040
+    color: #e02020
 }
 
 .navigation-portrait .nav-search-button {
@@ -3854,7 +3882,7 @@ nav a:hover {
     color: #fff;
     text-align: center;
     border-radius: 4px;
-    background-color: #D70040;
+    background-color: #e02020;
     transition: opacity .3s
 }
 
@@ -3958,7 +3986,7 @@ nav a:hover {
 
 .nav-dropdown > li > a:hover, .nav-dropdown > li > a:focus {
     padding-left: 20px;
-    color: #D70040;
+    color: #e02020;
 }
 
 .social-icon a i,
@@ -4036,7 +4064,7 @@ nav a {
 
 .nav-dropdown > .focus > a .submenu-indicator-chevron,
 .nav-dropdown > li:hover > a .submenu-indicator-chevron {
-    border-color: transparent #D70040 #D70040 transparent
+    border-color: transparent #e02020 #e02020 transparent
 }
 
 .navigation-landscape .nav-dropdown-left .submenu-indicator {
@@ -4314,7 +4342,7 @@ nav a {
 }
 
 .nav-brand img {
-    max-width: 90px;
+    max-width: 100px;
     position: relative;
     top: 4px;
 }
@@ -4531,7 +4559,7 @@ nav a {
     }
 
     .header-transparent.dark-text .nav-menu > li > a:hover, .header-transparent.dark-text .nav-menu > li > a:focus {
-        color: #D70040;
+        color: #e02020;
     }
 }
 
@@ -7606,7 +7634,7 @@ span.mod-close {
 
 .recommended .packages_bottombody .btn-pricing {
     background: #ffffff !important;
-    color: #D70040 !important;
+    color: #e02020 !important;
 }
 
 /*-------------- Sidebar -----------*/

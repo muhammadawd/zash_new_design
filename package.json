@@ -14,6 +14,8 @@
     "core-js": "^3.6.5",
     "crypto-js": "^4.0.0",
     "frappe-charts": "^1.5.2",
+    "gsap": "^3.5.0",
+    "hooper": "^0.3.4",
     "jquery": "^3.5.1",
     "lodash": "^4.17.15",
     "moment": "^2.27.0",
@@ -42,6 +44,7 @@
     "vue-tabs-component": "^1.5.0",
     "vue-vimeo-player": "^0.1.0",
     "vue2-editor": "^2.10.2",
+    "vue2-hammer": "^2.1.2",
     "vue2-transitions": "^0.3.0",
     "vuejs-paginate": "^2.1.0",
     "vuex": "^3.1.1"
