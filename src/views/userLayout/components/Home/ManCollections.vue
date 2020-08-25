@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <hooper :centerMode="true" pagination="no" style="height: auto" :progress="true" :autoPlay="true"
+                    <hooper :centerMode="true" pagination="no" style="height: auto" :wheelControl="false":progress="true" :autoPlay="true"
                             dir="ltr"
                             :playSpeed="2000">
                         <slide>

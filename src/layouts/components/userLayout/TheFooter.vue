@@ -1,14 +1,13 @@
 <template>
-    <div>
-
+    <div id="footer">
         <div class="container mt-5 mb-5">
             <div class="row">
-                <div class="col-md-2">
-                    <img :src="require('@/assets/logo.png')" class="w-100" alt=""/>
+                <div class="col-md-2 mb-3 text-center">
+                    <img :src="require('@/assets/logo.png')" class="w-75 mb-3" alt=""/>
                 </div>
                 <div class="col-md-4">
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 text-center text-md-left mb-3 col-6">
                     <ul class="text-black font-weight-bold">
                         <li class="mb-1">
                             <a href="">Help</a>
@@ -27,7 +26,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 text-center text-md-left mb-3 col-6">
                     <ul class="text-black font-weight-bold">
                         <li class="mb-1">
                             <a href="">Help</a>
@@ -46,7 +45,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 text-center text-md-left mb-3">
                     <ul class="text-black font-weight-bold">
                         <li class="mb-1">
                             <a href="">info@la-studioweb.com </a>
@@ -62,22 +61,22 @@
                         </li>
                         <li class="mb-1">
                             <ul class="mt-4">
-                                <li class="list-inline-item p-1">
+                                <li class="list-inline-item animationIcon p-1">
                                     <a class="text-black" href="">
                                         <i class="fab fa-facebook fa-lg"></i>
                                     </a>
                                 </li>
-                                <li class="list-inline-item p-1">
+                                <li class="list-inline-item animationIcon p-1">
                                     <a class="text-black" href="">
                                         <i class="fab fa-twitter fa-lg"></i>
                                     </a>
                                 </li>
-                                <li class="list-inline-item p-1">
+                                <li class="list-inline-item animationIcon p-1">
                                     <a class="text-black" href="">
                                         <i class="fab fa-instagram fa-lg"></i>
                                     </a>
                                 </li>
-                                <li class="list-inline-item p-1">
+                                <li class="list-inline-item animationIcon p-1">
                                     <a class="text-black" href="">
                                         <i class="fab fa-youtube fa-lg"></i>
                                     </a>

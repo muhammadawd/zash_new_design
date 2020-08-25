@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" style="overflow-x: hidden;">
         <notifications position="bottom right"/>
         <fade-transition origin="center" mode="out-in" :duration="250">
             <router-view/>
@@ -15,6 +15,7 @@
         components: {FadeTransition},
         watch: {
             '$route'() {
+                $('.nav-menus-wrapper-close-button').trigger('click')
             }
         },
         methods: {},

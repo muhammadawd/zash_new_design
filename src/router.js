@@ -59,6 +59,26 @@ const router = new Router({
                     }
                 },
                 {
+                    path: '/about_us',
+                    name: 'about_us',
+                    component: () => import('./views/userLayout/AboutUs.vue'),
+                    meta: {
+                        pageTitle: 'About Us',
+                        authRequired: false,
+                        isAdmin: false,
+                    }
+                },
+                {
+                    path: '/contact_us',
+                    name: 'contact_us',
+                    component: () => import('./views/userLayout/ContactUs.vue'),
+                    meta: {
+                        pageTitle: 'Contact Us',
+                        authRequired: false,
+                        isAdmin: false,
+                    }
+                },
+                {
                     path: '/item/:id',
                     name: 'show_item',
                     component: () => import('./views/userLayout/ShowItem.vue'),

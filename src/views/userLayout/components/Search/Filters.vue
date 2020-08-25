@@ -1,13 +1,13 @@
 <template>
-    <div class="border-shadow text-left p-2">
+    <div class="border-shadow text-left p-2" id="filterMenu">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 mb-5">
                 <h2 class="font-weight-bold fun_font">{{$t('by_categories')}}</h2>
                 <div class="progress">
                     <div class="progress-bar bg-black" style="height: 2px;width:40%"></div>
                 </div>
                 <ul class="mt-4 ml-3">
-                    <li class="mb-3"
+                    <li class="mb-4"
                         v-for="(item) in ['Accessories (8)','Brands (1)','Clothing (13)','Demo (15)','Gifts (6)','Kids (5)','Men (7)','Women (12)','New in (25)']">
                         <a href="">
                             <h5 class="size-xs font-weight-bold">{{item}}</h5>
@@ -15,18 +15,20 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-12">
+            <div class="col-12 mb-5">
                 <h2 class="font-weight-bold fun_font">{{$t('by_price')}}</h2>
                 <div class="progress">
                     <div class="progress-bar bg-black" style="height: 2px;width:40%"></div>
                 </div>
                 <ul class="mt-4 ml-3">
-                    <li class="mb-3 zoom110">
+                    <li class="zoom110">
                         <vue-slider v-model="value"/>
                     </li>
                 </ul>
+                <div class="text-black text-capitalize text-center font-weight-bold">price ${{value[0]}} - ${{value[1]}}
+                </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 mb-5">
                 <h2 class="font-weight-bold fun_font">{{$t('by_size')}}</h2>
                 <div class="progress">
                     <div class="progress-bar bg-black" style="height: 2px;width:40%"></div>
@@ -34,7 +36,7 @@
                 <ul class="mt-4 ml-3">
                     <li class="mb-3">
                         <div class="size-config">
-                            <button class="btn btn-secondary text-uppercase btn-sm font-weight-bold  m-1"
+                            <button class="btn btn-secondary text-uppercase btn-sm font-weight-bold border-1-gray m-1"
                                     v-for="(size,index) in ['small','medium','large','xl','xxl','extra Large']"
                                     @click="selected_size = size"
                                     :class="(size == selected_size) ? 'bg-black text-white': 'bg-white'">{{size}}
@@ -43,7 +45,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-12">
+            <div class="col-12 mb-5">
                 <h2 class="font-weight-bold fun_font">{{$t('by_color')}}</h2>
                 <div class="progress">
                     <div class="progress-bar bg-black" style="height: 2px;width:40%"></div>

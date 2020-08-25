@@ -8,6 +8,8 @@
 
 body {
     background: #f5f5f5;
+    /*background: #f5f5f5 url("../img/Rose-Gold-Lines.png") center center;*/
+    background-size: 30%;
     zoom: 90%;
 }
 
@@ -568,6 +570,26 @@ html[lang=ar] [type="radio"]:not(:checked) + label:after {
     height: 40px !important;
 }
 
+.zoomImage {
+    position: relative;
+}
+
+.zoomImage .discount {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #da0b4e;
+    color: #fff;
+    padding: 5px;
+    right: 20px;
+    top: 20px;
+    z-index: 9;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
 /*search*/
 .search_background {
     background: #bae7c2;
@@ -585,14 +607,30 @@ html[lang=ar] [type="radio"]:not(:checked) + label:after {
     color: #e66300;
 }
 
+.bg-filter {
+    background-color: #e66300;
+}
+
+.thumb-list {
+    max-height: 400px;
+}
+
 .border-shadow {
     border: 1px solid #ccc;
     box-shadow: 1px 2px 15px #ccc;
 }
 
 .vue-slider-dot-handle {
-    background-color: #fff;
+    background-color: #fff !important;
     box-shadow: 1px 2px 15px #aaa;
+}
+
+.border-1-gray {
+    border: 1px solid #aaa;
+}
+
+.size-10 {
+    font-size: 7px;
 }
 
 .vue-slider-rail {
@@ -631,7 +669,105 @@ html[lang=ar] [type="radio"]:not(:checked) + label:after {
     border-radius: 50%;
 }
 
-
 .color-choose input[type="radio"]:checked + label span {
     box-shadow: 1px 1px 10px #555;
+}
+
+/*about us*/
+.about_background {
+    background: #ecc5ab;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*contact us*/
+.contact_background {
+    background: #c7bae7;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+::placeholder {
+    color: #000 !important;
+}
+
+.iconRounded {
+    border: 1px solid #cacaca;
+    border-radius: 50%;
+    padding: 8px;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+
+.optionsList li {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.optionsList i {
+    position: absolute;
+    left: -15px;
+    top: 15px;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.optionsList li:hover {
+    font-size: 15.5px;
+}
+
+.optionsList li:hover i {
+    top: 0;
+}
+
+.animationScroll,
+.animationScroll h1,
+.animationScroll i {
+    transition: all 0.5s ease-in-out;
+}
+
+.animationScroll:hover,
+.animationScroll:hover h1 {
+    color: #0c5460 !important;
+    transform: scale(1.1);
+}
+
+.animationScroll:hover i {
+    display: none;
+}
+
+.animationIcon {
+    transition: all 0.5s ease-in-out;
+}
+
+.animationIcon:hover {
+    transform: scale(1.3);
+}
+
+.animationIcon:hover i[class*="fa-facebook"] {
+    color: #3b5a9a !important;
+}
+
+.animationIcon:hover i[class*="fa-twitter"] {
+    color: #56adf2 !important;
+}
+
+.animationIcon:hover i[class*="fa-youtube"] {
+    color: #f44336 !important;
+}
+
+.animationIcon:hover i[class*="fa-instagram"] {
+    color: #23272b !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .slider_pagination {
+
+        bottom: 100px;
+    }
 }

@@ -8,7 +8,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <hooper :centerMode="true" pagination="no" style="height: auto" :progress="true" :autoPlay="true"
+                    <hooper :centerMode="true" pagination="no" style="height: auto" :progress="true" :autoPlay="true" :wheelControl="false"
                             :playSpeed="2000">
                         <slide>
                             <div class="collection_slide">

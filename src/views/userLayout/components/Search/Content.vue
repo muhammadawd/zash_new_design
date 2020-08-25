@@ -8,6 +8,10 @@
                             <h3 class="text-right size-xs pt-2">{{$t('showing')}} 1-16 of 39 {{$t('results')}}</h3>
                         </div>
                         <div class="col-md-6 text-right text-black font-weight-bold">
+                            <button class="btn bg-filter text-white bt-sm border-0  float-left d-md-none"
+                                    @click="toggleFilterMenu()">
+                                <i class="ti-filter fa-lg"></i>
+                            </button>
                             <ul class="grid_list">
                                 <li class="list-inline-item p-2">
                                     <a href="">
@@ -59,9 +63,16 @@
             return {}
         },
         mounted() {
+            if (this.$helper.isMobile()) {
+                this.toggleFilterMenu()
+            }
         },
         computed: {},
-        methods: {}
+        methods: {
+            toggleFilterMenu() {
+                $('#filterMenu').slideToggle();
+            }
+        }
     }
 </script>
 

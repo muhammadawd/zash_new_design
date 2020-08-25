@@ -15,50 +15,60 @@
                     </div>
                     <div class="nav-menus-wrapper" style="transition-property: none;">
                         <ul class="nav-menu float-left direction">
-
                             <li :class="$route.name == 'home' ? 'active' : ''">
                                 <a href=""
                                    @click.prevent="$router.push({name:'home'})">{{$t('home')}}</a>
+                            </li>
+
+                            <li :class="$route.name == 'about_us' ? 'active' : ''">
+                                <a href=""
+                                   @click.prevent="$router.push({name:'about_us'})">{{$t('about_us')}}</a>
                             </li>
 
                             <li>
                                 <a href=""
                                    @click.prevent="">{{$t('new_arrival')}}</a>
                             </li>
+
                             <li>
                                 <a href=""
                                    @click.prevent="">{{$t('shoes')}}</a>
                             </li>
+
                             <li>
                                 <a href=""
                                    @click.prevent="">{{$t('bags')}}</a>
                             </li>
 
-
-                            <li class="d-md-none">
-                                <a style="cursor: pointer" v-if="locale != 'ar'"
-                                   @click="updateLocale('ar')">{{$t('ar')}}</a>
+                            <li :class="$route.name == 'contact_us' ? 'active' : ''">
+                                <a href=""
+                                   @click.prevent="$router.push({name:'contact_us'})">{{$t('contact_us')}}</a>
                             </li>
 
-                            <li class="d-md-none">
-                                <a style="cursor: pointer" v-if="locale != 'en'"
-                                   @click="updateLocale('en')">{{$t('en')}}</a>
-                            </li>
+                            <!--<li class="d-md-none">-->
+                            <!--<a style="cursor: pointer" v-if="locale != 'ar'"-->
+                            <!--@click="updateLocale('ar')">{{$t('ar')}}</a>-->
+                            <!--</li>-->
+
+                            <!--<li class="d-md-none">-->
+                            <!--<a style="cursor: pointer" v-if="locale != 'en'"-->
+                            <!--@click="updateLocale('en')">{{$t('en')}}</a>-->
+                            <!--</li>-->
                             <!--<li><a href="">{{$t('contact')}}</a></li>-->
                         </ul>
 
                         <ul class="nav-menu nav-menu-social float-right direction">
-                            <li class="green light d-none d-md-flex text-capitalize" v-if="locale != 'ar'">
-                                <a style="cursor: pointer" @click="updateLocale('ar')">{{$t('ar')}}</a>
-                            </li>
+                            <!--<li class="green light d-none d-md-flex text-capitalize" v-if="locale != 'ar'">-->
+                            <!--<a style="cursor: pointer" @click="updateLocale('ar')">{{$t('ar')}}</a>-->
+                            <!--</li>-->
                             <li class="green light d-none d-md-flex text-capitalize">
-                                <a style="cursor: pointer">
+                                <a style="cursor: pointer" href="" @click.prevent="$router.push({name:'search'})">
                                     <i class="ti-search"></i>
                                 </a>
                             </li>
-                            <li class="green light d-none d-md-flex text-capitalize" v-if="locale != 'en'">
-                                <a style="cursor: pointer" @click="updateLocale('en')">{{$t('en')}}</a>
-                            </li>
+                            <!--<li class="green light d-none d-md-flex text-capitalize" v-if="locale != 'en'">-->
+                            <!--<a style="cursor: pointer" @click="updateLocale('en')">{{$t('en')}}</a>-->
+                            <!--</li>-->
                         </ul>
                     </div>
                 </nav>

@@ -4,9 +4,12 @@
             <div class="row direction text-left">
                 <div class="col-md-12">
                     <div class="zoomImage">
+                        <div class="discount">
+                            <span>-15%</span>
+                        </div>
                         <ProductZoomer
                                 :base-images="images"
-                                :base-zoomer-options="zoomOptions"
+                                :base-zoomer-options="$helper.isMobile() ? zoomOptionsMobile : zoomOptions"
                         />
                     </div>
                 </div>
@@ -49,7 +52,18 @@
                     choosed_thumb_border_color: "#dd2c00",
                     scroller_position: "left",
                     zoomer_pane_position: "right"
-                }
+                },
+                zoomOptionsMobile: {
+                    zoomFactor: 3,
+                    pane: "container-round",
+                    hoverDelay: 300,
+                    namespace: "zoomer-left",
+                    move_by_click: true,
+                    scroll_items: 5,
+                    choosed_thumb_border_color: "#dd2c00",
+                    scroller_position: "left",
+                    zoomer_pane_position: "right"
+                },
             }
         },
         mounted() {

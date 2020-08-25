@@ -3,6 +3,13 @@
 const CryptoJS = require("crypto-js");
 
 const helper = {
+    isMobile() {
+        if (screen.width <= 760) {
+            return true;
+        } else {
+            return false;
+        }
+    },
     replaceNullWithSingleQuote(obj) {
         Object.keys(obj).forEach(function (key) {
             if (obj[key] === null || obj[key] === "null") {

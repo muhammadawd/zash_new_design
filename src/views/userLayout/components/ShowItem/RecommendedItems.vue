@@ -65,6 +65,7 @@
                     playSpeed: 3000,
                     infiniteScroll: true,
                     centerMode: true,
+                    wheelControl: false,
                     breakpoints: {
                         800: {
                             centerMode: false,
