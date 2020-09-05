@@ -20,6 +20,10 @@ import {VueHammer} from 'vue2-hammer'
 
 Vue.use(VueHammer)
 
+import VueSocialSharing from 'vue-social-sharing'
+
+Vue.use(VueSocialSharing);
+
 import gsap from "gsap";
 
 import PicZoom from 'vue-piczoom'
@@ -55,7 +59,7 @@ import i18n from './i18n/i18n'
 
 // Styles: Arabic CSS
 let language = helper.getLocalStorage('language');
-language = language ? language : (helper.setLocalStorage('language', 'ar'));
+language = language ? language : (helper.setLocalStorage('language', 'en'));
 i18n.locale = language;
 
 const arThemecss = () => {

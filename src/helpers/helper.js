@@ -3,6 +3,14 @@
 const CryptoJS = require("crypto-js");
 
 const helper = {
+    getFirstWord(codeLine) {
+        let firstWord = codeLine.substr(0, codeLine.indexOf(" "));
+        return firstWord;
+    },
+    removeFirstWord(codeLine) {
+        let result = codeLine.substr(codeLine.indexOf(" ") + 1);
+        return result;
+    },
     isMobile() {
         if (screen.width <= 760) {
             return true;
@@ -23,22 +31,22 @@ const helper = {
     },
     showLoader(message = null) {
         // show initial loading
-        const appLoading = document.getElementById('loader_overlay');
-        const appLoadingText = document.getElementById('loader_message');
+        const appLoading = document.getElementById('preloader');
+        // const appLoadingText = document.getElementById('loader_message');
         if (appLoading) {
             appLoading.style.display = "block";
-            if (message) {
-                appLoadingText.innerText = message
-            }
+            // if (message) {
+            //     // appLoadingText.innerText = message
+            // }
         }
     },
     hideLoader() {
         // show initial loading
-        const appLoading = document.getElementById('loader_overlay');
-        const appLoadingText = document.getElementById('loader_message');
+        const appLoading = document.getElementById('preloader');
+        // const appLoadingText = document.getElementById('loader_message');
         if (appLoading) {
             appLoading.style.display = "none";
-            appLoadingText.innerText = "";
+            // appLoadingText.innerText = "";
         }
     },
     setLocalStorage(key, data) {

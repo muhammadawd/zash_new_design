@@ -79,7 +79,7 @@ const router = new Router({
                     }
                 },
                 {
-                    path: '/item/:id',
+                    path: '/item/:id/:branch_id',
                     name: 'show_item',
                     component: () => import('./views/userLayout/ShowItem.vue'),
                     meta: {
@@ -107,7 +107,7 @@ router.afterEach(() => {
     if (appLoading) {
         setTimeout(() => {
             appLoading.style.display = "none";
-        }, 1000);
+        }, 2000);
     }
 })
 

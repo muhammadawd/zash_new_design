@@ -1,10 +1,10 @@
 <template>
-    <div class="home_slider pt-5">
+    <div class="home_slider pt-5" v-if="current_slide" :style="{background: bgColor}">
         <div class="controller">
-            <div class="arrows arrows_right">
+            <div class="arrows arrows_right" @click="goNext()">
                 <i class="ti-arrow-right"></i>
             </div>
-            <div class="arrows arrows_left">
+            <div class="arrows arrows_left" @click="goPrev()">
                 <i class="ti-arrow-left"></i>
             </div>
         </div>
@@ -12,16 +12,18 @@
             <div class="row justify-content-center">
                 <div class="col-md-5 text-left pt-5">
                     <div class="justify-content-center align-items-center">
-                        <h1 class="fun_font slider_main_title">Spring</h1>
-                        <h1 class="fun_font slider_main_title">Summer 2020</h1>
+                        <h1 class="fun_font slider_main_title">
+                            {{$helper.getFirstWord(current_slide.translated.title)}}</h1>
+                        <h1 class="fun_font slider_main_title">
+                            {{$helper.removeFirstWord(current_slide.translated.title)}}</h1>
                         <p class="slider_main_paragraph">
-                            This shirt is made from a contrasting panels of smooth cotton poplin and a stretchy cotton
-                            jersey.
+                            {{current_slide.translated.description}}
                         </p>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <img :src="require('@/assets/img/slide1.png')" class="w-100">
+                    <!--<img :src="require('@/assets/img/slide1.png')" class="w-100">-->
+                    <img :src="current_slide.image" class="w-100">
                 </div>
             </div>
             <div class="row justify-content-start text-center" style="position:absolute;width: 100%;bottom: 0;">
@@ -35,8 +37,8 @@
                         <div class="d-flex">
                             <div style="flex: 2">
                                 <div class="justify-content-end">
-                                    <h4 class="float-right fun_font black">03</h4>
-                                    <h4 class="float-left fun_font">02</h4>
+                                    <h4 class="float-right fun_font black">0{{getSliders.length}}</h4>
+                                    <h4 class="float-left fun_font">0{{current_slide_index + 1}}</h4>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="progress">
@@ -48,7 +50,8 @@
                                 </div>
                             </div>
                             <div class="progress_image" style="flex: 1">
-                                <img :src="require('@/assets/img/bag.png')" class="w-100">
+                                <img :src="getSliders[current_slide_index] ? getSliders[current_slide_index].image : current_slide.image"
+                                     class="w-100" style="height: 80px">
                             </div>
                         </div>
                     </div>
@@ -64,24 +67,78 @@
         name: "Header",
         data() {
             return {
+                current_slide: null,
+                current_slide_index: 0,
+                sliders: [],
+                bgColor: '#ecdada',
                 progress: 0
             }
         },
         mounted() {
-            this.getProgressPercent()
+            let sliders = this.$store.getters['moduleSlider/getAllSliders'];
+            if (sliders.length) {
+                this.current_slide = sliders[0]
+            }
+            this.getSliderFunctionality()
         },
         computed: {
+            getSliders() {
+                return this.$store.getters['moduleSlider/getAllSliders'];
+            },
             getProgressVal() {
                 return this.progress;
             }
         },
         methods: {
+            goNext() {
+                let vm = this;
+            },
+            goPrev() {
+
+            },
+            getSliderFunctionality() {
+                let vm = this;
+                let colors = ['#ecdada', '#dde9ed', '#f7d0cb', '#ecdada', '#dde9ed', '#f7d0cb', '#ecdada', '#dde9ed', '#f7d0cb']
+                let i = 0;
+                vm.current_slide_index = 0;
+                vm.getProgressPercent();
+                let sliders = vm.getSliders;
+                let length = sliders.length;
+                vm.current_slide = sliders[i];
+
+                setInterval(() => {
+                    let rand = Math.floor(Math.random() * 6) + 1;
+                    vm.bgColor = colors[rand];
+                    let sliders = vm.getSliders;
+                    let length = sliders.length;
+                    vm.current_slide = sliders[i];
+
+                    if (length - 1 > i) {
+                        vm.current_slide_index += 1;
+                        i += 1;
+                    } else {
+                        vm.current_slide_index = 0;
+                        i = 0;
+                    }
+
+                    // if (length == i) {
+                    //     i = 0;
+                    //     vm.current_slide_index = 0;
+                    // }
+                    // vm.current_slide = sliders[i];
+                    //
+                    // if (length > i) {
+                    //     i += 1;
+                    //     vm.current_slide_index += 1;
+                    // }
+                }, 2000)
+            },
             getProgressPercent() {
                 let vm = this;
                 setInterval(() => {
                     if (vm.progress == 100) vm.progress = 0;
                     vm.progress += 1;
-                }, 100)
+                }, 20)
             }
         }
     }

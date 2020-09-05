@@ -1,15 +1,15 @@
 <template>
-    <div class="pt-5">
+    <div class="pt-5" v-if="getProduct">
         <div class="container">
             <div class="row direction text-left">
                 <div class="col-md-12">
                     <div class="zoomImage">
                         <div class="discount">
-                            <span>-15%</span>
+                            <span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>
                         </div>
-                        <ProductZoomer
-                                :base-images="images"
-                                :base-zoomer-options="$helper.isMobile() ? zoomOptionsMobile : zoomOptions"
+                        <ProductZoomer v-if="files.length"
+                                       :base-images="images"
+                                       :base-zoomer-options="$helper.isMobile() ? zoomOptionsMobile : zoomOptions"
                         />
                     </div>
                 </div>
@@ -22,25 +22,15 @@
 
     export default {
         name: "ItemGallery",
+        props: ['product'],
         data() {
             return {
+                files: [],
                 images: {
                     'thumbs':    // optional, if not present will use normal_size instead
-                        [
-                            {'id': '1', 'url': require('@/assets/img/1.png')},
-                            {'id': '2', 'url': require('@/assets/img/2.png')},
-                            {'id': '3', 'url': require('@/assets/img/1.png')},
-                            {'id': '4', 'url': require('@/assets/img/2.png')},
-                            {'id': '5', 'url': require('@/assets/img/1.png')},
-                        ],
+                        [],
                     'normal_size':  // required
-                        [
-                            {'id': '1', 'url': require('@/assets/img/1.png')},
-                            {'id': '2', 'url': require('@/assets/img/2.png')},
-                            {'id': '3', 'url': require('@/assets/img/1.png')},
-                            {'id': '4', 'url': require('@/assets/img/2.png')},
-                            {'id': '5', 'url': require('@/assets/img/1.png')},
-                        ]
+                        []
                 },
                 zoomOptions: {
                     zoomFactor: 3,
@@ -67,9 +57,31 @@
             }
         },
         mounted() {
+            let files = [];
+            let povS = _.map(this.product.product_option_values, 'files')
+            _.forEach(povS, (pov, k1) => {
+                _.forEach(pov, (item, k2) => {
+                    files.push({'id': k1 + '' + k2, 'url': item.path})
+                })
+            })
+            this.files = files
+            this.images.thumbs = files
+            this.images.normal_size = files
         },
-        computed: {},
-        methods: {}
+        computed: {
+            getProduct() {
+                return this.product;
+            }
+        },
+        methods: {
+            getPercent(numVal1, numVal2) {
+                let percentChange = 0;
+                if ((numVal1 != 0) && (numVal2 != 0)) {
+                    percentChange = (1 - numVal1 / numVal2) * 100;
+                }
+                return Math.round(parseFloat(percentChange));
+            }
+        }
     }
 </script>
 

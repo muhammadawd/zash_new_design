@@ -5,81 +5,15 @@ export default {
 
     REFRESH_ACCESS_TOKEN: '',
 
-    AUTH_JWT_LOGIN_ADMIN: '/admin/login',
-    ALL_ADMINS: '/admin',
-    ADD_ADMIN: '/admin/create',
-    UPDATE_ADMIN: '/admin/update',
-    FIND_ADMIN: '/admin/find',
-    DELETE_ADMIN: '/admin/delete',
-
-    ALL_USERS: '/user',
-    ADD_USER: '/user/create',
-    UPDATE_USER: '/user/update',
-    FIND_USER: '/user/find',
-    DELETE_USER: '/user/delete',
-
-    PAY_DONATION: 'common/paySupport',
-
-    AUTH_JWT_LOGIN_USER: '/user/login',
-    AUTH_JWT_GET_USER: '/user/auth',
-    AUTH_JWT_UPDATE_PROFILE: '/user/updateProfile',
-    AUTH_JWT_UPDATE_PASSWORD: '/common/updatePassword',
-    AUTH_JWT_REGISTER_USER: '/user/create',
-    CHECK_OUT_LIST: 'user/payList',
-
-    DASHBOARD_STATISTICS: 'report/getReportTotal',
-    GET_PAY_DONATION: 'report/getSupport',
-    USERS_REPORT: 'report/getAllUsersReport',
-    REGISTER_LIST_USERS_REPORT: 'list/getUsersList',
-
     COMMON_GET_ALL_SETTINGS: 'common/getSetting',
-    COMMON_UPDATE_SETTINGS: 'common/updateSetting',
-    COMMON_GET_ALL_COUNTRIES: 'common/getCountries',
+    COMMON_GET_ALL_HOME_PAGE: 'homepage',
+    COMMON_GET_ALL_HOME_DATA: 'utilities/get-home-data',
 
-    GET_ALL_CATEGORIES: 'category/all',
-    CREATE_CATEGORY: 'category/create',
-    FIND_CATEGORY: 'category/find',
-    UPDATE_CATEGORY: 'category/update',
-    DELETE_CATEGORY: 'category/delete',
+    GET_PRODUCT_DETAILS: 'products/product-detailed',
+    FULL_SEARCH: 'products/filter-all-products',
 
-    GET_ALL_QUESTIONS: 'question/all',
-    CREATE_QUESTION: 'question/create',
-    FIND_QUESTION: 'question/find',
-    UPDATE_QUESTION: 'question/update',
-    DELETE_QUESTION: 'question/delete',
+    GET_ALL_CATEGORIES: 'categories',
+    GET_ALL_SLIDERS: 'slider',
+    CREATE_SUBSCRIBE: '/subscribe/create',
 
-    CREATE_SUBSCRIBE: 'subscribe/create',
-
-    GET_ALL_TESTIMONIALS: 'testimonials/all',
-    CREATE_TESTIMONIALS: 'testimonials/create',
-    FIND_TESTIMONIALS: 'testimonials/find',
-    UPDATE_TESTIMONIALS: 'testimonials/update',
-    DELETE_TESTIMONIALS: 'testimonials/delete',
-
-    GET_ALL_SLIDERS: 'slider/all',
-    CREATE_SLIDERS: 'slider/create',
-    FIND_SLIDER: 'slider/find',
-    UPDATE_SLIDERS: 'slider/update',
-    DELETE_SLIDER: 'slider/delete',
-
-    GET_ALL_COURSES: 'course/all',
-    CREATE_COURSE: 'course/create',
-    FIND_COURSE: 'course/find',
-    UPDATE_COURSE: 'course/update',
-    DELETE_COURSE: 'course/delete',
-
-    GET_ALL_LIST: 'list/all',
-    FIND_LIST: 'list/find/',
-    CREATE_LIST: 'list/create',
-    UPDATE_LIST: 'list/update',
-    DELETE_LIST: 'list/delete',
-
-    GET_ALL_USER_LIST: 'user/getUserLists',
-
-    ADD_ROLES: 'admin/role/create-update',
-    ALL_ROLES: 'admin/role',
-    ALL_PERMISSIONS: 'admin/role/permissions',
-    DELETE_ROLE: 'admin/role/delete',
-    FIND_ROLES: 'admin/role',
-    UPDATE_ROLES: 'admin/role/create-update',
 }

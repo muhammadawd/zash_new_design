@@ -8,9 +8,10 @@
                 </div>
                 <ul class="mt-4 ml-3">
                     <li class="mb-4"
-                        v-for="(item) in ['Accessories (8)','Brands (1)','Clothing (13)','Demo (15)','Gifts (6)','Kids (5)','Men (7)','Women (12)','New in (25)']">
-                        <a href="">
-                            <h5 class="size-xs font-weight-bold">{{item}}</h5>
+                        v-for="(item) in  getAllCategories">
+                        <a href="" class="category" :class="isSelectedCategory(item.id) ? 'active' : ''"
+                           @click.prevent="selectCategory(item.id)">
+                            <h5 class="size-xs font-weight-bold">{{item.translated.title}}</h5>
                         </a>
                     </li>
                 </ul>
@@ -75,19 +76,58 @@
         components: {
             VueSlider
         },
+        props: {
+            updateFilters: Function,
+        },
         data() {
             return {
                 selected_size: 'xl',
-                value: [10, 60]
+                value: [10, 60],
+                selectedCategory: []
             }
         },
         mounted() {
+            let category_id = this.$route.query.category_id
+            if (category_id) {
+                this.selectedCategory.push(parseInt(category_id))
+                this.updateFilters(this.prepareFilters())
+            }
         },
-        computed: {},
-        methods: {}
+        computed: {
+            getAllCategories() {
+                return this.$store.getters['moduleCommon/getAllCategories']
+            }
+        },
+        methods: {
+            prepareFilters() {
+                return {
+                    category_ids: this.selectedCategory,
+                }
+            },
+            selectCategory(id) {
+                let selectedCategory = JSON.parse(JSON.stringify(this.selectedCategory));
+                if (!selectedCategory.includes(id)) {
+                    this.selectedCategory.push(id)
+                }
+                this.updateFilters(this.prepareFilters());
+            },
+            isSelectedCategory(id) {
+                let selectedCategory = JSON.parse(JSON.stringify(this.selectedCategory));
+                if (selectedCategory.includes(id)) {
+                    return true
+                }
+                return false
+            }
+        }
     }
 </script>
 
-<style scoped>
+<style>
+    a.category.active {
+        text-decoration: line-through;
+    }
 
+    li:has(> a.category.active) {
+        border: 1px solid #0f7dff;
+    }
 </style>

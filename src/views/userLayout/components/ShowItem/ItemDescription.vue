@@ -1,5 +1,5 @@
 <template>
-    <div class="pt-5">
+    <div class="pt-5" v-if="getDescription">
         <div class="container">
             <div class="row direction text-left">
                 <div class="col-md-2 text-black font-weight-bold">
@@ -8,17 +8,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 text-black font-weight-bold">
-                    <p>Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex
-                        maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in
-                        vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu..</p>
-                    <ul class="">
-                        <li>
-                            Maecenas eu ante a elit tempus fermentum. Aliquam commodo tincidunt semper
-                        </li>
-                        <li>
-                            Aliquam est et tempus. Eaecenas libero ante, tincidunt vel
-                        </li>
-                    </ul>
+                    <div v-html="getDescription"></div>
                 </div>
             </div>
         </div>
@@ -28,12 +18,17 @@
 <script>
     export default {
         name: "ItemDescription",
+        props: ['productDescription'],
         data() {
             return {}
         },
         mounted() {
         },
-        computed: {},
+        computed: {
+            getDescription() {
+                return this.productDescription.description;
+            }
+        },
         methods: {}
     }
 </script>

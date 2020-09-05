@@ -3,10 +3,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-7">
-                    <ItemGallery/>
+                    <ItemGallery :product="product"/>
                 </div>
                 <div class="col-md-5">
-                    <ItemInfo/>
+                    <ItemInfo :product="product"/>
                 </div>
             </div>
         </div>
@@ -19,6 +19,7 @@
 
     export default {
         name: "MainContainer",
+        props: ['product'],
         components: {ItemInfo, ItemGallery}
     }
 </script>

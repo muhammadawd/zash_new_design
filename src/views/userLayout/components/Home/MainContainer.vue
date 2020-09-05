@@ -4,23 +4,23 @@
             <div class="row">
                 <div class="col-md-1 d-none d-md-block pt-5 text-center">
                     <ul class="social-icons pt-5">
-                        <li class="social-icon animationIcon">
-                            <a href="">
+                        <li class="social-icon animationIcon" v-if="getSettings.youtube">
+                            <a :href="getSettings.youtube[0].value">
                                 <i class="fab text-black fa-youtube fa-lg"></i>
                             </a>
                         </li>
-                        <li class="social-icon animationIcon">
-                            <a href="">
+                        <li class="social-icon animationIcon" v-if="getSettings.facebook">
+                            <a :href="getSettings.facebook[0].value">
                                 <i class="fab text-black fa-facebook fa-lg"></i>
                             </a>
                         </li>
-                        <li class="social-icon animationIcon">
-                            <a href="">
+                        <li class="social-icon animationIcon" v-if="getSettings.twitter">
+                            <a :href="getSettings.twitter[0].value">
                                 <i class="fab text-black fa-twitter fa-lg"></i>
                             </a>
                         </li>
-                        <li class="social-icon animationIcon">
-                            <a href="">
+                        <li class="social-icon animationIcon" v-if="getSettings.instagram">
+                            <a :href="getSettings.instagram[0].value">
                                 <i class="fab text-black fa-instagram fa-lg"></i>
                             </a>
                         </li>
@@ -56,6 +56,11 @@
         components: {Categories},
         mounted() {
             this.scrollDown()
+        },
+        computed: {
+            getSettings() {
+                return this.$store.getters['moduleCommon/getAllSettings']
+            },
         },
         methods: {
             scrollDown() {

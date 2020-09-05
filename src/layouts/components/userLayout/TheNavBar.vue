@@ -25,21 +25,6 @@
                                    @click.prevent="$router.push({name:'about_us'})">{{$t('about_us')}}</a>
                             </li>
 
-                            <li>
-                                <a href=""
-                                   @click.prevent="">{{$t('new_arrival')}}</a>
-                            </li>
-
-                            <li>
-                                <a href=""
-                                   @click.prevent="">{{$t('shoes')}}</a>
-                            </li>
-
-                            <li>
-                                <a href=""
-                                   @click.prevent="">{{$t('bags')}}</a>
-                            </li>
-
                             <li :class="$route.name == 'contact_us' ? 'active' : ''">
                                 <a href=""
                                    @click.prevent="$router.push({name:'contact_us'})">{{$t('contact_us')}}</a>
@@ -95,7 +80,7 @@
         },
         data() {
             return {
-                locale: 'ar',
+                locale: 'en',
                 auth: null,
             }
         },

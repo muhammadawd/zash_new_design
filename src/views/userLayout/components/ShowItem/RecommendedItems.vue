@@ -11,21 +11,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <hooper :settings="hooperSettings" style="height: auto">
-                        <slide class="pointer" @click="$router.push({name:'show_item',params:{id:1}})">
-                            <div class="collection_slide p-2 " @click="$router.push({name:'show_item',params:{id:1}})">
-                                <img :src="require('@/assets/img/1.png')" class="w-100" alt="">
+                        <slide v-for="(product , index) in getAllProducts" class="pointer"
+                               @click="$router.push({name:'show_item',params:{id:product.id , branch_id:product.branch_id}})">
+                            <div class="collection_slide p-2"
+                                 @click="$router.push({name:'show_item',params:{id:product.id , branch_id:product.branch_id}})">
+                                <img :src="product.main_image" class="w-100" alt="">
                                 <div class="p-1">
-                                    <div class="font-weight-bold text-black">Women's Dolman Sleeve Bodysuit</div>
-                                    <h4 class="font-weight-bold text-black">$ 25</h4>
-                                </div>
-                            </div>
-                        </slide>
-                        <slide class="pointer" @click="$router.push({name:'show_item',params:{id:1}})">
-                            <div class="collection_slide p-2 " @click="$router.push({name:'show_item',params:{id:1}})">
-                                <img :src="require('@/assets/img/2.png')" class="w-100" alt="">
-                                <div class="p-1">
-                                    <div class="font-weight-bold text-black">Women's Dolman Sleeve Bodysuit</div>
-                                    <h4 class="font-weight-bold text-black">$ 25</h4>
+                                    <div class="font-weight-bold text-black">{{product.translated.title}}</div>
+                                    <h4 class="font-weight-bold text-black">
+                                        {{parseFloat(product.minimum_price).toFixed(3)}} {{$t('currency')}}</h4>
                                 </div>
                             </div>
                         </slide>
@@ -50,12 +44,18 @@
 
     export default {
         name: "newArrival",
+        props: ['relatedProducts'],
         components: {
             Hooper,
             Slide,
             HooperProgress,
             HooperPagination,
             HooperNavigation
+        },
+        computed: {
+            getAllProducts() {
+                return this.relatedProducts;
+            }
         },
         data() {
             return {

@@ -8,7 +8,8 @@ import actions from "./actions"
 
 Vue.use(Vuex);
 
-import moduleAuth from './auth/moduleAuth.js'
+import moduleSlider from './slider/moduleSlider.js'
+import moduleCommon from './common/moduleCommon.js'
 
 export default new Vuex.Store({
     getters,
@@ -16,7 +17,8 @@ export default new Vuex.Store({
     state,
     actions,
     modules: {
-        moduleAuth: moduleAuth,
+        moduleSlider: moduleSlider,
+        moduleCommon: moduleCommon,
     },
     strict: process.env.NODE_ENV !== 'production'
 })

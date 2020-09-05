@@ -3,7 +3,11 @@
         <div class="container mt-5 mb-5">
             <div class="row">
                 <div class="col-md-2 mb-3 text-center">
-                    <img :src="require('@/assets/logo.png')" class="w-75 mb-3" alt=""/>
+                    <!--<img v-if="getSettings.logo"-->
+                    <!--:src="getSettings.logo[0] ? getSettings.logo[0].path.path : require('@/assets/logo.png')"-->
+                    <!--class="w-75 mb-3" alt=""/>-->
+                    <img :src=" require('@/assets/logo.png')"
+                         class="w-75 mb-3" alt=""/>
                 </div>
                 <div class="col-md-4">
                 </div>
@@ -47,37 +51,45 @@
                 </div>
                 <div class="col-md-2 text-center text-md-left mb-3">
                     <ul class="text-black font-weight-bold">
-                        <li class="mb-1">
-                            <a href="">info@la-studioweb.com </a>
+                        <li class="mb-1" v-if="getSettings.front_email">
+                            <a :href="'mailto:'+getSettings.front_email[0].value">
+                                {{getSettings.front_email[0].value}}
+                            </a>
                         </li>
-                        <li class="mb-1">
-                            <a href="">
-                                +54.854.854.6666
+                        <li class="mb-1" v-if="getSettings.phone1">
+                            <a :href="'tel:'+getSettings.phone1[0].value">
+                                {{getSettings.phone1[0].value}}
+                            </a>
+                        </li>
+                        <li class="mb-1" v-if="getSettings.phone2">
+                            <a :href="'tel:'+getSettings.phone2[0].value">
+                                {{getSettings.phone2[0].value}}
+                            </a>
+                        </li>
+                        <li class="mb-1" v-if="getSettings.address_en">
+                            <a href="#">
+                                {{getSettings.address_en[0].value}}
                             </a>
                         </li>
                         <li class="mb-1">
-                            <a href="">
-                                035 Virginia Plaza</a>
-                        </li>
-                        <li class="mb-1">
                             <ul class="mt-4">
-                                <li class="list-inline-item animationIcon p-1">
-                                    <a class="text-black" href="">
+                                <li class="list-inline-item animationIcon p-1" v-if="getSettings.facebook">
+                                    <a class="text-black" :href="getSettings.facebook[0].value">
                                         <i class="fab fa-facebook fa-lg"></i>
                                     </a>
                                 </li>
-                                <li class="list-inline-item animationIcon p-1">
-                                    <a class="text-black" href="">
+                                <li class="list-inline-item animationIcon p-1" v-if="getSettings.twitter">
+                                    <a class="text-black" :href="getSettings.twitter[0].value">
                                         <i class="fab fa-twitter fa-lg"></i>
                                     </a>
                                 </li>
-                                <li class="list-inline-item animationIcon p-1">
-                                    <a class="text-black" href="">
+                                <li class="list-inline-item animationIcon p-1" v-if="getSettings.instagram">
+                                    <a class="text-black" :href="getSettings.instagram[0].value">
                                         <i class="fab fa-instagram fa-lg"></i>
                                     </a>
                                 </li>
-                                <li class="list-inline-item animationIcon p-1">
-                                    <a class="text-black" href="">
+                                <li class="list-inline-item animationIcon p-1" v-if="getSettings.youtube">
+                                    <a class="text-black" :href="getSettings.youtube[0].value">
                                         <i class="fab fa-youtube fa-lg"></i>
                                     </a>
                                 </li>
@@ -131,9 +143,29 @@
             return {}
         },
         mounted() {
-
+            this.getHomeData();
         },
-        methods: {}
+        computed: {
+            getSettings() {
+                return this.$store.getters['moduleCommon/getAllSettings']
+            }
+        },
+        methods: {
+            getHomeData() {
+                let vm = this;
+                vm.$helper.showLoader();
+                let dispatch = this.$store.dispatch('moduleCommon/fetchHomeData', {
+                    lang: vm.$i18n.locale
+                });
+                dispatch.then((response) => {
+                    // response = response.data;
+                    vm.$helper.hideLoader();
+                }).catch((error) => {
+                    vm.$helper.handleError(error, vm);
+                    vm.$helper.hideLoader();
+                });
+            },
+        }
     }
 </script>
 
