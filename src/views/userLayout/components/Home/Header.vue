@@ -92,9 +92,29 @@
         methods: {
             goNext() {
                 let vm = this;
+                vm.current_slide_index += 1;
+                let current_slide_index = vm.current_slide_index
+                let length = vm.getSliders.length;
+                if (current_slide_index < length) {
+                    vm.current_slide = vm.getSliders[current_slide_index];
+                    vm.current_slide_index += 1;
+                } else {
+                    vm.current_slide = vm.getSliders[0];
+                    vm.current_slide_index = 0;
+                }
             },
             goPrev() {
-
+                let vm = this;
+                vm.current_slide_index += 1;
+                let current_slide_index = vm.current_slide_index
+                let length = vm.getSliders.length;
+                if (current_slide_index < length) {
+                    vm.current_slide = vm.getSliders[current_slide_index];
+                    vm.current_slide_index += 1;
+                } else {
+                    vm.current_slide = vm.getSliders[0];
+                    vm.current_slide_index = 0;
+                }
             },
             getSliderFunctionality() {
                 let vm = this;

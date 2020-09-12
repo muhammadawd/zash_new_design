@@ -6,23 +6,35 @@
                     <h1 class="fun_font size-lg mb-5">{{$t('get_quote')}}</h1>
 
                     <div class="form-group mb-4">
-                        <input type="text" class="form-control font-weight-bold" :placeholder="$t('your_name')">
+                        <input type="text" class="form-control font-weight-bold" v-model="name"
+                               :placeholder="$t('your_name')">
+                        <span class="text-danger error" id="name_error"></span>
                     </div>
 
                     <div class="form-group mb-4">
-                        <input type="text" class="form-control font-weight-bold" :placeholder="$t('your_email')">
+                        <input type="text" class="form-control font-weight-bold" v-model="email"
+                               :placeholder="$t('your_email')">
+                        <span class="text-danger error" id="email_error"></span>
                     </div>
 
                     <div class="form-group mb-4">
-                        <input type="text" class="form-control font-weight-bold" :placeholder="$t('your_phone')">
+                        <input type="text" class="form-control font-weight-bold" v-model="phone"
+                               :placeholder="$t('your_phone')">
+                        <span class="text-danger error" id="phone_error"></span>
                     </div>
 
                     <div class="form-group mb-4">
-                        <textarea class="form-control font-weight-bold" :placeholder="$t('message')"></textarea>
+                        <textarea class="form-control font-weight-bold" v-model="message"
+                                  :placeholder="$t('message')"></textarea>
+                        <span class="text-danger error" id="message_error"></span>
                     </div>
 
                     <div class="form-group mb-4">
-                        <button class="btn btn-secondary bg-black text-white float-right">{{$t('send')}}</button>
+                        <button class="btn btn-secondary bg-black text-white float-right" @click="saveContact()"
+                                :disabled="isLoading"
+                                :class="isLoading ? 'disabled' : ''">
+                            {{$t('send')}}
+                        </button>
                         <div class="clearfix"></div>
                     </div>
 
@@ -36,18 +48,30 @@
                                 <ul class="text-black mb-5">
                                     <li>
                                         <i class="ti-map-alt fa-lg pr-4"></i>
-                                        <b class="font-weight-bold">Payna Headquarter</b>
+                                        <b class="font-weight-bold">{{$t('address')}}</b>
                                     </li>
                                     <li class="mt-2">
                                         <div class="pr-5 pl-5 text-dark">
-                                            <small>
-                                                PO Box 16122 Collins Street West
-                                                Victoria 8007 Australia
+                                            <small v-if="getSettings.address_en">
+                                                {{getSettings.address_en[0].value}}
                                             </small>
                                         </div>
                                     </li>
                                 </ul>
                                 <ul class="text-black mb-5">
+                                    <li>
+                                        <i class="ti-map-alt fa-lg pr-4"></i>
+                                        <b class="font-weight-bold">{{$t('address')}}</b>
+                                    </li>
+                                    <li class="mt-2">
+                                        <div class="pr-5 pl-5 text-dark">
+                                            <small v-if="getSettings.address_ar">
+                                                {{getSettings.address_ar[0].value}}
+                                            </small>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul class="text-black d-none mb-5">
                                     <li>
                                         <i class="ti-map-alt fa-lg pr-4"></i>
                                         <b class="font-weight-bold">Payna Headquarter</b>
@@ -61,35 +85,39 @@
                                     </li>
                                 </ul>
                                 <hr>
-                                <ul class="text-dark mb-5">
-                                    <li class="mt-4">
+                                <ul class="text-dark mb-5" v-if="getSettings">
+                                    <li class="mt-4" v-if="getSettings.front_email">
                                         <i class="ti-email fa-lg pr-4"></i>
-                                        <b class="font-weight-bold">info@la-studioweb.com</b>
+                                        <b class="font-weight-bold">{{getSettings.front_email[0].value}}</b>
                                     </li>
-                                    <li class="mt-4">
+                                    <li class="mt-4" v-if="getSettings.phone1">
                                         <i class="ti-mobile fa-lg pr-4"></i>
-                                        <b class="font-weight-bold">+812-466-7130</b>
+                                        <b class="font-weight-bold">{{getSettings.phone1[0].value}}</b>
+                                    </li>
+                                    <li class="mt-4" v-if="getSettings.phone2">
+                                        <i class="ti-mobile fa-lg pr-4"></i>
+                                        <b class="font-weight-bold">{{getSettings.phone2[0].value}}</b>
                                     </li>
                                 </ul>
                                 <div class="text-center">
                                     <ul class="mt-4">
-                                        <li class="list-inline-item animationIcon p-2">
-                                            <a class="text-black" href="">
+                                        <li class="list-inline-item animationIcon p-2" v-if="getSettings.facebook">
+                                            <a class="text-black" :href="getSettings.facebook[0].value">
                                                 <i class="fab fa-facebook  fa-2x"></i>
                                             </a>
                                         </li>
-                                        <li class="list-inline-item animationIcon p-2">
-                                            <a class="text-black" href="">
+                                        <li class="list-inline-item animationIcon p-2" v-if="getSettings.twitter">
+                                            <a class="text-black" :href="getSettings.twitter[0].value">
                                                 <i class="fab fa-twitter fa-2x"></i>
                                             </a>
                                         </li>
-                                        <li class="list-inline-item animationIcon p-2">
-                                            <a class="text-black" href="">
+                                        <li class="list-inline-item animationIcon p-2" v-if="getSettings.instagram">
+                                            <a class="text-black" :href="getSettings.instagram[0].value">
                                                 <i class="fab fa-instagram  fa-2x"></i>
                                             </a>
                                         </li>
-                                        <li class="list-inline-item animationIcon p-2">
-                                            <a class="text-black" href="">
+                                        <li class="list-inline-item animationIcon p-2" v-if="getSettings.youtube">
+                                            <a class="text-black" :href="getSettings.youtube[0].value">
                                                 <i class="fab fa-youtube fa-2x"></i>
                                             </a>
                                         </li>
@@ -102,10 +130,8 @@
             </div>
         </div>
 
-        <div class="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3427.6858599604975!2d30.993374715132695!3d30.783395081619492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDQ3JzAwLjIiTiAzMMKwNTknNDQuMCJF!5e0!3m2!1sen!2s!4v1485856747489"
-                    width="100%" height="450" frameborder="0" style="border:0" scrolling="no"
-                    allowfullscreen=""></iframe>
+        <div class="map" v-if="getSettings.map">
+            <div v-html="getSettings.map[0].value"></div>
         </div>
     </div>
 </template>
@@ -115,12 +141,58 @@
         name: "Content",
         components: {},
         data() {
-            return {}
+            return {
+                isLoading: false,
+                name: '',
+                email: '',
+                phone: '',
+                message: '',
+            }
         },
         mounted() {
         },
-        computed: {},
-        methods: {}
+        computed: {
+            getSettings() {
+                return this.$store.getters['moduleCommon/getAllSettings']
+            }
+        },
+        methods: {
+            showVaildationMassges(errors, tag) {
+                $(`#name${tag},#phone${tag},#email${tag},#message${tag}`).text('');
+                $.each(errors, function (key, error) {
+                    $('#' + key + tag).text(error[0])
+                })
+            },
+            saveContact() {
+                let vm = this;
+                vm.isLoading = true;
+                let dispatch = this.$store.dispatch('moduleCommon/saveContact', {
+                    lang: vm.$i18n.locale,
+                    email: vm.email,
+                    name: vm.name,
+                    phone: vm.phone,
+                    message: vm.message,
+                });
+                dispatch.then((response) => {
+                    let status = response.data.status;
+                    let data = response.data.data;
+                    vm.isLoading = false;
+                    if (!status) {
+                        vm.showVaildationMassges(data.validation_errors, '_error');
+                        return
+                    }
+                    vm.$helper.showMessage('success', vm)
+                    $('.error').text('')
+                    vm.email = null;
+                    vm.name = null;
+                    vm.phone = null;
+                    vm.message = null;
+                }).catch((error) => {
+                    vm.$helper.handleError(error, vm);
+                    vm.isLoading = false
+                });
+            }
+        }
     }
 </script>
 

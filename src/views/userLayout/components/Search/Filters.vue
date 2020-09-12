@@ -23,46 +23,50 @@
                 </div>
                 <ul class="mt-4 ml-3">
                     <li class="zoom110">
-                        <vue-slider v-model="value"/>
+                        <vue-slider @drag-end="dragEnd"
+                                    v-model="value"/>
                     </li>
                 </ul>
                 <div class="text-black text-capitalize text-center font-weight-bold">price ${{value[0]}} - ${{value[1]}}
                 </div>
             </div>
-            <div class="col-12 mb-5">
-                <h2 class="font-weight-bold fun_font">{{$t('by_size')}}</h2>
+
+            <div class="col-12 mb-5" v-for="(option , index) in options" :key="index" :index="index">
+                <h2 class="font-weight-bold fun_font">{{option.translated.title}}</h2>
                 <div class="progress">
                     <div class="progress-bar bg-black" style="height: 2px;width:40%"></div>
                 </div>
-                <ul class="mt-4 ml-3">
+                <ul class="mt-4 ml-3" v-if="!option.type">
                     <li class="mb-3">
                         <div class="size-config">
                             <button class="btn btn-secondary text-uppercase btn-sm font-weight-bold border-1-gray m-1"
-                                    v-for="(size,index) in ['small','medium','large','xl','xxl','extra Large']"
-                                    @click="selected_size = size"
-                                    :class="(size == selected_size) ? 'bg-black text-white': 'bg-white'">{{size}}
+                                    v-for="(option_value,index) in option.option_values"
+                                    @click="setSelectedOption(option.id,option_value.id)"
+                                    :class="getSelectedOption(option.id, option_value.id) ? 'bg-black text-white': 'bg-white'">
+                                {{option_value.translated.title}}
                             </button>
                         </div>
                     </li>
                 </ul>
-            </div>
-            <div class="col-12 mb-5">
-                <h2 class="font-weight-bold fun_font">{{$t('by_color')}}</h2>
-                <div class="progress">
-                    <div class="progress-bar bg-black" style="height: 2px;width:40%"></div>
-                </div>
-                <ul class="mt-4 ml-3">
+                <ul class="mt-4 ml-3" v-if="option.type">
                     <li class="mb-3">
 
                         <div class="color-choose">
-                            <div v-for="color in ['#d8d8d8','#f5a623','#e77878','#262626','#4a90e2','#fff']">
-                                <input type="radio" :id="color" name="color" :value="color"/>
-                                <label :for="color"><span :style="{background: color}"></span></label>
+                            <div v-for="option_value in option.option_values">
+                                <input @click="setSelectedOption(option.id,option_value.id)" type="radio"
+                                       :id="option_value.additional.code" name="color"
+                                       :value="option_value.additional.code"/>
+                                <label :for="option_value.additional.code"
+                                       style="border-radius: 50%;padding: 0"
+                                       :style="getSelectedOption(option.id, option_value.id) ? {boxShadow:'1px 1px 10px #555'}: {}"><span
+                                        :style="{background: option_value.additional.code}"></span></label>
                             </div>
                         </div>
                     </li>
                 </ul>
             </div>
+
+
         </div>
     </div>
 </template>
@@ -81,12 +85,14 @@
         },
         data() {
             return {
-                selected_size: 'xl',
-                value: [10, 60],
-                selectedCategory: []
+                value: [0, 30],
+                selectedCategory: [],
+                options: [],
+                selectedOptions: []
             }
         },
         mounted() {
+            this.fetchOptions();
             let category_id = this.$route.query.category_id
             if (category_id) {
                 this.selectedCategory.push(parseInt(category_id))
@@ -95,13 +101,65 @@
         },
         computed: {
             getAllCategories() {
-                return this.$store.getters['moduleCommon/getAllCategories']
+                return this.$store.getters['moduleCommon/getAllCategories'];
+            },
+            getSelectedOptions() {
+                return this.selectedOptions
             }
         },
         methods: {
+            dragEnd(index) {
+                let filters = this.prepareFilters();
+                this.updateFilters(filters)
+            },
+            setSelectedOption(option_id, option_value_id) {
+                let found = false;
+                _.forEach(this.selectedOptions, (selectedOption) => {
+                    if (selectedOption.option_id == option_id) {
+                        if (selectedOption.option_value_id == option_value_id) found = true;
+                    }
+                });
+
+                if (!found) {
+                    this.selectedOptions.push({
+                        option_id: option_id,
+                        option_value_id: option_value_id
+                    });
+                }
+                this.updateFilters(this.prepareFilters())
+
+            },
+            getSelectedOption(option_id, option_value_id) {
+                let found = false;
+                _.forEach(this.selectedOptions, (selectedOption) => {
+                    if (selectedOption.option_id == option_id) {
+                        if (selectedOption.option_value_id == option_value_id) found = true;
+                    }
+                });
+                return found;
+            },
+            fetchOptions() {
+                let vm = this;
+                vm.$helper.showLoader();
+                let dispatch = this.$store.dispatch('moduleCommon/fetchOptions', {
+                    lang: vm.$i18n.locale
+                });
+                dispatch.then((response) => {
+                    response = response.data;
+                    vm.options = response.data.options
+                    vm.$helper.hideLoader();
+                }).catch((error) => {
+                    vm.$helper.handleError(error, vm);
+                    vm.$helper.hideLoader();
+                });
+            },
             prepareFilters() {
+                let values = _.map(this.selectedOptions, 'option_value_id')
                 return {
                     category_ids: this.selectedCategory,
+                    min_price: this.value[0],
+                    max_price: this.value[1],
+                    option_value_ids: values
                 }
             },
             selectCategory(id) {
@@ -125,9 +183,5 @@
 <style>
     a.category.active {
         text-decoration: line-through;
-    }
-
-    li:has(> a.category.active) {
-        border: 1px solid #0f7dff;
     }
 </style>

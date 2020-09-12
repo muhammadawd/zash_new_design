@@ -89,4 +89,39 @@ export default {
                 })
         })
     },
+    saveContact({commit}, payload) {
+        return new Promise((resolve, reject) => {
+            axios.post(requests.CREATE_CONTACT, payload)
+                .then((response) => {
+                    resolve(response)
+                })
+                .catch((error) => {
+                    reject(error)
+                })
+        })
+    },
+    fetchAbout({commit}, filters) {
+        return new Promise((resolve, reject) => {
+            axios.get(requests.GET_ALL_ABOUT, {
+                params: filters
+            })
+                .then((response) => {
+                    resolve(response)
+                })
+                .catch((error) => {
+                    reject(error)
+                })
+        })
+    },
+    fetchOptions({commit}, filters) {
+        return new Promise((resolve, reject) => {
+            axios.get(requests.GET_ALL_OPTIONS, {
+                params: filters
+            }).then((response) => {
+                resolve(response)
+            }).catch((error) => {
+                reject(error)
+            })
+        })
+    },
 }

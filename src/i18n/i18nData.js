@@ -39,8 +39,10 @@ export default {
         get_info: 'معلومات التواصل',
         currency: 'دينار كويتي',
         kwd: 'دينار كويتي',
+        address: 'العنوان',
     },
     en: {
+        address: 'Address',
         search: 'search',
         currency: 'KWD',
         kwd: 'KWD',

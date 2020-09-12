@@ -15,5 +15,8 @@ export default {
     GET_ALL_CATEGORIES: 'categories',
     GET_ALL_SLIDERS: 'slider',
     CREATE_SUBSCRIBE: '/subscribe/create',
+    CREATE_CONTACT: '/contact-us/create',
+    GET_ALL_ABOUT: '/about',
+    GET_ALL_OPTIONS: '/options/all/1',
 
 }

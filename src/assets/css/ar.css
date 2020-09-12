@@ -664,7 +664,7 @@ html[lang=ar] [type="radio"]:not(:checked) + label:after {
     display: inline-block;
     width: 25px;
     height: 25px;
-    margin: -1px 4px 0 0;
+    /*margin: -1px 4px 0 0;*/
     vertical-align: middle;
     cursor: pointer;
     border-radius: 50%;

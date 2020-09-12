@@ -14,11 +14,7 @@
         components: {
             Header, Content
         },
-        mounted() {
-
-        },
         computed: {},
-        methods: {}
     }
 </script>
 

@@ -62,11 +62,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <infinite-loading :distance="400" @infinite="search"></infinite-loading>
-                        </div>
-                    </div>
+                </div>
+                <div class="col-12 mt-5 text-center">
+                    <infinite-loading :distance="400" @infinite="search"></infinite-loading>
                 </div>
             </div>
         </div>
@@ -104,11 +102,11 @@
                 $('#filterMenu').slideToggle();
             },
             updateFilters(filters) {
-                console.log(filters)
                 let vm = this;
                 vm.products = [];
                 vm.page = 1;
                 vm.filters = filters;
+                this.search(null);
             },
             search($state) {
                 let vm = this;
@@ -125,9 +123,9 @@
                         vm.page += 1;
                         vm.products.push(...data.products.data);
                         vm.total = data.products.total;
-                        $state.loaded();
+                        if ($state) $state.loaded();
                     } else {
-                        $state.complete();
+                        if ($state) $state.complete();
                     }
                     vm.$helper.hideLoader();
                 }).catch((error) => {
