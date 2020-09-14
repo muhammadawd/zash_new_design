@@ -495,6 +495,9 @@ html[lang=ar] [type="radio"]:not(:checked) + label:after {
 
 .category_item .category_name {
     padding: 25px 25px 0 25px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 /*collections*/
@@ -547,7 +550,8 @@ html[lang=ar] [type="radio"]:not(:checked) + label:after {
 .black_navigation .hooper-next,
 .black_navigation .hooper-prev {
     top: 50% !important;
-    background: #aaa !important;
+    background: #ccc !important;
+    opacity: 0.5;
 }
 
 /*show item*/
@@ -773,5 +777,8 @@ html[lang=ar] [type="radio"]:not(:checked) + label:after {
     .slider_pagination {
 
         bottom: 100px;
+    }
+    .collection_slide{
+        min-height: 200px;
     }
 }

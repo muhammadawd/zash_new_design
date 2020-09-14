@@ -43,7 +43,7 @@ export default {
     },
     en: {
         address: 'Address',
-        search: 'search',
+        search: 'Search',
         currency: 'KWD',
         kwd: 'KWD',
         get_info: 'get info',

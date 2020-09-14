@@ -29,6 +29,19 @@
                                 <a href=""
                                    @click.prevent="$router.push({name:'contact_us'})">{{$t('contact_us')}}</a>
                             </li>
+                            <li :class="$route.name == 'search' ? 'active' : ''" class="d-md-none">
+                                <a href=""
+                                   @click.prevent="$router.push({name:'search'})">{{$t('search')}}</a>
+                            </li>
+
+                            <li v-for="(category , index) in getAllCategories" :key="index" :index="index"
+                                class="d-md-none">
+                                <a href=""
+                                   @click.prevent="$router.push({name:'search',query:{category_id:category.id}})">
+                                    <label class="badge badge-warning">{{$t('category')}}</label>
+                                    {{category.translated.title}}
+                                </a>
+                            </li>
 
                             <!--<li class="d-md-none">-->
                             <!--<a style="cursor: pointer" v-if="locale != 'ar'"-->
@@ -78,6 +91,11 @@
                 vm.navigationBarFunctionality();
             });
         },
+        computed: {
+            getAllCategories() {
+                return this.$store.getters['moduleCommon/getAllCategories']
+            }
+        },
         data() {
             return {
                 locale: 'en',
@@ -93,7 +111,6 @@
 
             }
         },
-        computed: {},
         methods: {
             navigationBarFunctionality() {
                 $(function () {

@@ -12,7 +12,7 @@
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-2 text-center text-md-left mb-3 col-6">
-                    <ul class="text-black font-weight-bold">
+                    <ul class="text-black  d-none font-weight-bold">
                         <li class="mb-1">
                             <a href="">Help</a>
                         </li>
@@ -31,7 +31,7 @@
                     </ul>
                 </div>
                 <div class="col-md-2 text-center text-md-left mb-3 col-6">
-                    <ul class="text-black font-weight-bold">
+                    <ul class="text-black d-none font-weight-bold">
                         <li class="mb-1">
                             <a href="">Help</a>
                         </li>

@@ -10,11 +10,12 @@
                 <div class="col-md-7">
                     <div class="row text-left">
                         <div class="col-md-5">
-                            <h2 class="fun_font mb-0 pb-0 text-black">01</h2>
+                            <h2 class="fun_font mb-0 d-none d-md-flex pb-0 text-black">01</h2>
                             <img :src="section.first_image_path" class="w-100" alt="">
                         </div>
                         <div class="col-md-7">
-                            <h5 class="pt-5 mt-5">{{section.translated.first_title}}</h5>
+                            <h2 class="fun_font mb-0 d-md-none mt-5 pb-0 text-black">01</h2>
+                            <h5 class="pt-5 ">{{section.translated.first_title}}</h5>
                             <div class="relative">
                                 <a :href="section.first_url" target="_blank" class="view_more_after">
                                     {{$t('view_more')}}
@@ -22,7 +23,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row text-right">
+                    <div class="row text-right d-none d-md-flex">
                         <div class="col-md-7">
                             <h5 class="pt-5 mt-5">{{section.translated.second_title}}</h5>
                             <div class="relative">
@@ -34,6 +35,20 @@
                         <div class="col-md-5">
                             <h2 class="fun_font mb-0 pb-0 text-black">02</h2>
                             <img :src="section.second_image_path" class="w-100" alt="">
+                        </div>
+                    </div>
+                    <div class="row text-right d-md-none">
+                        <div class="col-md-7 mt-5">
+                            <img :src="section.second_image_path" class="w-100" alt="">
+                        </div>
+                        <div class="col-md-5">
+                            <h2 class="fun_font mb-0 pb-0 mt-5 text-black">02</h2>
+                            <h5 class="pt-5 ">{{section.translated.second_title}}</h5>
+                            <div class="relative">
+                                <a :href="section.second_url" target="_blank" class="view_more_before">
+                                    {{$t('view_more')}}
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

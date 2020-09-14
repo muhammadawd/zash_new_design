@@ -79,7 +79,7 @@
             if (sliders.length) {
                 this.current_slide = sliders[0]
             }
-            this.getSliderFunctionality()
+            this.getProgressPercent()
         },
         computed: {
             getSliders() {
@@ -119,44 +119,28 @@
             getSliderFunctionality() {
                 let vm = this;
                 let colors = ['#ecdada', '#dde9ed', '#f7d0cb', '#ecdada', '#dde9ed', '#f7d0cb', '#ecdada', '#dde9ed', '#f7d0cb']
-                let i = 0;
-                vm.current_slide_index = 0;
-                vm.getProgressPercent();
+                let rand = Math.floor(Math.random() * 6) + 1;
+                vm.bgColor = colors[rand];
+
                 let sliders = vm.getSliders;
                 let length = sliders.length;
-                vm.current_slide = sliders[i];
-
-                setInterval(() => {
-                    let rand = Math.floor(Math.random() * 6) + 1;
-                    vm.bgColor = colors[rand];
-                    let sliders = vm.getSliders;
-                    let length = sliders.length;
-                    vm.current_slide = sliders[i];
-
-                    if (length - 1 > i) {
-                        vm.current_slide_index += 1;
-                        i += 1;
-                    } else {
-                        vm.current_slide_index = 0;
-                        i = 0;
-                    }
-
-                    // if (length == i) {
-                    //     i = 0;
-                    //     vm.current_slide_index = 0;
-                    // }
-                    // vm.current_slide = sliders[i];
-                    //
-                    // if (length > i) {
-                    //     i += 1;
-                    //     vm.current_slide_index += 1;
-                    // }
-                }, 2000)
+                vm.current_slide = sliders[vm.current_slide_index];
+                console.log(length)
+                console.log(vm.current_slide_index)
+                if (length - 1 > vm.current_slide_index) {
+                    vm.current_slide_index += 1;
+                } else {
+                    vm.current_slide_index = 0;
+                }
             },
             getProgressPercent() {
                 let vm = this;
+                vm.getSliderFunctionality();
                 setInterval(() => {
-                    if (vm.progress == 100) vm.progress = 0;
+                    if (vm.progress == 100) {
+                        vm.progress = 0;
+                        vm.getSliderFunctionality();
+                    }
                     vm.progress += 1;
                 }, 20)
             }

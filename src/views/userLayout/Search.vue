@@ -18,6 +18,11 @@
         mounted() {
 
         },
+        watch: {
+            '$route'(to, from) {
+                location.reload()
+            }
+        },
         computed: {},
         methods: {}
     }
