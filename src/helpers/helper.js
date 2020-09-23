@@ -12,8 +12,12 @@ const helper = {
         }
     },
     removeFirstWord(codeLine) {
-        let result = codeLine.substr(codeLine.indexOf(" ") + 1);
-        return result;
+        try {
+            let result = codeLine.substr(codeLine.indexOf(" ") + 1);
+            return result;
+        }catch (e) {
+            return codeLine
+        }
     },
     isMobile() {
         if (screen.width <= 760) {
