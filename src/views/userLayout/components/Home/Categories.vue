@@ -16,7 +16,7 @@
                                  @click="$router.push({name:'search',query:{category_id:category.id}})"
                                  :class="index%2 == 0 ? 'bg-1' : 'bg-2'">
                                 <h1 class="fun_font text-left category_name">{{category.translated.title}}</h1>
-                                <img :src="category.main_image" class="w-100" alt=""/>
+                                <img :src="category.main_image" class="w-50 ml-5" alt=""/>
                             </div>
                         </div>
                     </slide>

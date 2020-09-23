@@ -9,9 +9,11 @@
                 <ul class="mt-4 ml-3">
                     <li class="mb-4"
                         v-for="(item) in  getAllCategories">
-                        <a href="" class="category" :class="isSelectedCategory(item.id) ? 'active' : ''"
+                        <a href="" class="category"
                            @click.prevent="selectCategory(item.id)">
-                            <h5 class="size-xs font-weight-bold">{{item.translated.title}}</h5>
+                            <h5 class="size-xs font-weight-bold">
+                                <i v-if="isSelectedCategory(item.id)" class="fa fa-circle"></i>
+                                {{item.translated.title}}</h5>
                         </a>
                     </li>
                 </ul>
@@ -166,6 +168,13 @@
                 let selectedCategory = JSON.parse(JSON.stringify(this.selectedCategory));
                 if (!selectedCategory.includes(id)) {
                     this.selectedCategory.push(id)
+                } else {
+                    let array = JSON.parse(JSON.stringify(this.selectedCategory))
+                    const index = array.indexOf(id);
+                    if (index > -1) {
+                        array.splice(index, 1);
+                    }
+                    this.selectedCategory = array
                 }
                 this.updateFilters(this.prepareFilters());
             },

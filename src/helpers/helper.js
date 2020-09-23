@@ -4,8 +4,12 @@ const CryptoJS = require("crypto-js");
 
 const helper = {
     getFirstWord(codeLine) {
-        let firstWord = codeLine.substr(0, codeLine.indexOf(" "));
-        return firstWord;
+        try {
+            let firstWord = codeLine.substr(0, codeLine.indexOf(" "));
+            return firstWord;
+        } catch (e) {
+            return codeLine
+        }
     },
     removeFirstWord(codeLine) {
         let result = codeLine.substr(codeLine.indexOf(" ") + 1);

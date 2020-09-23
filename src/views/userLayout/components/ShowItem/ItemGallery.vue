@@ -58,7 +58,10 @@
         },
         mounted() {
             let files = [];
-            let povS = _.map(this.product.product_option_values, 'files')
+
+            files.push({'id': 1000, 'url': this.product.main_image});
+
+            let povS = _.map(this.product.product_option_values, 'files');
             _.forEach(povS, (pov, k1) => {
                 _.forEach(pov, (item, k2) => {
                     files.push({'id': k1 + '' + k2, 'url': item.path})
