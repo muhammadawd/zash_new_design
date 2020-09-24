@@ -8,18 +8,22 @@
                 <!--<img :src="category.main_image" class="w-100" alt=""/>-->
                 <!--</div>-->
                 <!--</div>-->
-                <hooper :settings="hooperSettings" style="height: auto;;overflow: hidden">
+                <hooper :settings="hooperSettings" style="height: auto;overflow: hidden;padding: 50px 0 0;">
                     <slide v-for="(category , index) in getAllCategories"
                            :key="index">
                         <div class="collection_slide pointer">
                             <div class="category_item"
-                                 @click="$router.push({name:'search',query:{category_id:category.id}})"
                                  :class="index%2 == 0 ? 'bg-1' : 'bg-2'">
-                                <h1 class="fun_font text-left category_name">{{category.translated.title}}</h1>
-                                <img :src="category.main_image" class="w-50 ml-5" alt=""/>
+                                <h1 class="fun_font text-left category_name"
+                                    @click="$router.push({name:'search',query:{category_id:category.id}})">
+                                    {{category.translated.title}}</h1>
+                                <img :src="category.main_image"
+                                     @click="$router.push({name:'search',query:{category_id:category.id}})"
+                                     class="w-50 ml-5" alt=""/>
                             </div>
                         </div>
                     </slide>
+                    <hooper-navigation class="black_navigation" slot="hooper-addons"></hooper-navigation>
                 </hooper>
             </div>
         </div>

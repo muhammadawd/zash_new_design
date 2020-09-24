@@ -40,8 +40,10 @@ export default {
         currency: 'دينار كويتي',
         kwd: 'دينار كويتي',
         address: 'العنوان',
+        by_query: 'بالكلمة',
     },
     en: {
+        by_query: 'by query',
         address: 'Address',
         search: 'Search',
         currency: 'KWD',

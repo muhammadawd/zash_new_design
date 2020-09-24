@@ -2,6 +2,20 @@
     <div class="border-shadow text-left p-2" id="filterMenu">
         <div class="row">
             <div class="col-12 mb-5">
+
+                <h2 class="font-weight-bold fun_font m-0">{{$t('by_query')}}</h2>
+                <div class="progress">
+                    <div class="progress-bar bg-black" style="height: 2px;width:40%"></div>
+                </div>
+                <form class="search-form" @submit.prevent="searchQuery()">
+                    <input type="search" v-model="query" placeholder="Search" class="search-input">
+                    <button type="submit" class="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+
+            </div>
+            <div class="col-12 mb-5">
                 <h2 class="font-weight-bold fun_font">{{$t('by_categories')}}</h2>
                 <div class="progress">
                     <div class="progress-bar bg-black" style="height: 2px;width:40%"></div>
@@ -87,6 +101,7 @@
         },
         data() {
             return {
+                query: '',
                 value: [0, 30],
                 selectedCategory: [],
                 options: [],
@@ -110,6 +125,10 @@
             }
         },
         methods: {
+            searchQuery() {
+                let filters = this.prepareFilters();
+                this.updateFilters(filters)
+            },
             dragEnd(index) {
                 let filters = this.prepareFilters();
                 this.updateFilters(filters)
@@ -159,6 +178,7 @@
                 let values = _.map(this.selectedOptions, 'option_value_id')
                 return {
                     category_ids: this.selectedCategory,
+                    query: this.query,
                     min_price: this.value[0],
                     max_price: this.value[1],
                     option_value_ids: values

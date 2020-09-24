@@ -117,6 +117,7 @@
                 filters.limit = 15;
                 let dispatch = this.$store.dispatch('moduleCommon/fetchFullSearch', filters);
                 dispatch.then((response) => {
+                    if (!$state) vm.products = [];
                     let status = response.data.status;
                     let data = response.data.data;
                     if (data.products.data.length) {
