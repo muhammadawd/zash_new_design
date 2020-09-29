@@ -11,19 +11,22 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-5 text-left pt-5">
-                    <div class="justify-content-center align-items-center">
-                        <h1 class="fun_font slider_main_title">
+                    <div class="item_text justify-content-center align-items-center">
+                        <!--animate__animated animate__bounce animate__infinite-->
+                        <h1 class="fun_font slider_main_title ">
                             {{$helper.getFirstWord(current_slide.translated.title)}}</h1>
-                        <h1 class="fun_font slider_main_title">
+                        <h1 class="fun_font slider_main_title2 animate__animated animate__pulse animate__infinite">
                             {{$helper.removeFirstWord(current_slide.translated.title)}}</h1>
-                        <p class="slider_main_paragraph">
+                        <p class="slider_main_paragraph  animate__animated animate__zoomIns animate__infinite">
                             {{current_slide.translated.description}}
                         </p>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
+                    <div class="imageContainer">
+                        <img :src="current_slide.image" class="slideImage">
+                    </div>
                     <!--<img :src="require('@/assets/img/slide1.png')" class="w-100">-->
-                    <img :src="current_slide.image" class="w-100">
                 </div>
             </div>
             <div class="row justify-content-start text-center" style="position:absolute;width: 100%;bottom: 0;">
@@ -63,6 +66,8 @@
 </template>
 
 <script>
+    import 'animate.css'
+
     export default {
         name: "Header",
         data() {
@@ -79,6 +84,8 @@
             if (sliders.length) {
                 this.current_slide = sliders[0]
             }
+            document.documentElement.style.setProperty('--animate-duration', '3s');
+
             this.getProgressPercent()
         },
         computed: {
@@ -135,14 +142,16 @@
             },
             getProgressPercent() {
                 let vm = this;
-                vm.getSliderFunctionality();
+                setTimeout(() => {
+                    vm.getSliderFunctionality();
+                }, 2000)
                 setInterval(() => {
                     if (vm.progress == 100) {
                         vm.progress = 0;
                         vm.getSliderFunctionality();
                     }
                     vm.progress += 1;
-                }, 20)
+                }, 30)
             }
         }
     }

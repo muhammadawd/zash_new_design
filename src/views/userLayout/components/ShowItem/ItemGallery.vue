@@ -1,10 +1,11 @@
 <template>
-    <div class="pt-5" v-if="getProduct">
-        <div class="container">
+    <div v-if="getProduct && files.length">
+        <div class="container p-0 m-0">
             <div class="row direction text-left">
                 <div class="col-md-12">
-                    <div class="zoomImage">
-                        <div class="discount">
+                    <div class="zoomImage" dir="ltr">
+                        <div class="discount"
+                             v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount)">
                             <span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>
                         </div>
                         <ProductZoomer v-if="files.length"
@@ -34,12 +35,12 @@
                 },
                 zoomOptions: {
                     zoomFactor: 3,
-                    pane: "container-round",
+                    pane: "pane",
                     hoverDelay: 300,
                     namespace: "zoomer-left",
                     move_by_click: false,
                     scroll_items: 5,
-                    choosed_thumb_border_color: "#dd2c00",
+                    choosed_thumb_border_color: "#000",
                     scroller_position: "left",
                     zoomer_pane_position: "right"
                 },
@@ -47,10 +48,10 @@
                     zoomFactor: 3,
                     pane: "container-round",
                     hoverDelay: 300,
-                    namespace: "zoomer-left",
+                    namespace: "zoomer-right",
                     move_by_click: true,
                     scroll_items: 5,
-                    choosed_thumb_border_color: "#dd2c00",
+                    choosed_thumb_border_color: "#000",
                     scroller_position: "left",
                     zoomer_pane_position: "right"
                 },

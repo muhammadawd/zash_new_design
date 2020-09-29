@@ -41,8 +41,12 @@ export default {
         kwd: 'دينار كويتي',
         address: 'العنوان',
         by_query: 'بالكلمة',
+        hide360: 'اخفاء الصور 360',
+        show360: 'اظهار الصور 360',
     },
     en: {
+        hide360: 'Hide 3D Images',
+        show360: 'Show 3D Images',
         by_query: 'by query',
         address: 'Address',
         search: 'Search',

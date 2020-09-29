@@ -6,6 +6,11 @@
             <div v-if="index%2 == 0">
                 <ManCollections :section="section"/>
             </div>
+            <div v-if="index == 1">
+                <slot v-if="getSettings.home_vedio">
+                    <div class="text-center mt-5" v-html="getSettings.home_vedio[0].value"></div>
+                </slot>
+            </div>
             <div v-if="index%2 == 1">
                 <WomenCollections :section="section"/>
             </div>
@@ -38,7 +43,11 @@
             this.getAllSliders();
             this.getHomePage();
         },
-        computed: {},
+        computed: {
+            getSettings() {
+                return this.$store.getters['moduleCommon/getAllSettings']
+            }
+        },
         methods: {
             getAllSliders() {
                 let vm = this;
