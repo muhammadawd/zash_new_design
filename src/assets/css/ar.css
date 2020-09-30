@@ -6,6 +6,10 @@
 @import url('https://fonts.googleapis.com/css?family=Cairo:wght@200;300;400;600;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+:root {
+    --swiper-theme-color: #da0b4e !important;
+}
+
 body {
     background: #f5f5f5;
     /*background: #f5f5f5 url("../img/Rose-Gold-Lines.png") center center;*/
@@ -624,8 +628,8 @@ html[lang=ar] [type="radio"]:not(:checked) + label:after {
     background: #da0b4e;
     color: #fff;
     padding: 5px;
-    right: 20px;
-    top: 20px;
+    right: 10px;
+    top: 10px;
     z-index: 9;
     line-height: 50px;
     text-align: center;
@@ -981,4 +985,18 @@ html[lang=ar] [type="radio"]:not(:checked) + label:after {
 
 .vue-product-spinner img {
     width: 100% !important;
+}
+
+.bg-gray {
+    background-color: #e4e4e4;
+}
+
+.galley_container {
+    position: fixed;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999;
+    top: 0;
+    left: 0;
 }

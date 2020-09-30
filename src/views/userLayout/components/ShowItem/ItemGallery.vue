@@ -1,45 +1,48 @@
 <template>
     <div v-if="getProduct && files.length">
         <div class="container p-0 m-0">
-            <div class="row direction text-left">
-                <div class="col-3 p-0">
-                    <ul>
-                        <li v-for="image in files">
-                            <div class="p-1 mb-1 bg-white text-center overflowhidden"
-                                 :class="image == current_image ? 'active_slide' : ''"
-                                 @click="showZoomer(image)">
-                                <img :src="image" alt="" width="120px">
-                            </div>
-                        </li>
-                        <template v-for="collection in image_collections">
-                            <li v-for="(image, index) in collection" v-if="index == 0">
-                                <div class="p-1 mb-1 bg-white text-center overflowhidden"
-                                     :class="image == current_image ? 'active_slide' : ''"
-                                     @click="show3d(collection)">
-                                    <img :src="image" alt="" width="120px">
-                                </div>
-                            </li>
-                        </template>
-                    </ul>
-                </div>
-                <div class="col-9">
-                    <div class="zoomImage" dir="ltr">
+            <div class="row direction text-left d-none d-md-flex">
+                <div class="mb-4" :class="layout == 'list' ? 'col-md-12':'col-md-6 '" v-for="(file , index) in files"
+                     :key="index" :index="index">
+                    <div class="zoomImage" dir="ltr" @click="clickSlide(file)">
                         <div class="discount"
-                             v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount)">
+                             v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount) && index == 0">
                             <span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>
                         </div>
-                        <div class="bg-white" v-if="!is3d">
-                            <v-zoom v-if="current_image" :img="current_image" :width="'100%'"></v-zoom>
-                        </div>
-                        <div class="bg-white" v-if="is3d">
-                            <VueProductSpinner :images="current_collection">
-                            </VueProductSpinner>
-                        </div>
-                        <!--<ProductZoomer v-if="files.length"-->
-                        <!--:base-images="images"-->
-                        <!--:base-zoomer-options="$helper.isMobile() ? zoomOptionsMobile : zoomOptions"-->
-                        <!--/>-->
+                        <img :src="file" class="w-100 bg-gray" alt="">
                     </div>
+                </div>
+            </div>
+            <div class="row direction text-left d-md-none">
+                <div class="col-12">
+                    <div class="swiperImage" dir="ltr">
+                        <swiper ref="mySwiper" :options="swiperOptions">
+                            <swiper-slide v-for="(file , index) in files" :key="index" :index="index">
+                                <div class="zoomImage p-1" dir="ltr" @click="clickSlide(file)">
+                                    <div class="discount"
+                                         v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount) && index == 0">
+                                        <span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>
+                                    </div>
+                                    <img :src="file" class="w-100 bg-gray" alt="">
+                                </div>
+                            </swiper-slide>
+                            <div class="swiper-pagination" slot="pagination"></div>
+                        </swiper>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="galley_container" v-if="showGallery">
+            <div class="toolbar text-center p-2">
+                <button class="float-right bg-transparent" @click="showGallery = false">
+                    <i class="fa fa-times"></i>
+                </button>
+                <h2>{{$t('galley')}}</h2>
+            </div>
+            <hr class="m-0 p-0">
+            <div class="row" style="max-height: 100vh;overflow-y: scroll">
+                <div class="col-md-4 mt-1 mb-1" v-for="(file , index) in files" :key="index" :index="index">
+                    <img :src="file" class="w-100 bg-gray" alt="">
                 </div>
             </div>
         </div>
@@ -48,46 +51,43 @@
 
 <script>
     import vZoom from 'vue-zoom'
-    import VueProductSpinner from 'vue-product-spinner'
+    import {swiper, swiperSlide} from 'vue-awesome-swiper'
+    import 'swiper/css/swiper.css'
 
     export default {
         name: "ItemGallery",
-        props: ['product'],
-        components: {vZoom, VueProductSpinner},
+        props: ['product', 'layout'],
+        // directives: {
+        //     swiper: directive
+        // },
+        components: {vZoom, swiper, swiperSlide},
         data() {
             return {
-                is3d: false,
+                showGallery: false,
                 current_image: null,
                 current_collection: [],
                 files: [],
                 image_collections: [],
+                swiperOptions: {
+                    loop: true,
+                    slidesPerView: 1,
+                    centeredSlides: true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                        progressbarOpposite: true
+                    }
+                    // pagination: {
+                    //     el: ".swiper-pagination",
+                    //     type: "bullets",
+                    //     clickable: true,
+                    // },
+                },
                 images: {
                     'thumbs':    // optional, if not present will use normal_size instead
                         [],
                     'normal_size':  // required
                         []
-                },
-                zoomOptions: {
-                    zoomFactor: 3,
-                    pane: "pane",
-                    hoverDelay: 300,
-                    namespace: "zoomer-left",
-                    move_by_click: false,
-                    scroll_items: 5,
-                    choosed_thumb_border_color: "#000",
-                    scroller_position: "left",
-                    zoomer_pane_position: "right"
-                },
-                zoomOptionsMobile: {
-                    zoomFactor: 3,
-                    pane: "container-round",
-                    hoverDelay: 300,
-                    namespace: "zoomer-right",
-                    move_by_click: true,
-                    scroll_items: 5,
-                    choosed_thumb_border_color: "#000",
-                    scroller_position: "left",
-                    zoomer_pane_position: "right"
                 },
             }
         },
@@ -96,10 +96,8 @@
 
             // files.push({'id': 1000, 'url': this.product.main_image});
             files.push(this.product.main_image);
-            this.current_image = this.product.main_image;
+            // this.current_image = this.product.main_image;
 
-            let image_collections = _.map(this.product.product_option_values, 'image_collection');
-            this.image_collections = image_collections
 
             let povS = _.map(this.product.product_option_values, 'files');
             _.forEach(povS, (pov, k1) => {
@@ -118,15 +116,9 @@
             }
         },
         methods: {
-            show3d(collection) {
-                this.is3d = true;
-                this.current_collection = collection;
-                this.current_image = collection[0];
-            },
-            showZoomer(image) {
-                this.is3d = false;
-                this.current_image = null;
-                this.current_image = image;
+            clickSlide(file) {
+                console.log(file)
+                this.showGallery = true;
             },
             getPercent(numVal1, numVal2) {
                 let percentChange = 0;
@@ -140,11 +132,5 @@
 </script>
 
 <style scoped>
-    .active_slide {
-        border: 1px solid #777;
-    }
 
-    .overflowhidden {
-        overflow: hidden;
-    }
 </style>

@@ -43,8 +43,12 @@ export default {
         by_query: 'بالكلمة',
         hide360: 'اخفاء الصور 360',
         show360: 'اظهار الصور 360',
+        image360: '360° صورة',
+        galley: 'معرض الصور',
     },
     en: {
+        galley: 'galley',
+        image360: '3D experience Images',
         hide360: 'Hide 3D Images',
         show360: 'Show 3D Images',
         by_query: 'by query',

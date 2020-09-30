@@ -1,7 +1,7 @@
 const manifestJSON = require('./public/manifest.json')
 
 module.exports = {
-    publicPath: '/new_front2/',
+    publicPath: '/new_front3/',
     lintOnSave: false,
     css: {
         // Enable CSS source maps.

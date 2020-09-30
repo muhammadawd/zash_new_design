@@ -22,6 +22,15 @@
                         </li>
                     </ul>
                 </div>
+                <div class="col-md-12 mt-5" v-for="(collection,index) in image_collections" :key="index" :index="index"
+                     v-if="collection.length">
+                    <a href="" @click.prevent="show3D(collection)"
+                       class="font-weight-bold text-black size-xs text-capitalize"
+                       style="text-decoration: underline">
+                        <img :src="require('@/assets/img/360.jpg')" width="40px">
+                        {{$t('image360')}}
+                    </a>
+                </div>
                 <div class="col-md-12 mt-5">
                     <ul class="mt-2 direction">
                         <li class="list-inline-item animationIcon iconRounded">
@@ -59,17 +68,41 @@
                 </div>
             </div>
         </div>
+        <div class="galley_container" v-if="showGallery">
+            <div class="toolbar text-center p-2">
+                <button class="float-right bg-transparent" @click="showGallery = false">
+                    <i class="fa fa-times"></i>
+                </button>
+                <h4>{{$t('image360')}}</h4>
+            </div>
+            <hr class="m-0 p-0">
+            <div class="row justify-content-center" v-if="my3dImages.length">
+                <div class="col-md-4 col-12 mt-5">
+                    <VueProductSpinner :images="my3dImages">
+                    </VueProductSpinner>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+    import VueProductSpinner from 'vue-product-spinner'
+
     export default {
         name: "ItemInfo",
         props: ['product'],
+        components: {VueProductSpinner},
         data() {
-            return {}
+            return {
+                has3dImages: false,
+                showGallery: false,
+                image_collections: [],
+                my3dImages: [],
+            }
         },
         mounted() {
+            this.has360Image();
         },
         computed: {
             getProduct() {
@@ -77,6 +110,22 @@
             }
         },
         methods: {
+            show3D(collection) {
+                this.showGallery = true;
+                this.my3dImages = collection;
+            },
+            has360Image() {
+                let flag = false;
+
+                let image_collections = _.map(this.product.product_option_values, 'image_collection');
+                this.image_collections = image_collections;
+
+                _.forEach(image_collections, (collection) => {
+                    if (collection.length) flag = true
+                });
+
+                if (flag) this.has3dImages = true
+            },
             getShareData(product) {
                 return {
                     url: window.location.href,
