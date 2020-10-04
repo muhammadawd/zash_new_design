@@ -2,7 +2,7 @@
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 d-none d-md-flex">
                     <div class="bg-whites mb-3">
                         <ul class="grid_list">
                             <li class="list-inline-item p-2">
@@ -20,11 +20,13 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8" id="ImagesSection">
                     <ItemGallery :layout="layout" :product="product"/>
                 </div>
-                <div class="col-md-4">
-                    <ItemInfo :product="product"/>
+                <div class="col-md-4 relative">
+                    <div :style="(!isMobile() && !hasScrolledToBottom) ? {position:'fixed', top: '55px'}:{position:'relative'}">
+                        <ItemInfo :product="product"/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -42,12 +44,34 @@
         data() {
             return {
                 layout: 'grid',
+                hasScrolledToBottom: true
             }
         },
         mounted() {
-
+            $(document).on('scroll', () => {
+                let scroll = $(document).scrollTop();
+                if (scroll < 150) {
+                    this.hasScrolledToBottom = true
+                    return
+                }
+                let outter_height = $('#ImagesSection').outerHeight();
+                let offset_top = $('#ImagesSection').offset().top;
+                if (offset_top + scroll >= outter_height) {
+                    this.hasScrolledToBottom = true
+                } else {
+                    this.hasScrolledToBottom = false
+                }
+            })
         },
-        methods: {}
+        methods: {
+            isMobile() {
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
     }
 </script>
 

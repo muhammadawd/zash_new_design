@@ -49,6 +49,9 @@ import lodash from 'lodash'
 
 Vue.use(VueLodash, {name: 'custom', lodash: lodash});
 
+import ZoomOnHover from "vue-zoom-on-hover";
+Vue.use(ZoomOnHover);
+
 // Notifications
 import Notifications from 'vue-notification'
 

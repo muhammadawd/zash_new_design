@@ -1,5 +1,5 @@
 <template>
-    <div class="pt-5">
+    <div class="pt-5 bg-details">
         <div class="container">
             <div class="row direction text-left">
                 <div class="col-md-12">

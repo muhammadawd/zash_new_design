@@ -9,7 +9,8 @@
                              v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount) && index == 0">
                             <span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>
                         </div>
-                        <img :src="file" class="w-100 bg-gray" alt="">
+                        <!--<img :src="file" class="w-100 bg-gray" alt="">-->
+                        <zoom-on-hover class="bg-white" :img-normal="file"></zoom-on-hover>
                     </div>
                 </div>
             </div>
@@ -23,7 +24,8 @@
                                          v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount) && index == 0">
                                         <span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>
                                     </div>
-                                    <img :src="file" class="w-100 bg-gray" alt="">
+                                    <!--<img :src="file" class="w-100 bg-gray" alt="">-->
+                                    <zoom-on-hover class="bg-white" :img-normal="file"></zoom-on-hover>
                                 </div>
                             </swiper-slide>
                             <div class="swiper-pagination" slot="pagination"></div>
@@ -42,7 +44,8 @@
             <hr class="m-0 p-0">
             <div class="row" style="max-height: 100vh;overflow-y: scroll">
                 <div class="col-md-4 mt-1 mb-1" v-for="(file , index) in files" :key="index" :index="index">
-                    <img :src="file" class="w-100 bg-gray" alt="">
+                    <!--<img :src="file" class="w-100 bg-gray" alt="">-->
+                    <zoom-on-hover class="bg-white" :img-normal="file"></zoom-on-hover>
                 </div>
             </div>
         </div>
