@@ -56,7 +56,9 @@
                 }
                 let outter_height = $('#ImagesSection').outerHeight();
                 let offset_top = $('#ImagesSection').offset().top;
-                if (offset_top + scroll >= outter_height) {
+                scroll = scroll - offset_top + 250;
+                console.log(scroll, outter_height)
+                if (scroll >= outter_height) {
                     this.hasScrolledToBottom = true
                 } else {
                     this.hasScrolledToBottom = false

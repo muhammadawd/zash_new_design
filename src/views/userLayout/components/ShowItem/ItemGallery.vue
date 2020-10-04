@@ -45,7 +45,7 @@
             <div class="row" style="max-height: 100vh;overflow-y: scroll">
                 <div class="col-md-4 mt-1 mb-1" v-for="(file , index) in files" :key="index" :index="index">
                     <!--<img :src="file" class="w-100 bg-gray" alt="">-->
-                    <zoom-on-hover class="bg-white" :img-normal="file"></zoom-on-hover>
+                    <zoom-on-hover class="bg-white w-100" :img-normal="file"></zoom-on-hover>
                 </div>
             </div>
         </div>
