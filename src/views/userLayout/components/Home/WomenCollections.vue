@@ -34,12 +34,16 @@
                         </div>
                         <div class="col-md-5">
                             <h2 class="fun_font mb-0 pb-0 text-black">01</h2>
-                            <img :src="section.first_image_path" class="w-100" alt="">
+                            <img :src="section.first_image_path"
+                                 @click.prevent="$router.push({name: 'search', query: {category_id: section.first_categories}})"
+                                 class="w-100" alt="">
                         </div>
                     </div>
                     <div class="row text-right d-md-none">
                         <div class="col-md-7 mt-5">
-                            <img :src="section.first_image_path" class="w-100" alt="">
+                            <img :src="section.first_image_path"
+                                 @click.prevent="$router.push({name: 'search', query: {category_id: section.first_categories}})"
+                                 class="w-100" alt="">
                         </div>
                         <div class="col-md-5">
                             <h2 class="fun_font mb-0 pb-0 mt-5 text-black">01</h2>
@@ -57,7 +61,9 @@
 
                         <div class="col-md-5">
                             <h2 class="fun_font mb-0 pb-0 d-none d-md-flex text-black">02</h2>
-                            <img :src="section.second_image_path" class="w-100" alt="">
+                            <img :src="section.second_image_path"
+                                 @click.prevent="$router.push({name: 'search', query: {category_id: section.second_categories}})"
+                                 class="w-100" alt="">
                         </div>
                         <div class="col-md-7 text-left">
                             <h2 class="fun_font mb-0 pb-0 mt-5 d-md-none text-black">02</h2>
