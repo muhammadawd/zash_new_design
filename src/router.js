@@ -79,7 +79,7 @@ const router = new Router({
                     }
                 },
                 {
-                    path: '/item/:id/:branch_id',
+                    path: '/items/:slug',
                     name: 'show_item',
                     component: () => import('./views/userLayout/ShowItem.vue'),
                     meta: {

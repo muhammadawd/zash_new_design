@@ -25,7 +25,9 @@
                         <div class="col-md-7">
                             <h5 class="pt-5 mt-5">{{section.translated.first_title}}</h5>
                             <div class="relative">
-                                <a :href="section.first_url" target="_blank" class="view_more_before">
+                                <a href=""
+                                   @click.prevent="$router.push({name: 'search', query: {category_id: section.first_categories}})"
+                                   class="view_more_before">
                                     {{$t('view_more')}}
                                 </a>
                             </div>
@@ -43,7 +45,9 @@
                             <h2 class="fun_font mb-0 pb-0 mt-5 text-black">01</h2>
                             <h5 class="pt-5">{{section.translated.first_title}}</h5>
                             <div class="relative">
-                                <a :href="section.first_url" target="_blank" class="view_more_before">
+                                <a href=""
+                                   @click.prevent="$router.push({name: 'search', query: {category_id: section.first_categories}})"
+                                   class="view_more_before">
                                     {{$t('view_more')}}
                                 </a>
                             </div>
@@ -59,7 +63,9 @@
                             <h2 class="fun_font mb-0 pb-0 mt-5 d-md-none text-black">02</h2>
                             <h5 class="pt-5 ">{{section.translated.second_title}}</h5>
                             <div class="relative">
-                                <a :href="section.second_url" class="view_more_after">
+                                <a href=""
+                                   @click.prevent="$router.push({name: 'search', query: {category_id: section.second_categories}})"
+                                   class="view_more_after">
                                     {{$t('view_more')}}
                                 </a>
                             </div>

@@ -54,6 +54,9 @@
                     this.hasScrolledToBottom = true
                     return
                 }
+                if (!$('#ImagesSection')) {
+                    return
+                }
                 let outter_height = $('#ImagesSection').outerHeight();
                 let offset_top = $('#ImagesSection').offset().top;
                 scroll = scroll - offset_top + 250;

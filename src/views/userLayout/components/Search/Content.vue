@@ -41,7 +41,7 @@
                     <div class="row" v-if="layout === 'list'">
                         <div class="col-md-12" v-for="(product,indx) in products" :key="indx" :index="indx">
                             <div class="pointer p-2"
-                                 @click="$router.push({name:'show_item',params:{id:product.id,branch_id :product.branch_id}})">
+                                 @click="$router.push({name:'show_item',params:{slug:product.slug}})">
                                 <img :src="product.main_image" class="w-25 bg-white d-inline-block" alt="">
                                 <div class="w-75 p-3 d-inline-block mb-5">
                                     <h4 class="font-weight-bold text-black">{{product.translated.title}}</h4>
@@ -53,7 +53,7 @@
                     <div class="row" v-if="layout === 'grid'">
                         <div class="col-md-4" v-for="(product,indx) in products" :key="indx" :index="indx">
                             <div class="collection_slide pointer p-2"
-                                 @click="$router.push({name:'show_item',params:{id:product.id,branch_id :product.branch_id}})">
+                                 @click="$router.push({name:'show_item',params:{slug:product.slug}})">
                                 <img :src="product.main_image" class="w-100" alt="">
                                 <div class="p-1">
                                     <div class="font-weight-bold text-black">{{product.translated.title}}</div>

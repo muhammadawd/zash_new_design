@@ -37,10 +37,11 @@
             findProduct() {
                 let vm = this;
                 vm.$helper.showLoader();
-                let dispatch = this.$store.dispatch('moduleCommon/fetchGetProduct', {
+                let dispatch = this.$store.dispatch('moduleCommon/fetchGetProductBySlug', {
                     lang: vm.$i18n.locale,
-                    product_id: vm.$route.params.id,
-                    branch_id: vm.$route.params.branch_id,
+                    // product_id: vm.$route.params.id,
+                    // branch_id: vm.$route.params.branch_id,
+                    slug: vm.$route.params.slug,
                 });
                 dispatch.then((response) => {
                     response = response.data;

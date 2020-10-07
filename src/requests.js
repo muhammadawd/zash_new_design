@@ -10,6 +10,7 @@ export default {
     COMMON_GET_ALL_HOME_DATA: 'utilities/get-home-data',
 
     GET_PRODUCT_DETAILS: 'products/product-detailed',
+    GET_PRODUCT_DETAILS_BY_SLUG: 'products/product-detailed-slug',
     FULL_SEARCH: 'products/filter-all-products',
 
     GET_ALL_CATEGORIES: 'categories',

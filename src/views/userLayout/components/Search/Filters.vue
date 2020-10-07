@@ -40,10 +40,13 @@
                 <ul class="mt-4 ml-3">
                     <li class="zoom110">
                         <vue-slider @drag-end="dragEnd"
+                                    :min="0"
+                                    :max="7000"
                                     v-model="value"/>
                     </li>
                 </ul>
-                <div class="text-black text-capitalize text-center font-weight-bold">price ${{value[0]}} - ${{value[1]}}
+                <div class="text-black text-capitalize text-center font-weight-bold">price {{value[0]}} {{$t('kwd')}} -
+                    {{value[1]}} {{$t('kwd')}}
                 </div>
             </div>
 
@@ -89,6 +92,7 @@
 
 <script>
     import VueSlider from 'vue-slider-component'
+
     import 'vue-slider-component/theme/material.css'
 
     export default {
@@ -102,7 +106,7 @@
         data() {
             return {
                 query: '',
-                value: [0, 30],
+                value: [0, 4000],
                 selectedCategory: [],
                 options: [],
                 selectedOptions: []
@@ -110,11 +114,28 @@
         },
         mounted() {
             this.fetchOptions();
-            let category_id = this.$route.query.category_id
-            if (category_id) {
-                this.selectedCategory.push(parseInt(category_id))
-                this.updateFilters(this.prepareFilters())
+            let update_filter = false;
+            let query = this.$route.query.query;
+            if (query) {
+                this.query = query;
+                update_filter = true;
             }
+            let category_id = this.$route.query.category_id;
+            if (category_id) {
+
+                if (Array.isArray(category_id)) {
+                    category_id = JSON.parse(JSON.stringify(category_id))
+                    _.forEach(category_id, (item) => {
+                        this.selectedCategory.push(parseInt(item));
+                    })
+                    // this.selectedCategory = category_id
+                    update_filter = true;
+                } else {
+                    this.selectedCategory.push(parseInt(category_id));
+                    update_filter = true;
+                }
+            }
+            if (update_filter) this.updateFilters(this.prepareFilters())
         },
         computed: {
             getAllCategories() {
@@ -126,6 +147,9 @@
         },
         methods: {
             searchQuery() {
+                let category_id = this.$route.query.category_id;
+                let query = this.$route.query.query;
+                this.$router.push({name: 'search', query: {query: this.query, category_id: category_id}})
                 let filters = this.prepareFilters();
                 this.updateFilters(filters)
             },
@@ -212,5 +236,14 @@
 <style>
     a.category.active {
         text-decoration: line-through;
+    }
+
+    .vue-slider-dot-tooltip-inner {
+        background-color: #000000;
+    }
+
+    .vue-slider-dot-handle::after {
+
+        background-color: #00000061;
     }
 </style>

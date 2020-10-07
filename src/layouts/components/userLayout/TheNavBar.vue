@@ -34,13 +34,26 @@
                                    @click.prevent="$router.push({name:'search'})">{{$t('search')}}</a>
                             </li>
 
-                            <li v-for="(category , index) in getAllCategories" :key="index" :index="index"
-                                class="d-md-none">
-                                <a href=""
-                                   @click.prevent="$router.push({name:'search',query:{category_id:category.id}})">
-                                    <label class="badge badge-warning">{{$t('category')}}</label>
-                                    {{category.translated.title}}
-                                </a>
+                            <!--<li v-for="(category , index) in getAllCategories" :key="index" :index="index"-->
+                            <!--class="d-md-none">-->
+                            <!--<a href=""-->
+                            <!--@click.prevent="$router.push({name:'search',query:{category_id:category.id}})">-->
+                            <!--<label class="badge badge-warning">{{$t('category')}}</label>-->
+                            <!--{{category.translated.title}}-->
+                            <!--</a>-->
+                            <!--</li>-->
+                            <li>
+                                <a href="#" @click.prevent>{{$t('categories')}}<span
+                                        class="submenu-indicator"></span></a>
+                                <ul class="nav-dropdown nav-submenu" style="max-height: 600px;overflow: scroll">
+                                    <li v-for="(category , index) in getAllCategories"
+                                        @click.prevent="$router.push({name:'search',query:{category_id:category.id}})">
+                                        <a href="#"
+                                           @click.prevent="$router.push({name:'search',query:{category_id:category.id}})">{{category.translated.title}}
+                                            <span class="submenu-indicator"></span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
 
                             <!--<li class="d-md-none">-->
@@ -61,6 +74,7 @@
                             <!--</li>-->
                             <li class="green light d-none d-md-flex text-capitalize">
                                 <a style="cursor: pointer" href="" @click.prevent="$router.push({name:'search'})">
+                                    {{$t('search')}}
                                     <i class="ti-search"></i>
                                 </a>
                             </li>

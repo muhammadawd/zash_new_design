@@ -78,6 +78,19 @@ export default {
                 })
         })
     },
+    fetchGetProductBySlug({commit}, filters) {
+        return new Promise((resolve, reject) => {
+            axios.get(requests.GET_PRODUCT_DETAILS_BY_SLUG + `/${filters.slug}`, {
+                params: filters
+            })
+                .then((response) => {
+                    resolve(response)
+                })
+                .catch((error) => {
+                    reject(error)
+                })
+        })
+    },
     saveSubscribe({commit}, payload) {
         return new Promise((resolve, reject) => {
             axios.post(requests.CREATE_SUBSCRIBE, payload)

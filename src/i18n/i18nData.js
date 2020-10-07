@@ -45,8 +45,10 @@ export default {
         show360: 'اظهار الصور 360',
         image360: '360° صورة',
         galley: 'معرض الصور',
+        categories: 'تصنيفات'
     },
     en: {
+        categories: 'Categories',
         galley: 'galley',
         image360: '3D experience Images',
         hide360: 'Hide 3D Images',

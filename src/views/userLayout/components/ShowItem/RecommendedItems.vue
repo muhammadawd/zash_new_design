@@ -12,9 +12,9 @@
                 <div class="col-md-12">
                     <hooper :settings="hooperSettings" style="height: auto">
                         <slide v-for="(product , index) in getAllProducts" class="pointer"
-                               @click="$router.push({name:'show_item',params:{id:product.id , branch_id:product.branch_id}})">
+                               @click="$router.push({name:'show_item',params:{slug:product.slug}})">
                             <div class="collection_slide p-2"
-                                 @click="$router.push({name:'show_item',params:{id:product.id , branch_id:product.branch_id}})">
+                                 @click="$router.push({name:'show_item',params:{slug:product.slug}})">
                                 <img :src="product.main_image" class="w-100" alt="">
                                 <div class="p-1">
                                     <div class="font-weight-bold text-black">{{product.translated.title}}</div>
