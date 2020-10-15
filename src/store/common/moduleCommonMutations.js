@@ -20,4 +20,10 @@ export default {
     SET_HOME_DATA_CATEGORIES(state, categories) {
         state.categories = categories
     },
+    SET_MAIN_CATEGORIES(state, categories) {
+        state.categories_main = categories
+    },
+    SET_SUB_CATEGORIES(state, categories) {
+        state.categories_sub = categories
+    },
 }

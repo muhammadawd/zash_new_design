@@ -20,70 +20,70 @@
                 <div class="progress">
                     <div class="progress-bar bg-black" style="height: 2px;width:40%"></div>
                 </div>
-                <ul class="mt-4 ml-3">
-                    <li class="mb-4"
-                        v-for="(item) in  getAllCategories">
+                <ul class="mt-4 ml-3" v-for="(item,k) in  getAllCategoriesMain" v-if="item.sub_categories">
+                    <li class="mb-4"><h5 class="size-xs font-weight-bold">{{item.translated.title}}</h5></li>
+                    <li class="mb-3 ml-2 mr-2" v-for="(_item,k2) in  item.sub_categories">
                         <a href="" class="category"
-                           @click.prevent="selectCategory(item.id)">
+                           @click.prevent="selectCategory(_item.id)">
                             <h5 class="size-xs font-weight-bold">
-                                <i v-if="isSelectedCategory(item.id)" class="fa fa-circle"></i>
-                                {{item.translated.title}}</h5>
+                                <i v-if="isSelectedCategory(_item.id)" class="fa fa-circle"></i>
+                                {{_item.translated.title}}</h5>
                         </a>
                     </li>
                 </ul>
             </div>
-            <div class="col-12 mb-5">
-                <h2 class="font-weight-bold fun_font">{{$t('by_price')}}</h2>
-                <div class="progress">
-                    <div class="progress-bar bg-black" style="height: 2px;width:40%"></div>
-                </div>
-                <ul class="mt-4 ml-3">
-                    <li class="zoom110">
-                        <vue-slider @drag-end="dragEnd"
-                                    :min="0"
-                                    :max="7000"
-                                    v-model="value"/>
-                    </li>
-                </ul>
-                <div class="text-black text-capitalize text-center font-weight-bold">price {{value[0]}} {{$t('kwd')}} -
-                    {{value[1]}} {{$t('kwd')}}
-                </div>
-            </div>
+            <!--<div class="col-12 mb-5">-->
+            <!--<h2 class="font-weight-bold fun_font">{{$t('by_price')}}</h2>-->
+            <!--<div class="progress">-->
+            <!--<div class="progress-bar bg-black" style="height: 2px;width:40%"></div>-->
+            <!--</div>-->
+            <!--<ul class="mt-4 ml-3">-->
+            <!--<li class="zoom110">-->
+            <!--<vue-slider @drag-end="dragEnd"-->
+            <!--:min="0"-->
+            <!--:max="7000"-->
+            <!--v-model="value"/>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--<div class="text-black text-capitalize text-center font-weight-bold">price {{value[0]}} {{$t('kwd')}} - -->
+            <!--{{value[1]}} {{$t('kwd')}}-->
+            <!--</div>-->
+            <!--</div>-->
 
-            <div class="col-12 mb-5" v-for="(option , index) in options" :key="index" :index="index">
-                <h2 class="font-weight-bold fun_font">{{option.translated.title}}</h2>
-                <div class="progress">
-                    <div class="progress-bar bg-black" style="height: 2px;width:40%"></div>
-                </div>
-                <ul class="mt-4 ml-3" v-if="!option.type">
-                    <li class="mb-3">
-                        <div class="size-config">
-                            <button class="btn btn-secondary text-uppercase btn-sm font-weight-bold border-1-gray m-1"
-                                    v-for="(option_value,index) in option.option_values"
-                                    @click="setSelectedOption(option.id,option_value.id)"
-                                    :class="getSelectedOption(option.id, option_value.id) ? 'bg-black text-white': 'bg-white'">
-                                {{option_value.translated.title}}
-                            </button>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="mt-4 ml-3" v-if="option.type">
-                    <li class="mb-3">
+            <!--<div class="col-12 mb-5" v-for="(option , index) in options" :key="index" :index="index">-->
+            <!--<h2 class="font-weight-bold fun_font">{{option.translated.title}}</h2>-->
+            <!--<div class="progress">-->
+            <!--<div class="progress-bar bg-black" style="height: 2px;width:40%"></div>-->
+            <!--</div>-->
+            <!--<ul class="mt-4 ml-3" v-if="!option.type">-->
+            <!--<li class="mb-3">-->
+            <!--<div class="size-config">-->
+            <!--<button class="btn btn-secondary text-uppercase btn-sm font-weight-bold border-1-gray m-1"-->
+            <!--v-for="(option_value,index) in option.option_values"-->
+            <!--@click="setSelectedOption(option.id,option_value.id)"-->
+            <!--:class="getSelectedOption(option.id, option_value.id) ? 'bg-black text-white': 'bg-white'">-->
+            <!--{{option_value.translated.title}}-->
+            <!--</button>-->
+            <!--</div>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--<ul class="mt-4 ml-3" v-if="option.type">-->
+            <!--<li class="mb-3">-->
 
-                        <div class="color-choose">
-                            <div v-for="option_value in option.option_values">
-                                <input @click="setSelectedOption(option.id,option_value.id)" type="radio"
-                                       :id="option_value.additional.code" name="color"
-                                       :value="option_value.additional.code"/>
-                                <label :for="option_value.additional.code"
-                                       style="border-radius: 50%;padding: 0"
-                                       :style="getSelectedOption(option.id, option_value.id) ? {boxShadow:'1px 1px 10px #555'}: {}"><span
-                                        :style="{background: option_value.additional.code}"></span></label>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            <!--<div class="color-choose">-->
+            <!--<div v-for="option_value in option.option_values">-->
+            <!--<input @click="setSelectedOption(option.id,option_value.id)" type="radio"-->
+            <!--:id="option_value.additional.code" name="color"-->
+            <!--:value="option_value.additional.code"/>-->
+            <!--<label :for="option_value.additional.code"-->
+            <!--style="border-radius: 50%;padding: 0"-->
+            <!--:style="getSelectedOption(option.id, option_value.id) ? {boxShadow:'1px 1px 10px #555'}: {}"><span-->
+            <!--:style="{background: option_value.additional.code}"></span></label>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</li>-->
+            <!--</ul>-->
+            <!--</div>-->
 
 
         </div>
@@ -135,11 +135,14 @@
                     update_filter = true;
                 }
             }
-            if (update_filter) this.updateFilters(this.prepareFilters())
+            if (update_filter) this.updateFilters(this.prepareFilters(false))
         },
         computed: {
             getAllCategories() {
                 return this.$store.getters['moduleCommon/getAllCategories'];
+            },
+            getAllCategoriesMain() {
+                return this.$store.getters['moduleCommon/getAllCategoriesMain']
             },
             getSelectedOptions() {
                 return this.selectedOptions
@@ -198,11 +201,12 @@
                     vm.$helper.hideLoader();
                 });
             },
-            prepareFilters() {
+            prepareFilters(isMount = true) {
                 let values = _.map(this.selectedOptions, 'option_value_id')
                 return {
                     category_ids: this.selectedCategory,
                     query: this.query,
+                    isMount: isMount,
                     min_price: this.value[0],
                     max_price: this.value[1],
                     option_value_ids: values

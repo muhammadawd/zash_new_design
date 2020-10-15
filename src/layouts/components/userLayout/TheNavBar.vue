@@ -45,13 +45,22 @@
                             <li>
                                 <a href="#" @click.prevent>{{$t('categories')}}<span
                                         class="submenu-indicator"></span></a>
-                                <ul class="nav-dropdown nav-submenu" style="max-height: 600px;overflow: scroll">
-                                    <li v-for="(category , index) in getAllCategories"
+                                <ul class="nav-dropdown nav-submenu">
+                                    <li v-for="(category , index) in getAllCategoriesMain"
                                         @click.prevent="$router.push({name:'search',query:{category_id:category.id}})">
                                         <a href="#"
                                            @click.prevent="$router.push({name:'search',query:{category_id:category.id}})">{{category.translated.title}}
                                             <span class="submenu-indicator"></span>
                                         </a>
+                                        <ul class="nav-dropdown nav-submenu" v-if="category.sub_categories.length">
+                                            <li v-for="(category , index) in category.sub_categories"
+                                                @click.prevent="$router.push({name:'search',query:{category_id:category.id}})">
+                                                <a href="#"
+                                                   @click.prevent="$router.push({name:'search',query:{category_id:category.id}})">{{category.translated.title}}
+                                                    <span class="submenu-indicator"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>
@@ -102,12 +111,14 @@
             vm.locale = vm.$i18n.locale
             vm.auth = vm.$helper.getLocalStorage('userInfo');
             vm.$nextTick(function () {
-                vm.navigationBarFunctionality();
+                setTimeout(() => {
+                    vm.navigationBarFunctionality();
+                }, 800)
             });
         },
         computed: {
-            getAllCategories() {
-                return this.$store.getters['moduleCommon/getAllCategories']
+            getAllCategoriesMain() {
+                return this.$store.getters['moduleCommon/getAllCategoriesMain']
             }
         },
         data() {
@@ -121,7 +132,7 @@
                 this.auth = this.$helper.getLocalStorage('userInfo');
                 setTimeout(() => {
                     this.navigationBarFunctionality();
-                }, 500)
+                }, 800)
 
             }
         },

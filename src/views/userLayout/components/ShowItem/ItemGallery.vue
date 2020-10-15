@@ -5,12 +5,12 @@
                 <div class="mb-4" :class="layout == 'list' ? 'col-md-12':'col-md-6 '" v-for="(file , index) in files"
                      :key="index" :index="index">
                     <div class="zoomImage" dir="ltr" @click="clickSlide(file)">
-                        <div class="discount"
-                             v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount) && index == 0">
-                            <span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>
-                        </div>
-                        <!--<img :src="file" class="w-100 bg-gray" alt="">-->
-                        <zoom-on-hover class="bg-white" :img-normal="file"></zoom-on-hover>
+                        <!--<div class="discount"-->
+                             <!--v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount) && index == 0">-->
+                            <!--<span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>-->
+                        <!--</div>-->
+                        <img v-if="checkIsIphone()" :src="file" class="w-100 bg-gray" alt="">
+                        <zoom-on-hover v-if="!checkIsIphone()" class="bg-white" :img-normal="file"></zoom-on-hover>
                     </div>
                 </div>
             </div>
@@ -20,12 +20,13 @@
                         <swiper ref="mySwiper" :options="swiperOptions">
                             <swiper-slide v-for="(file , index) in files" :key="index" :index="index">
                                 <div class="zoomImage p-1" dir="ltr" @click="clickSlide(file)">
-                                    <div class="discount"
-                                         v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount) && index == 0">
-                                        <span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>
-                                    </div>
-                                    <!--<img :src="file" class="w-100 bg-gray" alt="">-->
-                                    <zoom-on-hover class="bg-white" :img-normal="file"></zoom-on-hover>
+                                    <!--<div class="discount"-->
+                                         <!--v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount) && index == 0">-->
+                                        <!--<span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>-->
+                                    <!--</div>-->
+                                    <img v-if="checkIsIphone()" :src="file" class="w-100 bg-gray" alt=""/>
+                                    <zoom-on-hover v-if="!checkIsIphone()" class="bg-white"
+                                                   :img-normal="file"></zoom-on-hover>
                                 </div>
                             </swiper-slide>
                             <div class="swiper-pagination" slot="pagination"></div>
@@ -44,8 +45,8 @@
             <hr class="m-0 p-0">
             <div class="row" style="max-height: 100vh;overflow-y: scroll">
                 <div class="col-md-4 mt-1 mb-1" v-for="(file , index) in files" :key="index" :index="index">
-                    <!--<img :src="file" class="w-100 bg-gray" alt="">-->
-                    <zoom-on-hover class="bg-white w-100" :img-normal="file"></zoom-on-hover>
+                    <img v-if="checkIsIphone()" :src="file" class="w-100 bg-gray" alt="">
+                    <zoom-on-hover v-if="!checkIsIphone()" class="bg-white w-100" :img-normal="file"></zoom-on-hover>
                 </div>
             </div>
         </div>
@@ -119,6 +120,14 @@
             }
         },
         methods: {
+            checkIsIphone() {
+                let agent = window.navigator.userAgent,
+                    start = agent.indexOf('OS');
+                if ((agent.indexOf('iPhone') > -1 || agent.indexOf('iPad') > -1) && start > -1) {
+                    return window.Number(agent.substr(start + 3, 3).replace('_', '.'));
+                }
+                return 0
+            },
             clickSlide(file) {
                 console.log(file)
                 this.showGallery = true;

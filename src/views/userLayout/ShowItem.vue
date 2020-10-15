@@ -1,7 +1,7 @@
 <template>
     <div v-if="product">
         <Header :category="product.category"/>
-        <MainContainer :product="product"/>
+        <MainContainer :product="product" :previous="previous" :next="next"/>
         <ItemDescription :productDescription="product.translated"/>
         <RecommendedItems :relatedProducts="relatedProducts"/>
     </div>
@@ -28,6 +28,8 @@
         },
         data() {
             return {
+                next: null,
+                previous: null,
                 product: null,
                 relatedProducts: [],
             }
@@ -46,6 +48,8 @@
                 dispatch.then((response) => {
                     response = response.data;
                     vm.product = response.data.product;
+                    vm.next = response.data.next;
+                    vm.previous = response.data.previous;
                     vm.relatedProducts = response.data.related_products;
                     vm.$helper.hideLoader();
                 }).catch((error) => {

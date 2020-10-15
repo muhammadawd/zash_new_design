@@ -3,7 +3,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-right">
-                    <h1 class="collection_title fun_font">{{section.translated.main_title}}</h1>
+                    <h1 class="collection_title fun_font pointer"
+                        @click.prevent="$router.push({name: 'search', query: {category_id: section.first_categories}})">
+                        {{section.translated.main_title}}</h1>
                 </div>
             </div>
             <div class="row">
@@ -14,7 +16,7 @@
                             :playSpeed="2000">
                         <slide v-for="(slide,index) in section.files">
                             <div class="collection_slide">
-                                <img :src="slide.path" class="w-100" alt="">
+                                <img :src="slide.path" class="w-100 pointer" alt="">
                             </div>
                         </slide>
                         <hooper-navigation slot="hooper-addons"></hooper-navigation>
@@ -23,7 +25,9 @@
                 <div class="col-md-7">
                     <div class="row text-right d-none d-md-flex">
                         <div class="col-md-7">
-                            <h5 class="pt-5 mt-5">{{section.translated.first_title}}</h5>
+                            <h5 class="pt-5 mt-5  pointer"
+                                @click.prevent="$router.push({name: 'search', query: {category_id: section.first_categories}})">
+                                {{section.translated.first_title}}</h5>
                             <div class="relative">
                                 <a href=""
                                    @click.prevent="$router.push({name: 'search', query: {category_id: section.first_categories}})"
@@ -36,18 +40,20 @@
                             <h2 class="fun_font mb-0 pb-0 text-black">01</h2>
                             <img :src="section.first_image_path"
                                  @click.prevent="$router.push({name: 'search', query: {category_id: section.first_categories}})"
-                                 class="w-100" alt="">
+                                 class="w-100 pointer" alt="">
                         </div>
                     </div>
                     <div class="row text-right d-md-none">
                         <div class="col-md-7 mt-5">
                             <img :src="section.first_image_path"
                                  @click.prevent="$router.push({name: 'search', query: {category_id: section.first_categories}})"
-                                 class="w-100" alt="">
+                                 class="w-100 pointer" alt="">
                         </div>
                         <div class="col-md-5">
                             <h2 class="fun_font mb-0 pb-0 mt-5 text-black">01</h2>
-                            <h5 class="pt-5">{{section.translated.first_title}}</h5>
+                            <h5 class="pt-5 pointer"
+                                @click.prevent="$router.push({name: 'search', query: {category_id: section.first_categories}})">
+                                {{section.translated.first_title}}</h5>
                             <div class="relative">
                                 <a href=""
                                    @click.prevent="$router.push({name: 'search', query: {category_id: section.first_categories}})"
@@ -63,11 +69,13 @@
                             <h2 class="fun_font mb-0 pb-0 d-none d-md-flex text-black">02</h2>
                             <img :src="section.second_image_path"
                                  @click.prevent="$router.push({name: 'search', query: {category_id: section.second_categories}})"
-                                 class="w-100" alt="">
+                                 class="w-100 pointer" alt="">
                         </div>
                         <div class="col-md-7 text-left">
                             <h2 class="fun_font mb-0 pb-0 mt-5 d-md-none text-black">02</h2>
-                            <h5 class="pt-5 ">{{section.translated.second_title}}</h5>
+                            <h5 class="pt-5 pointer"
+                                @click.prevent="$router.push({name: 'search', query: {category_id: section.second_categories}})">
+                                {{section.translated.second_title}}</h5>
                             <div class="relative">
                                 <a href=""
                                    @click.prevent="$router.push({name: 'search', query: {category_id: section.second_categories}})"

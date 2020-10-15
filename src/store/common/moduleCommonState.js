@@ -4,8 +4,10 @@
 ==========================================================================================*/
 
 export default {
-  settings: [],
-  sections: [],
-  categories: [],
-  recent_products: [],
+    settings: [],
+    sections: [],
+    categories: [],
+    categories_main: [],
+    categories_sub: [],
+    recent_products: [],
 }

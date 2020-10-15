@@ -20,6 +20,24 @@
                         </ul>
                     </div>
                 </div>
+                <div class="col-md-8">
+                    <div class="float-right">
+                        <ul class="list-unstyled">
+                            <li class="list-inline-item">
+                                <a href=""
+                                   @click.prevent="next ? $router.push({name:'show_item',params:{slug:next}}) : ''">
+                                    <i class="ti-arrow-circle-left fa-lg" :class="next ? 'text-dark' : 'text-danger'"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href=""
+                                   @click.prevent="previous ? $router.push({name:'show_item',params:{slug:previous}}) : ''">
+                                    <i class="ti-arrow-circle-right fa-lg" :class="previous ? 'text-dark' : 'text-danger'"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="col-md-8" id="ImagesSection">
                     <ItemGallery :layout="layout" :product="product"/>
                 </div>
@@ -39,7 +57,7 @@
 
     export default {
         name: "MainContainer",
-        props: ['product'],
+        props: ['product', 'previous', 'next'],
         components: {ItemInfo, ItemGallery},
         data() {
             return {

@@ -2,13 +2,6 @@
     <div id="footer">
         <div class="container mt-5 mb-5">
             <div class="row">
-                <div class="col-md-2 mb-3 text-center">
-                    <!--<img v-if="getSettings.logo"-->
-                    <!--:src="getSettings.logo[0] ? getSettings.logo[0].path.path : require('@/assets/logo.png')"-->
-                    <!--class="w-75 mb-3" alt=""/>-->
-                    <img :src=" require('@/assets/logo.png')"
-                         class="w-75 mb-3" alt=""/>
-                </div>
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-2 text-center text-md-left mb-3 col-6">
@@ -48,6 +41,13 @@
                             <a href="">Work for Zash</a>
                         </li>
                     </ul>
+                </div>
+                <div class="col-md-2 mb-3 text-center">
+                    <!--<img v-if="getSettings.logo"-->
+                    <!--:src="getSettings.logo[0] ? getSettings.logo[0].path.path : require('@/assets/logo.png')"-->
+                    <!--class="w-75 mb-3" alt=""/>-->
+                    <img :src=" require('@/assets/logo-footer.png')"
+                         class="w-100 mb-3" alt=""/>
                 </div>
                 <div class="col-md-2 text-center text-md-left mb-3">
                     <ul class="text-black font-weight-bold">
@@ -144,6 +144,8 @@
         },
         mounted() {
             this.getHomeData();
+            this.getAllCategoriesMain();
+            this.getAllCategoriesSub();
         },
         computed: {
             getSettings() {
@@ -156,6 +158,36 @@
                 vm.$helper.showLoader();
                 let dispatch = this.$store.dispatch('moduleCommon/fetchHomeData', {
                     lang: vm.$i18n.locale
+                });
+                dispatch.then((response) => {
+                    // response = response.data;
+                    vm.$helper.hideLoader();
+                }).catch((error) => {
+                    vm.$helper.handleError(error, vm);
+                    vm.$helper.hideLoader();
+                });
+            },
+            getAllCategoriesMain() {
+                let vm = this;
+                vm.$helper.showLoader();
+                let dispatch = this.$store.dispatch('moduleCommon/fetchCategoriesMain', {
+                    lang: vm.$i18n.locale,
+                    main: 1
+                });
+                dispatch.then((response) => {
+                    // response = response.data;
+                    vm.$helper.hideLoader();
+                }).catch((error) => {
+                    vm.$helper.handleError(error, vm);
+                    vm.$helper.hideLoader();
+                });
+            },
+            getAllCategoriesSub() {
+                let vm = this;
+                vm.$helper.showLoader();
+                let dispatch = this.$store.dispatch('moduleCommon/fetchCategoriesSub', {
+                    lang: vm.$i18n.locale,
+                    sub: 1
                 });
                 dispatch.then((response) => {
                     // response = response.data;

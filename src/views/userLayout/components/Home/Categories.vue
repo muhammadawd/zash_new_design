@@ -2,20 +2,15 @@
     <div>
         <div class="container">
             <div class="row">
-                <!--<div class="col-md-6 p-0" v-for="(category , index) in getAllCategories" :key="index">-->
-                <!--<div class="category_item" :class="index%2 == 0 ? 'bg-1' : 'bg-2'">-->
-                <!--<h1 class="fun_font text-left category_name">{{category.translated.title}}</h1>-->
-                <!--<img :src="category.main_image" class="w-100" alt=""/>-->
-                <!--</div>-->
-                <!--</div>-->
                 <hooper :settings="hooperSettings" style="height: auto;overflow: hidden;padding: 50px 0 0;">
-                    <slide v-for="(category , index) in getAllCategories"
+                    <slide v-for="(category , index) in getAllCategoriesSub"
                            :key="index">
                         <div class="collection_slide pointer">
                             <div class="category_item"
                                  :class="index%2 == 0 ? 'bg-1' : 'bg-2'">
-                                <h1 class="fun_font text-left category_name"
+                                <h1 class="fun_font text-left font-weight-normal category_name"
                                     @click="$router.push({name:'search',query:{category_id:category.id}})">
+                                    {{category.parent_category ? category.parent_category.translated.title : ''}} -
                                     {{category.translated.title}}</h1>
                                 <img :src="category.main_image"
                                      @click="$router.push({name:'search',query:{category_id:category.id}})"
@@ -64,10 +59,11 @@
             HooperNavigation
         },
         computed: {
-            getAllCategories() {
-                return this.$store.getters['moduleCommon/getAllCategories']
+            getAllCategoriesSub() {
+                return this.$store.getters['moduleCommon/getAllCategoriesSub']
             }
         },
+        methods: {}
     }
 </script>
 

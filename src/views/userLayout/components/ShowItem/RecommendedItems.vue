@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-5">
+    <div class="mt-5" v-if="getAllProducts.length">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-left">
@@ -18,8 +18,8 @@
                                 <img :src="product.main_image" class="w-100" alt="">
                                 <div class="p-1">
                                     <div class="font-weight-bold text-black">{{product.translated.title}}</div>
-                                    <h4 class="font-weight-bold text-black">
-                                        {{parseFloat(product.minimum_price).toFixed(3)}} {{$t('currency')}}</h4>
+                                    <!--<h4 class="font-weight-bold text-black" v-if="product.minimum_price">-->
+                                        <!--{{parseFloat(product.minimum_price).toFixed(3)}} {{$t('currency')}}</h4>-->
                                 </div>
                             </div>
                         </slide>
@@ -72,7 +72,7 @@
                             itemsToShow: 3
                         },
                         1000: {
-                            itemsToShow: 4,
+                            itemsToShow: 3,
                             pagination: 'fraction'
                         }
                     }

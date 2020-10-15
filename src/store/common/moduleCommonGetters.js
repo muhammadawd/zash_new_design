@@ -9,4 +9,6 @@ export default {
     getAllSections: state => state.sections,
     getAllRecentProducts: state => state.recent_products,
     getAllCategories: state => state.categories,
+    getAllCategoriesMain: state => state.categories_main,
+    getAllCategoriesSub: state => state.categories_sub,
 }

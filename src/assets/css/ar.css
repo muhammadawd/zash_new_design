@@ -415,7 +415,7 @@ html[lang=ar] [type="radio"]:not(:checked) + label:after {
 }
 
 .pointer {
-    cursor: pointer;
+    cursor: pointer!important;
 }
 
 .controller .arrows i {

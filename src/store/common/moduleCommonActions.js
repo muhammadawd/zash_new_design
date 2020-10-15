@@ -137,4 +137,28 @@ export default {
             })
         })
     },
+    fetchCategoriesMain({commit}, filters) {
+        return new Promise((resolve, reject) => {
+            axios.get(requests.GET_ALL_CATEGORIES, {
+                params: filters
+            }).then((response) => {
+                commit('SET_MAIN_CATEGORIES', response.data.data.categories);
+                resolve(response)
+            }).catch((error) => {
+                reject(error)
+            })
+        })
+    },
+    fetchCategoriesSub({commit}, filters) {
+        return new Promise((resolve, reject) => {
+            axios.get(requests.GET_ALL_CATEGORIES, {
+                params: filters
+            }).then((response) => {
+                commit('SET_SUB_CATEGORIES', response.data.data.categories);
+                resolve(response)
+            }).catch((error) => {
+                reject(error)
+            })
+        })
+    },
 }

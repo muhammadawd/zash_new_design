@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-5">
+    <div class="mt-5" v-if="getSettings.show_new_arrival && getSettings.show_new_arrival[0].value">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-left">
@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <hooper :settings="hooperSettings" style="height: auto">
-                        <slide v-for="(product , index) in getRecentProducts" class="pointer"
+                        <slide v-for="(product , index) in getRecentProducts" class="pointer" v-if="product.main_image"
                                @click="$router.push({name:'show_item',params:{slug:product.slug}})">
                             <div class="collection_slide p-2"
                                  @click="$router.push({name:'show_item',params:{slug:product.slug}})">
@@ -49,6 +49,9 @@
         computed: {
             getRecentProducts() {
                 return this.$store.getters['moduleCommon/getAllRecentProducts']
+            },
+            getSettings() {
+                return this.$store.getters['moduleCommon/getAllSettings']
             }
         },
         data() {
