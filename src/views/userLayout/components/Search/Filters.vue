@@ -1,5 +1,5 @@
 <template>
-    <div class="border-shadow text-left p-2" id="filterMenu">
+    <div class="border-shadows text-left p-2" id="filterMenu">
         <div class="row">
             <div class="col-12 mb-5">
 

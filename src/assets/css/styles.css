@@ -37,6 +37,11 @@
     background: #555;
 }
 
+@media (min-width: 1480px){
+    .container {
+        max-width: 1400px;
+    }
+}
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #2ea033;
@@ -349,7 +354,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: #2D3954;
+    color: #000;
     font-weight: 600;
     text-transform: capitalize;
     font-family: 'Poppins', sans-serif;
@@ -361,7 +366,7 @@ h6 {
 
 h5,
 h6 {
-    color: #2D3954;
+    color: #000;
 }
 
 .font-2 {
@@ -5653,7 +5658,7 @@ ul.cources_facts_list li:after {
 }
 
 .edu_data .title a {
-    color: #2d3954;
+    color: #000;
 }
 
 .edu_data ul {
@@ -7489,7 +7494,7 @@ span.mod-close {
     align-items: center;
     justify-content: center;
     border-radius: 4px;
-    color: #2d3954 !important;
+    color: #000 !important;
     cursor: pointer;
     z-index: 1;
 }

@@ -110,11 +110,11 @@
             let vm = this;
             vm.locale = vm.$i18n.locale
             vm.auth = vm.$helper.getLocalStorage('userInfo');
-            vm.$nextTick(function () {
-                setTimeout(() => {
+            // vm.$nextTick(function () {
+                setInterval(() => {
                     vm.navigationBarFunctionality();
-                }, 800)
-            });
+                }, 1000)
+            // });
         },
         computed: {
             getAllCategoriesMain() {

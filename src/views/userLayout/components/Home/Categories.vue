@@ -6,7 +6,7 @@
                     <slide v-for="(category , index) in getAllCategoriesSub"
                            :key="index">
                         <div class="collection_slide pointer">
-                            <div class="category_item"
+                            <div class="category_item bg-white"
                                  :class="index%2 == 0 ? 'bg-1' : 'bg-2'">
                                 <h1 class="fun_font text-left font-weight-normal category_name"
                                     @click="$router.push({name:'search',query:{category_id:category.id}})">
