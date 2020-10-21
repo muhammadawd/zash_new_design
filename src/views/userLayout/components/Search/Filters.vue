@@ -214,8 +214,8 @@
                     category_ids: this.selectedCategory,
                     query: this.query,
                     isMount: isMount,
-                    min_price: this.value[0],
-                    max_price: this.value[1],
+                    // min_price: this.value[0],
+                    // max_price: this.value[1],
                     option_value_ids: values
                 }
             },
