@@ -3,9 +3,10 @@
         <div class="card">
             <div class="card-body">
                 <div class="container">
-                    <div class="row">
+                    <div class="row direction">
                         <div class="col-md-6 text-right text-black font-weight-bold">
-                            <h3 class="text-right size-xs pt-2">{{$t('showing')}} {{products.length}} of {{total}}
+                            <h3 class="text-right size-xs pt-2" dir="ltr">{{$t('showing')}} {{products.length}} of
+                                {{total}}
                                 {{$t('results')}}</h3>
                         </div>
                         <div class="col-md-6 text-right text-black font-weight-bold">
@@ -33,7 +34,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="row">
+            <div class="row direction">
                 <div class="col-md-3">
                     <Filters v-bind:updateFilters="updateFilters"/>
                 </div>
@@ -42,11 +43,12 @@
                         <div class="col-md-12" v-for="(product,indx) in products" :key="indx" :index="indx">
                             <div class="pointer p-2"
                                  @click="$router.push({name:'show_item',params:{slug:product.slug}})">
-                                <img :src="product.main_image" class="w-25 bg-white d-inline-block" alt="">
+                                <img :src="product.main_image ? product.main_image:  require('@/assets/img/noimage.png')"
+                                     class="w-25 bg-white d-inline-block" alt="">
                                 <div class="w-75 p-3 d-inline-block mb-5">
                                     <h4 class="font-weight-bold text-black">{{product.translated.title}}</h4>
                                     <!--<h5 class="font-weight-bold text-black" v-if="product.minimum_price">-->
-                                        <!--{{product.minimum_price}} {{$t('kwd')}}</h5>-->
+                                    <!--{{product.minimum_price}} {{$t('kwd')}}</h5>-->
                                 </div>
                             </div>
                         </div>
@@ -59,10 +61,13 @@
                                 <img v-if="product.main_image"
                                      :src="product.main_image_new.storage_path + '/300'+product.main_image_new.name"
                                      class="w-100 bg-white" alt="">
+                                <img v-if="!product.main_image"
+                                     :src="require('@/assets/img/noimage.png')"
+                                     class="w-100 bg-white" alt="">
                                 <div class="p-1">
                                     <div class="font-weight-bold text-black">{{product.translated.title}}</div>
                                     <!--<h4 class="font-weight-bold text-black" v-if="product.minimum_price">-->
-                                        <!--{{product.minimum_price}} {{$t('kwd')}}</h4>-->
+                                    <!--{{product.minimum_price}} {{$t('kwd')}}</h4>-->
                                 </div>
                             </div>
                         </div>

@@ -4,10 +4,10 @@
             <div class="row direction text-left d-none d-md-flex">
                 <div class="mb-4" :class="layout == 'list' ? 'col-md-12':'col-md-6 '" v-for="(file , index) in files"
                      :key="index" :index="index">
-                    <div class="zoomImage" dir="ltr" @click="clickSlide(file)">
+                    <div class="zoomImage border" dir="ltr" @click="clickSlide(file)">
                         <!--<div class="discount"-->
-                             <!--v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount) && index == 0">-->
-                            <!--<span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>-->
+                        <!--v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount) && index == 0">-->
+                        <!--<span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>-->
                         <!--</div>-->
                         <img v-if="checkIsIphone()" :src="file" class="w-100 bg-gray" alt="">
                         <zoom-on-hover v-if="!checkIsIphone()" class="bg-white" :img-normal="file"></zoom-on-hover>
@@ -21,8 +21,8 @@
                             <swiper-slide v-for="(file , index) in files" :key="index" :index="index">
                                 <div class="zoomImage p-1" dir="ltr" @click="clickSlide(file)">
                                     <!--<div class="discount"-->
-                                         <!--v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount) && index == 0">-->
-                                        <!--<span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>-->
+                                    <!--v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount) && index == 0">-->
+                                    <!--<span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>-->
                                     <!--</div>-->
                                     <img v-if="checkIsIphone()" :src="file" class="w-100 bg-gray" alt=""/>
                                     <zoom-on-hover v-if="!checkIsIphone()" class="bg-white"
@@ -43,10 +43,16 @@
                 <h2>{{$t('galley')}}</h2>
             </div>
             <hr class="m-0 p-0">
-            <div class="row" style="max-height: 100vh;overflow-y: scroll">
+            <div class="row" style="max-height: 95vh;overflow-y: scroll">
                 <div class="col-md-4 mt-1 mb-1" v-for="(file , index) in files" :key="index" :index="index">
-                    <img v-if="checkIsIphone()" :src="file" class="w-100 bg-gray" alt="">
-                    <zoom-on-hover v-if="!checkIsIphone()" class="bg-white w-100" :img-normal="file"></zoom-on-hover>
+                    <div class="border-1-gray">
+                        <img v-if="checkIsIphone()" :src="file" class="w-100 bg-gray" alt="">
+                        <zoom-on-hover v-if="!checkIsIphone()" class="bg-white w-100"
+                                       :img-normal="file"></zoom-on-hover>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-5">
+                    <br/><br/><br/><br/><br/>
                 </div>
             </div>
         </div>

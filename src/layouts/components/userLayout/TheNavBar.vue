@@ -42,54 +42,53 @@
                             <!--{{category.translated.title}}-->
                             <!--</a>-->
                             <!--</li>-->
-                            <li>
+                            <li v-if="getAllCategoriesMain.length">
                                 <a href="#" @click.prevent>{{$t('categories')}}<span
                                         class="submenu-indicator"></span></a>
                                 <ul class="nav-dropdown nav-submenu">
-                                    <li v-for="(category , index) in getAllCategoriesMain"
-                                        @click.prevent="$router.push({name:'search',query:{category_id:category.id}})">
+                                    <li v-for="(category , index) in getAllCategoriesMain">
                                         <a href="#"
                                            @click.prevent="$router.push({name:'search',query:{category_id:category.id}})">{{category.translated.title}}
-                                            <span class="submenu-indicator"></span>
+                                            <span class="submenu-indicator"
+                                                  v-if="category.sub_categories.length"></span>
                                         </a>
                                         <ul class="nav-dropdown nav-submenu" v-if="category.sub_categories.length">
-                                            <li v-for="(category , index) in category.sub_categories"
-                                                @click.prevent="$router.push({name:'search',query:{category_id:category.id}})">
-                                                <a href="#"
-                                                   @click.prevent="$router.push({name:'search',query:{category_id:category.id}})">{{category.translated.title}}
-                                                    <span class="submenu-indicator"></span>
-                                                </a>
+                                            <li v-for="(category , index) in category.sub_categories">
+                                                <router-link
+                                                        :to="{name:'search',query:{category_id:category.id}}">
+                                                    {{category.translated.title}}
+                                                </router-link>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
 
-                            <!--<li class="d-md-none">-->
-                            <!--<a style="cursor: pointer" v-if="locale != 'ar'"-->
-                            <!--@click="updateLocale('ar')">{{$t('ar')}}</a>-->
-                            <!--</li>-->
+                            <li class="d-md-none">
+                                <a style="cursor: pointer" v-if="locale != 'ar'"
+                                   @click="updateLocale('ar')">{{$t('ar')}}</a>
+                            </li>
 
-                            <!--<li class="d-md-none">-->
-                            <!--<a style="cursor: pointer" v-if="locale != 'en'"-->
-                            <!--@click="updateLocale('en')">{{$t('en')}}</a>-->
-                            <!--</li>-->
+                            <li class="d-md-none">
+                                <a style="cursor: pointer" v-if="locale != 'en'"
+                                   @click="updateLocale('en')">{{$t('en')}}</a>
+                            </li>
                             <!--<li><a href="">{{$t('contact')}}</a></li>-->
                         </ul>
 
                         <ul class="nav-menu nav-menu-social float-right direction">
-                            <!--<li class="green light d-none d-md-flex text-capitalize" v-if="locale != 'ar'">-->
-                            <!--<a style="cursor: pointer" @click="updateLocale('ar')">{{$t('ar')}}</a>-->
-                            <!--</li>-->
+                            <li class="green light d-none d-md-flex text-capitalize" v-if="locale != 'ar'">
+                                <a style="cursor: pointer" @click="updateLocale('ar')">{{$t('ar')}}</a>
+                            </li>
                             <li class="green light d-none d-md-flex text-capitalize">
                                 <a style="cursor: pointer" href="" @click.prevent="$router.push({name:'search'})">
                                     {{$t('search')}}
                                     <i class="ti-search"></i>
                                 </a>
                             </li>
-                            <!--<li class="green light d-none d-md-flex text-capitalize" v-if="locale != 'en'">-->
-                            <!--<a style="cursor: pointer" @click="updateLocale('en')">{{$t('en')}}</a>-->
-                            <!--</li>-->
+                            <li class="green light d-none d-md-flex text-capitalize" v-if="locale != 'en'">
+                                <a style="cursor: pointer" @click="updateLocale('en')">{{$t('en')}}</a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -108,13 +107,13 @@
         name: "TheNavBar",
         mounted() {
             let vm = this;
-            vm.locale = vm.$i18n.locale
+            vm.locale = vm.$i18n.locale;
             vm.auth = vm.$helper.getLocalStorage('userInfo');
-            // vm.$nextTick(function () {
-                setInterval(() => {
+            vm.$nextTick(function () {
+                setTimeout(() => {
                     vm.navigationBarFunctionality();
-                }, 1000)
-            // });
+                }, 2000)
+            });
         },
         computed: {
             getAllCategoriesMain() {

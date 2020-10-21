@@ -11,11 +11,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <hooper :settings="hooperSettings" style="height: auto">
-                        <slide v-for="(product , index) in getRecentProducts" class="pointer" v-if="product.main_image"
+                        <slide v-for="(product , index) in getRecentProducts" class="pointer"
                                @click="$router.push({name:'show_item',params:{slug:product.slug}})">
                             <div class="collection_slide p-2"
                                  @click="$router.push({name:'show_item',params:{slug:product.slug}})">
-                                <img :src="product.main_image" class="w-100 bg-white" alt="">
+                                <img :src="product.main_image ? product.main_image:  require('@/assets/img/noimage.png')" class="w-100 bg-white" alt="">
                             </div>
                         </slide>
                         <hooper-navigation class="black_navigation" slot="hooper-addons"></hooper-navigation>

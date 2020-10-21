@@ -8,7 +8,7 @@
                     <div class="progress-bar bg-black" style="height: 2px;width:40%"></div>
                 </div>
                 <form class="search-form" @submit.prevent="searchQuery()">
-                    <input type="search" v-model="query" placeholder="Search" class="search-input">
+                    <input type="search" v-model="query" :placeholder="$t('search')" class="search-input">
                     <button type="submit" class="search-button">
                         <i class="fa fa-search"></i>
                     </button>
@@ -21,7 +21,14 @@
                     <div class="progress-bar bg-black" style="height: 2px;width:40%"></div>
                 </div>
                 <ul class="mt-4 ml-3" v-for="(item,k) in  getAllCategoriesMain" v-if="item.sub_categories">
-                    <li class="mb-4"><h5 class="size-xs font-weight-bold">{{item.translated.title}}</h5></li>
+                    <li class="mt-5">
+                        <a href="" @click.prevent="selectCategory(item.id)">
+                            <h5 class="size-xs font-weight-bold">
+                                <i v-if="isSelectedCategory(item.id)" class="fa fa-circle"></i>
+                                {{item.translated.title}}
+                            </h5>
+                        </a>
+                    </li>
                     <li class="mb-3 ml-2 mr-2" v-for="(_item,k2) in  item.sub_categories">
                         <a href="" class="category"
                            @click.prevent="selectCategory(_item.id)">

@@ -57,6 +57,7 @@ export default {
                         commit('SET_HOME_DATA_RECENT', response.data.data.recent_products);
                         commit('SET_HOME_DATA_SETTINGS', response.data.data.setting);
                         commit('SET_HOME_DATA_CATEGORIES', response.data.data.categories);
+                        commit('SET_BAR', response.data.data.categories);
                     }
                     resolve(response)
                 })
@@ -143,6 +144,7 @@ export default {
                 params: filters
             }).then((response) => {
                 commit('SET_MAIN_CATEGORIES', response.data.data.categories);
+                commit('SET_BAR', response.data.data.categories);
                 resolve(response)
             }).catch((error) => {
                 reject(error)
@@ -155,6 +157,7 @@ export default {
                 params: filters
             }).then((response) => {
                 commit('SET_SUB_CATEGORIES', response.data.data.categories);
+                commit('SET_BAR', response.data.data.categories);
                 resolve(response)
             }).catch((error) => {
                 reject(error)

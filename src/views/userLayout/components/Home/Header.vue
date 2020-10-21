@@ -10,7 +10,8 @@
                                 <img :src="slide.image" class="w-100 bg-white" alt="">
                             </div>
                         </slide>
-                        <hooper-navigation class="black_navigation" slot="hooper-addons"></hooper-navigation>
+                        <hooper-navigation class="black_navigation d-md-none"
+                                           slot="hooper-addons"></hooper-navigation>
                     </hooper>
                 </div>
             </div>
@@ -50,20 +51,24 @@
         data() {
             return {
                 hooperSettings: {
-                    itemsToShow: 2.25,
-                    autoPlay: true,
+                    itemsToShow: 2,
+                    autoPlay: false,
                     playSpeed: 3000,
                     infiniteScroll: true,
-                    centerMode: true,
+                    centerMode: false,
                     wheelControl: false,
+                    mouseDrag: false,
+                    keysControl: true,
+                    pagination: 'fraction',
                     breakpoints: {
                         800: {
                             centerMode: false,
-                            itemsToShow: 3
+                            itemsToShow: 3,
+                            keysControl: false
                         },
                         1000: {
                             itemsToShow: 4,
-                            pagination: 'fraction'
+                            keysControl: false
                         }
                     }
                 },

@@ -6,15 +6,16 @@
                     <h1>{{getProduct.translated.title}}</h1>
                 </div>
                 <!--<div class="col-md-12" v-if="getProduct.minimum_price">-->
-                    <!--<h1 class="font-weight-bold mt-3">-->
-                        <!--<del class="size-xs">{{getProduct.price_before_discount}} {{$t('kwd')}}</del>-->
-                        <!--{{getProduct.minimum_price}} {{$t('kwd')}}-->
-                    <!--</h1>-->
+                <!--<h1 class="font-weight-bold mt-3">-->
+                <!--<del class="size-xs">{{getProduct.price_before_discount}} {{$t('kwd')}}</del>-->
+                <!--{{getProduct.minimum_price}} {{$t('kwd')}}-->
+                <!--</h1>-->
                 <!--</div>-->
                 <div class="col-md-12 optionsList">
                     <ul class="text-black direction font-weight-bold mt-5">
                         <li class="mb-3" v-for="(pov , index) in getProduct.product_option_values">
-                            <i class="fas fa-circle text-danger size-10"></i>
+                            <i class="fas fa-circle text-danger size-10"
+                               v-if="pov.product_option_value_details.length"></i>
                             <span class="text-capitalize" v-for="(povd) in pov.product_option_value_details">
                                 {{povd.option_value.option.translated.title}} :
                                 {{povd.option_value.translated.title}} ,

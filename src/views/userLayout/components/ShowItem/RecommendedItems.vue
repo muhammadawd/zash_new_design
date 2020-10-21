@@ -15,7 +15,7 @@
                                @click="$router.push({name:'show_item',params:{slug:product.slug}})">
                             <div class="collection_slide p-2"
                                  @click="$router.push({name:'show_item',params:{slug:product.slug}})">
-                                <img :src="product.main_image" class="w-100" alt="">
+                                <img :src="product.main_image ? product.main_image:  require('@/assets/img/noimage.png')" class="w-100" alt="">
                                 <div class="p-1">
                                     <div class="font-weight-bold text-black">{{product.translated.title}}</div>
                                     <!--<h4 class="font-weight-bold text-black" v-if="product.minimum_price">-->

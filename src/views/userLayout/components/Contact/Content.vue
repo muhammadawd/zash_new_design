@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container mt-5">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center direction">
                 <div class="col-md-6">
                     <h1 class="fun_font size-lg mb-5">{{$t('get_quote')}}</h1>
 
@@ -58,7 +58,7 @@
                                         </div>
                                     </li>
                                 </ul>
-                                <ul class="text-black mb-5">
+                                <ul class="text-black direction mb-5">
                                     <li>
                                         <i class="ti-map-alt fa-lg pr-4"></i>
                                         <b class="font-weight-bold">{{$t('address')}}</b>
@@ -85,18 +85,18 @@
                                     </li>
                                 </ul>
                                 <hr>
-                                <ul class="text-dark mb-5" v-if="getSettings">
+                                <ul class="text-dark direction mb-5" v-if="getSettings">
                                     <li class="mt-4" v-if="getSettings.front_email">
-                                        <i class="ti-email fa-lg pr-4"></i>
-                                        <b class="font-weight-bold">{{getSettings.front_email[0].value}}</b>
+                                        <i class="ti-email fa-lg pr-4 float-left"></i>
+                                        <span class="font-weight-bold">{{getSettings.front_email[0].value}}</span>
                                     </li>
                                     <li class="mt-4" v-if="getSettings.phone1">
-                                        <i class="ti-mobile fa-lg pr-4"></i>
-                                        <b class="font-weight-bold">{{getSettings.phone1[0].value}}</b>
+                                        <i class="ti-mobile fa-lg pr-4  float-left"></i>
+                                        <span class="font-weight-bold">{{getSettings.phone1[0].value}}</span>
                                     </li>
                                     <li class="mt-4" v-if="getSettings.phone2">
-                                        <i class="ti-mobile fa-lg pr-4"></i>
-                                        <b class="font-weight-bold">{{getSettings.phone2[0].value}}</b>
+                                        <i class="ti-mobile fa-lg pr-4  float-left"></i>
+                                        <span class="font-weight-bold">{{getSettings.phone2[0].value}}</span>
                                     </li>
                                 </ul>
                                 <div class="text-center">
