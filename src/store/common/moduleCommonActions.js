@@ -18,6 +18,19 @@ export default {
                 })
         })
     },
+    fetchBranchSetting({commit}, filters) {
+        return new Promise((resolve, reject) => {
+            axios.get(requests.COMMON_GET_ABOUT, {
+                params: filters
+            })
+                .then((response) => {
+                    resolve(response)
+                })
+                .catch((error) => {
+                    reject(error)
+                })
+        })
+    },
     fetchHomePage({commit}, filters) {
         return new Promise((resolve, reject) => {
             axios.get(requests.COMMON_GET_ALL_HOME_PAGE, {
@@ -106,6 +119,17 @@ export default {
     saveContact({commit}, payload) {
         return new Promise((resolve, reject) => {
             axios.post(requests.CREATE_CONTACT, payload)
+                .then((response) => {
+                    resolve(response)
+                })
+                .catch((error) => {
+                    reject(error)
+                })
+        })
+    },
+    saveCareer({commit}, payload) {
+        return new Promise((resolve, reject) => {
+            axios.post(requests.CREATE_CAREER, payload)
                 .then((response) => {
                     resolve(response)
                 })

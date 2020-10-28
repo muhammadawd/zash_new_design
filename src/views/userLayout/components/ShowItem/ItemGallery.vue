@@ -2,13 +2,14 @@
     <div v-if="getProduct && files.length">
         <div class="container p-0 m-0">
             <div class="row direction text-left d-none d-md-flex">
-                <div class="mb-4" :class="layout == 'list' ? 'col-md-12':'col-md-6 '" v-for="(file , index) in files"
+                <div class="mb-1 p-1" :class="layout == 'list' ? 'col-md-12':'col-md-6 '"
+                     v-for="(file , index) in files"
                      :key="index" :index="index">
                     <div class="zoomImage border" dir="ltr" @click="clickSlide(file)">
-                        <!--<div class="discount"-->
-                        <!--v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount) && index == 0">-->
-                        <!--<span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>-->
-                        <!--</div>-->
+                        <div class="discount"
+                             v-if="getPercent(getProduct.minimum_price,getProduct.price_before_discount) && index == 0">
+                            <span>{{getPercent(getProduct.minimum_price,getProduct.price_before_discount)}}%</span>
+                        </div>
                         <img v-if="checkIsIphone()" :src="file" class="w-100 bg-gray" alt="">
                         <zoom-on-hover v-if="!checkIsIphone()" class="bg-white" :img-normal="file"></zoom-on-hover>
                     </div>

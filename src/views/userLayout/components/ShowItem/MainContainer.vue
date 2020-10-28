@@ -20,6 +20,10 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="containers">
+            <div class="row">
                 <div class="col-md-8">
                     <div class="float-right">
                         <ul class="list-unstyled">
@@ -72,7 +76,7 @@
                     this.hasScrolledToBottom = true
                     return
                 }
-                if (!$('#ImagesSection')) {
+                if (!$('#ImagesSection').offset()) {
                     return
                 }
                 let outter_height = $('#ImagesSection').outerHeight();

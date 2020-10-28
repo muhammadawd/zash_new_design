@@ -78,7 +78,12 @@
 
                         <ul class="nav-menu nav-menu-social float-right direction">
                             <li class="green light d-none d-md-flex text-capitalize" v-if="locale != 'ar'">
-                                <a style="cursor: pointer" @click="updateLocale('ar')">{{$t('ar')}}</a>
+                                <a style="cursor: pointer" @click="updateLocale('ar')">
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAAbCAMAAADWDFZiAAAAXVBMVEUAej3OESb///8AAAAAahjJAADb29sAgEDYEigASCQANxsAJxMAFgsAdjsAbzgAfT4AZjMAWS0AcSXk4OPb5ORiCBLPAAB9CheXDByrDiC8DyMmAwfIECVBBQxdCBGLWmsLAAAAcklEQVQ4je3Qxw2AQBBDUcDknDP0XyZiYYHTjgvgn59kyVYUWGSIC1YiISmANKMsznKGKomSoJdEJV9wS8hvaYm4do29Eo1j7CP9XxKyZWXXe8YeOYS2OS1HCWo5ifCWswyVXFbZKbkx7pQ7sayk+I7uAE19CMrDzuRSAAAAAElFTkSuQmCC"
+                                         alt=""
+                                         class="m-1"
+                                         width="30">
+                                    {{$t('ar')}}</a>
                             </li>
                             <li class="green light d-none d-md-flex text-capitalize">
                                 <a style="cursor: pointer" href="" @click.prevent="$router.push({name:'search'})">
@@ -87,7 +92,12 @@
                                 </a>
                             </li>
                             <li class="green light d-none d-md-flex text-capitalize" v-if="locale != 'en'">
-                                <a style="cursor: pointer" @click="updateLocale('en')">{{$t('en')}}</a>
+                                <a style="cursor: pointer" @click="updateLocale('en')">
+                                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJcAAABLCAMAAABKveUfAAAAq1BMVEX////IEC4BIWnICCvKMT789vbFABEAAE/9+voAG2f7+/xCR3sAAF7EAADBAAAAAFrFABbHACUAFWXGAB8AEWQAHmjz2Nra2+Pg4egAAFWytcc5QXnEAAjWbHNpbpTFyNXTXmdLUYJUW4fO0NrNP0xeY43xz9ItN3TPSVTRUVu8vs3tw8bafYT46OkZJmzko6h1eJvdipCRlK6oq8AAAETos7YkL3DJJDbhmZ+yLYSoAAAExElEQVRoge3a61baQBAA4A3BlEtCbkirBE0tCliRqlV8/ydrNruz7DXZQNCeI/PLAyb52EsCM4NmEyTG9dBPOpbRHw6KI3qew4fXK14bDPu2J0n84TW+8O+lS04QZ6sJioNclv36aStrwZX4P3+Vqu6IsOKoBBV/aGQ3drKDXYl/Q1TzAFR0AsnA5Xey7NZGdqAr8W9L1escxspjy4q+oJOFtbKDXEkIqgwQ3GLPYQA9Rfb99qJGdoArubj9TlQeBQTiFrxbsqldNZXt7WKqbqRXlTK26DxVdlMl29OVXNwQ1XanWksXvicyOsVusFRl5nW2lysJqSquUoULIlt6sVFm3Jt7uIo9SFQOXVdppKoWIer0wymRrSKQadaZP27FNSaq3usWVKmyru6nYb+D8NnDIZXRMYuD1W9ZdqWTNXSN/Sui6jLVg6IahvhIRM4PY5aDLLOSNXKpquhBmcFpSI5DcAUmC6jMW6qyUJI1cI1DWZWZVTtXcQ1/eonfnOQjkM1l2Y8r8a5h7Uourn7g/9zAnSENFNXl1N8dg/ir+AsiW9H7mVsns3RRFdo4FaqFz38S3oVljyCje9PrVsmsXEwVV6gefXHeRVenc+736Wyy+5lGBjvAwlWsdqKKIuNqv+z755JDdmHZG5Wx+5lmNoms1kVVvWKsHLgzKKo3RaVzYdniclAn+4NlNa6x/werzmBduWksqwbFulJVehfZAaVsBrOZLV81skoXU7E9GD9pVPrnld5Vyl5EmTfXyKZG15Sq3ndPHEX1YlKZXVj29lKus1lglj0bXc9Exe4MnqxCL29GVZULr7NHKqN3WjfqyjJkcJWvv7uw2oOnM1n1qF1XzPWtMv5+K0dknY8ggk1PuoLBtX5ix4xk1eC5OHNlaD5+4zCN12fHydUsjuI6ayEiwRW1cUrUbSFcweW2cUrkthCOGG2cEjn/Z5xczeLkahYnV7M4uZrFydUs/tvnYxsP/2N8n2jjy9Ixvn+1EF/qe3QL8aVcVr+3uTjjf0av7Vy9TcCOyfExFr+3LfITgipI6a5z31kewmK8dgWqESkk1OUnjO9APoeL9ZNHVG7kvOOtXJfPEWRyQW+vfA7kvwRVSlXelqgs8l96GSmANs9/Qb5QUMUwVtsNVVnlCwXZMhMKxs3yheca1UOcunQGmco2v8oHV2DPQWaXXz2nOXxBlcJqj8v0V9N8dJUM5+7r89GQvxdUEcxgtEFoz/w9L+vuaupEVpe/7+vGKgBVTFV71jsEGdubKxgzc70D6kN6laOoGteHhNn0oHJNZab6ENTT9KotXVeH1dMkGa3bjehs6uppUH8UVBncr7qv+Fpt1B8F2ZLVh0nvhlJ/1KoiWdVOvVaQrTKodUoyvr7NxeQhrVftW98WZaw+TKr9rL6tGavJbPfEIaqW+wH4uFtJ/S6kH4D2T/AzOGMz6JTljaP0T/Ay1onjkd4N3D+hqqAcFMVEdax+E53MzeZEZlZtqeqI/TnCbLL68FzuKuFKZ7RAdfR+JkEW6TtxlILeh/R/8bJdTT3nVBmUZonqw/rlBBkgmAqoI1B9YH+hRkZVUoH9w/sx+eVUduIgvuw/Iq0Sn9K/KsnQBB5RjksahT6t31fYgv8AXhPDqKfoI1UAAAAASUVORK5CYII="
+                                         alt=""
+                                         class="m-1"
+                                         width="30">
+                                    {{$t('en')}}</a>
                             </li>
                         </ul>
                     </div>

@@ -79,6 +79,26 @@ const router = new Router({
                     }
                 },
                 {
+                    path: '/career',
+                    name: 'career',
+                    component: () => import('./views/userLayout/Career.vue'),
+                    meta: {
+                        pageTitle: 'Career',
+                        authRequired: false,
+                        isAdmin: false,
+                    }
+                },
+                {
+                    path: '/privacy',
+                    name: 'privacy',
+                    component: () => import('./views/userLayout/Privacy.vue'),
+                    meta: {
+                        pageTitle: 'Privacy',
+                        authRequired: false,
+                        isAdmin: false,
+                    }
+                },
+                {
                     path: '/items/:slug',
                     name: 'show_item',
                     component: () => import('./views/userLayout/ShowItem.vue'),

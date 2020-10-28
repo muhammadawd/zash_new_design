@@ -1,17 +1,25 @@
 <template>
-    <div class="pt-5 bg-details">
+    <div class="pb-5 bg-details">
         <div class="container">
             <div class="row direction text-left">
                 <div class="col-md-12">
-                    <h1>{{getProduct.translated.title}}</h1>
+                    <h4>{{getProduct.model_number}}</h4>
                 </div>
-                <!--<div class="col-md-12" v-if="getProduct.minimum_price">-->
-                <!--<h1 class="font-weight-bold mt-3">-->
-                <!--<del class="size-xs">{{getProduct.price_before_discount}} {{$t('kwd')}}</del>-->
-                <!--{{getProduct.minimum_price}} {{$t('kwd')}}-->
-                <!--</h1>-->
-                <!--</div>-->
-                <div class="col-md-12 optionsList">
+                <div class="col-md-12">
+                    <h2>{{getProduct.translated.title}}</h2>
+                </div>
+                <div class="col-md-10">
+                    <div v-html="getProduct.translated.description"></div>
+                </div>
+                <div class="col-md-12" v-if="getProduct.minimum_price">
+                    <h1 class="font-weight-bold mt-3 size-xs">
+                        <del class="size-xs" v-if="getProduct.price_before_discount">
+                            {{(getProduct.price_before_discount).toLocaleString('en-US')}} {{$t('kwd')}}
+                        </del>
+                        {{(getProduct.minimum_price).toLocaleString('en-US')}} {{$t('kwd')}}
+                    </h1>
+                </div>
+                <div class="col-md-12 optionsLists">
                     <ul class="text-black direction font-weight-bold mt-5">
                         <li class="mb-3" v-for="(pov , index) in getProduct.product_option_values">
                             <i class="fas fa-circle text-danger size-10"
