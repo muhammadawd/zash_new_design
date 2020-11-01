@@ -27,7 +27,7 @@ export default {
         by_price: 'بالاسعار',
         by_size: 'بالمقاسات',
         by_color: 'بالالوان',
-        about_us: 'عننا',
+        about_us: 'من نحن',
         contact_us: 'تواصل معنا',
         get_quote: 'كن على اتصال',
         your_name: 'اكتب اسمك *',

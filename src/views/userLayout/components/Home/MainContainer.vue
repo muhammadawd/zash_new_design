@@ -30,18 +30,18 @@
                     <Categories/>
                 </div>
                 <div class="col-md-1 d-none d-md-block text-center">
-                    <div class="text-center text-black scroll_bottom">
-                        <ul class="pt-5 rotate_90 text-center pointer animationScroll" id="scrollDown">
-                            <li class="list-inline-item">
-                                <h1 class="text-black fun_font">
-                                    {{$t('scroll_bottom')}}
-                                </h1>
-                            </li>
-                            <li class="list-inline-item ml-2 mr-2">
-                                <i class="far fa-arrow-alt-circle-up fa-2x rotate_90"></i>
-                            </li>
-                        </ul>
-                    </div>
+                    <!--<div class="text-center text-black scroll_bottom">-->
+                        <!--<ul class="pt-5 rotate_90 text-center pointer animationScroll" id="scrollDown">-->
+                            <!--<li class="list-inline-item">-->
+                                <!--<h1 class="text-black fun_font">-->
+                                    <!--{{$t('scroll_bottom')}}-->
+                                <!--</h1>-->
+                            <!--</li>-->
+                            <!--<li class="list-inline-item ml-2 mr-2">-->
+                                <!--<i class="far fa-arrow-alt-circle-up fa-2x rotate_90"></i>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
                 </div>
             </div>
         </div>

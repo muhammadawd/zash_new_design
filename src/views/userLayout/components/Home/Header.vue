@@ -1,6 +1,6 @@
 <template>
     <div class="home_slider pt-5" v-if="getSliders.length" :style="{background: bgColor}">
-        <div class="containers">
+        <div class="containers  ">
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-12">
                     <hooper :settings="hooperSettings" style="height: auto">
@@ -18,7 +18,7 @@
             <div class="row justify-content-start text-center" style="position:absolute;width: 100%;bottom: 0;">
                 <div class="col-md-11">
                     <div class="new_collection pointer" @click="$router.push({name:'search'})">
-                        <div class="border_collection"></div>
+                        <!--<div class="border_collection"></div>-->
                         {{$t('new_collection')}}
                         <i class="ti-arrow-right"></i>
                     </div>
@@ -51,7 +51,7 @@
         data() {
             return {
                 hooperSettings: {
-                    itemsToShow: 2,
+                    itemsToShow: 1,
                     autoPlay: false,
                     playSpeed: 3000,
                     infiniteScroll: true,

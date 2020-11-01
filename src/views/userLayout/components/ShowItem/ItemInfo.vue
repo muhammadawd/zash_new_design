@@ -26,7 +26,8 @@
                                v-if="pov.product_option_value_details.length"></i>
                             <span class="text-capitalize" v-for="(povd) in pov.product_option_value_details">
                                 {{povd.option_value.option.translated.title}} :
-                                {{povd.option_value.translated.title}} ,
+                                {{povd.option_value.translated.title}}
+                                <span v-if="getProduct.product_option_values.length > index+1">,</span>
                             </span>
                         </li>
                     </ul>

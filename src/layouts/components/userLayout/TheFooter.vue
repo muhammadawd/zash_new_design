@@ -105,7 +105,7 @@
         <footer class="bg-black p-md-5 ">
             <div class="container-fluid">
                 <div class="row direction d-flex justify-content-center align-items-center">
-                    <div class="col-md-2 text-center">
+                    <div class="col-md-2 col-6 text-center">
                         <img :src="getSettings.logo ? getSettings.logo[0].path.path : require('@/assets/logo.png')"
                              class="w-50 mb-3" alt=""/>
                     </div>
@@ -136,7 +136,7 @@
                     </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-2 text-center">
-                        <ul class="mt-0">
+                        <ul class="mt-0 mb-4">
                             <li class="list-inline-item animationIcon pr-1 pl-1" v-if="getSettings.facebook">
                                 <a class="text-black" :href="getSettings.facebook[0].value">
                                     <i class="fab fa-facebook-square text-white fa-lg"></i>
@@ -160,18 +160,18 @@
                         </ul>
                     </div>
                     <div class="col-md-2 text-center">
-                        <ul class="text-white text-center text-md-left  mb-4 mt-4  md-md-0 mt-md-0 font-weight-bold">
+                        <ul class="text-white text-center text-md-left  mb-4 mt-4  md-md-0 mt-md-0 font-weight-bold d-none d-md-block">
                             <li class="mb-1" v-if="getSettings.front_email">
                                 <a class="text-white" :href="'mailto:'+getSettings.front_email[0].value">
                                     {{getSettings.front_email[0].value}}
                                 </a>
                             </li>
-                            <li class="mb-1" v-if="getSettings.phone1">
+                            <li class="mb-1" v-if="getSettings.phone1" dir="ltr">
                                 <a class="text-white" :href="'tel:'+getSettings.phone1[0].value">
                                     {{getSettings.phone1[0].value}}
                                 </a>
                             </li>
-                            <li class="mb-1" v-if="getSettings.phone2">
+                            <li class="mb-1" v-if="getSettings.phone2" dir="ltr">
                                 <a class="text-white" :href="'tel:'+getSettings.phone2[0].value">
                                     {{getSettings.phone2[0].value}}
                                 </a>
