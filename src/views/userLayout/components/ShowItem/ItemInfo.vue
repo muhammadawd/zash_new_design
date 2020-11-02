@@ -24,10 +24,10 @@
                         <li class="mb-3" v-for="(pov , index) in getProduct.product_option_values">
                             <i class="fas fa-circle text-danger size-10"
                                v-if="pov.product_option_value_details.length"></i>
-                            <span class="text-capitalize" v-for="(povd) in pov.product_option_value_details">
+                            <span class="text-capitalize" v-for="(povd,key) in pov.product_option_value_details">
                                 {{povd.option_value.option.translated.title}} :
                                 {{povd.option_value.translated.title}}
-                                <span v-if="getProduct.product_option_values.length > index+1">,</span>
+                                <span v-if="pov.product_option_value_details.length > key+1">,</span>
                             </span>
                         </li>
                     </ul>

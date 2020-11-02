@@ -25,18 +25,20 @@
         <div class="containers">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="float-right">
+                    <div class="p-2 pb-0 p-md-0" style="float:right">
                         <ul class="list-unstyled">
                             <li class="list-inline-item">
                                 <a href=""
                                    @click.prevent="next ? $router.push({name:'show_item',params:{slug:next}}) : ''">
-                                    <i class="ti-arrow-circle-left fa-lg" :class="next ? 'text-dark' : 'text-danger'"></i>
+                                    <i class="ti-arrow-circle-left fa-lg"
+                                       :class="next ? 'text-dark' : 'text-danger'"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item">
                                 <a href=""
                                    @click.prevent="previous ? $router.push({name:'show_item',params:{slug:previous}}) : ''">
-                                    <i class="ti-arrow-circle-right fa-lg" :class="previous ? 'text-dark' : 'text-danger'"></i>
+                                    <i class="ti-arrow-circle-right fa-lg"
+                                       :class="previous ? 'text-dark' : 'text-danger'"></i>
                                 </a>
                             </li>
                         </ul>
@@ -70,27 +72,31 @@
             }
         },
         mounted() {
-            $(document).on('scroll', () => {
-                let scroll = $(document).scrollTop();
-                if (scroll < 150) {
-                    this.hasScrolledToBottom = true
-                    return
-                }
-                if (!$('#ImagesSection').offset()) {
-                    return
-                }
-                let outter_height = $('#ImagesSection').outerHeight();
-                let offset_top = $('#ImagesSection').offset().top;
-                scroll = scroll - offset_top + 250;
-                console.log(scroll, outter_height)
-                if (scroll >= outter_height) {
-                    this.hasScrolledToBottom = true
-                } else {
-                    this.hasScrolledToBottom = false
-                }
-            })
+            // this.scrollEffect()
         },
         methods: {
+            scrollEffect() {
+
+                $(document).on('scroll', () => {
+                    let scroll = $(document).scrollTop();
+                    if (scroll < 150) {
+                        this.hasScrolledToBottom = true
+                        return
+                    }
+                    if (!$('#ImagesSection').offset()) {
+                        return
+                    }
+                    let outter_height = $('#ImagesSection').outerHeight();
+                    let offset_top = $('#ImagesSection').offset().top;
+                    scroll = scroll - offset_top + 250;
+                    console.log(scroll, outter_height)
+                    if (scroll >= outter_height) {
+                        this.hasScrolledToBottom = true
+                    } else {
+                        this.hasScrolledToBottom = false
+                    }
+                })
+            },
             isMobile() {
                 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                     return true

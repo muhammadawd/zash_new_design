@@ -9,7 +9,7 @@
                             <h1 class="collection_title fun_font">{{$t('get_in_touch')}}</h1>
                             <p>{{$t('subscribe_p')}}</p>
                             <form class="sup-form direction " @submit.prevent="saveSubscribe()">
-                                <input type="text" :placeholder="$t('email_here')" class="form-control border"
+                                <input type="text" :placeholder="$t('your_email')" class="form-control border size-xs"
                                        v-model="email">
                                 <input type="submit" class="btn btn-theme bg-black text-white" :disabled="isLoading"
                                        :class="isLoading ? 'disabled' : ''"

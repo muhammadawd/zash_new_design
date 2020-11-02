@@ -3,22 +3,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-left ">
-                    <h1 class="collection_title fun_font pointer"
+                    <h1 class="collection_title fun_font pointer "
                         @click.prevent="$router.push({name: 'search', query: {category_id: section.first_categories}})">
                         {{section.translated.main_title}}</h1>
                 </div>
             </div>
             <div class="row direction">
-                <div class="col-md-7">
+                <div class="col-md-8">
                     <div class="row text-left">
                         <div class="col-md-5">
-                            <h2 class="fun_font mb-0 d-none d-md-flex pb-0 text-black">01</h2>
+                            <h2 class="fun_font mb-0 d-none d-md-flex pb-0 text-black"> </h2>
                             <img :src="section.first_image_path"
                                  @click.prevent="$router.push({name: 'search', query: {category_id: section.first_categories}})"
                                  class="w-100  pointer" alt="">
                         </div>
                         <div class="col-md-7">
-                            <h2 class="fun_font mb-0 d-md-none mt-5 pb-0 text-black">01</h2>
+                            <h2 class="fun_font mb-0 d-md-none mt-5 pb-0 text-black"> </h2>
                             <h5 class="pt-5 pointer"
                                 @click.prevent="$router.push({name: 'search', query: {category_id: section.first_categories}})">
                                 {{section.translated.first_title}}</h5>
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <h2 class="fun_font mb-0 pb-0 text-black">02</h2>
+                            <h2 class="fun_font mb-0 pb-0 text-black"> </h2>
                             <img :src="section.second_image_path"
                                  @click.prevent="$router.push({name: 'search', query: {category_id: section.second_categories}})"
                                  class="w-100 pointer" alt="">
@@ -58,7 +58,7 @@
                                  class="w-100 pointer" alt="">
                         </div>
                         <div class="col-md-5">
-                            <h2 class="fun_font mb-0 pb-0 mt-5 text-black">02</h2>
+                            <h2 class="fun_font mb-0 pb-0 mt-5 text-black"> </h2>
                             <h5 class="pt-5 pointer"
                                 @click.prevent="$router.push({name: 'search', query: {category_id: section.second_categories}})">
                                 {{section.translated.second_title}}</h5>

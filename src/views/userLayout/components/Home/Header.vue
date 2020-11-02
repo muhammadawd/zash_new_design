@@ -6,7 +6,7 @@
                     <hooper :settings="hooperSettings" style="height: auto">
                         <!--class="pointer" @click="$router.push({name:'show_item',params:{slug:product.slug}})"-->
                         <slide v-for="(slide ,k) in getSliders">
-                            <div class="collection_slide p-2">
+                            <div class="collection_slide p-md-2">
                                 <img :src="slide.image" class="w-100 bg-white" alt="">
                             </div>
                         </slide>

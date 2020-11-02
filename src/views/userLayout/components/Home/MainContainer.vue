@@ -26,7 +26,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-10 text-center">
+                <div class="col-md-11 text-center">
                     <Categories/>
                 </div>
                 <div class="col-md-1 d-none d-md-block text-center">

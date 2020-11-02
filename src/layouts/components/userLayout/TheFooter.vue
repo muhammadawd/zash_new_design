@@ -111,7 +111,7 @@
                     </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-4">
-                        <ul class="text-center d-flex flex-wrap  mb-4 mt-4  md-md-0 mt-md-0 justify-content-between">
+                        <ul class="text-center d-flex flex-wrap  mb-4 mt-4  md-md-0 mt-md-0 justify-content-start">
                             <li class="list-inline-item mr-3 ml-3">
                                 <a href="" @click.prevent="$router.push({name:'home'})"
                                    class="size-xs text-white font-weight-bold">{{$t('home')}}</a>

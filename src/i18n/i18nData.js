@@ -70,7 +70,7 @@ export default {
         kwd: 'KWD',
         get_info: 'get info',
         your_name: 'Your name *',
-        your_email: 'Email address*',
+        your_email: 'Email address *',
         your_phone: 'Enter your phone…',
         message: 'Message',
         send: 'Send',
