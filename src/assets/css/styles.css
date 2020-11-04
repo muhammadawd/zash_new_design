@@ -39,7 +39,7 @@
 
 @media (min-width: 1480px){
     .container {
-        max-width: 1400px;
+        max-width: 1400px!important;
     }
 }
 /* Handle on hover */

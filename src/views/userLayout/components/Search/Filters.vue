@@ -209,14 +209,14 @@
                 });
             },
             prepareFilters(isMount = true) {
-                let values = _.map(this.selectedOptions, 'option_value_id')
+                // let values = _.map(this.selectedOptions, 'option_value_id')
                 return {
                     category_ids: this.selectedCategory,
                     query: this.query,
                     isMount: isMount,
                     // min_price: this.value[0],
                     // max_price: this.value[1],
-                    option_value_ids: values
+                    // option_value_ids: values
                 }
             },
             selectCategory(id) {
@@ -231,7 +231,10 @@
                     }
                     this.selectedCategory = array
                 }
-                this.updateFilters(this.prepareFilters());
+                let category_id = this.$route.query.category_id;
+                let query = this.$route.query.query;
+                this.$router.push({name: 'search', query: {query: this.query, category_id: this.selectedCategory}})
+                // this.updateFilters(this.prepareFilters(false));
             },
             isSelectedCategory(id) {
                 let selectedCategory = JSON.parse(JSON.stringify(this.selectedCategory));

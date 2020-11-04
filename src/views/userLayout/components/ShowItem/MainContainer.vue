@@ -24,8 +24,8 @@
         </div>
         <div class="containers">
             <div class="row">
-                <div class="col-md-8">
-                    <div class="p-2 pb-0 p-md-0" style="float:right">
+                <div class="col-md-8 p-0">
+                    <div class="p-2 pb-0 p-md-0 mr-3 mr-md-1" style="float:right">
                         <ul class="list-unstyled">
                             <li class="list-inline-item">
                                 <a href=""

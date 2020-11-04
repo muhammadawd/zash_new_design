@@ -15,7 +15,7 @@
                                 <i class="ti-filter fa-lg"></i>
                             </button>
                             <ul class="grid_list">
-                                <li class="list-inline-item p-2">
+                                <li class="list-inline-item  p-2">
                                     <a :class="layout  == 'list' ? 'active' : ''" href=""
                                        @click.prevent="layout = 'list'">
                                         <i class="ti-list fa-2x"></i>
@@ -57,10 +57,10 @@
                         <div class="col-md-4" v-for="(product,indx) in products" :key="indx" :index="indx">
                             <div class="collection_slide pointer p-2"
                                  @click="$router.push({name:'show_item',params:{slug:product.slug}})">
-                                <!--<img :src="product.main_image" class="w-100" alt="">-->
-                                <img v-if="product.main_image"
-                                     :src="product.main_image_new.storage_path + '/300'+product.main_image_new.name"
-                                     class="w-100 bg-white" alt="">
+                                <img :src="product.main_image" class="w-100" alt="">
+                                <!--<img v-if="product.main_image"-->
+                                     <!--:src="product.main_image_new.storage_path + '/300'+product.main_image_new.name"-->
+                                     <!--class="w-100 bg-white" alt="">-->
                                 <img v-if="!product.main_image"
                                      :src="require('@/assets/img/noimage.png')"
                                      class="w-100 bg-white" alt="">
