@@ -233,8 +233,9 @@
                 }
                 let category_id = this.$route.query.category_id;
                 let query = this.$route.query.query;
-                this.$router.push({name: 'search', query: {query: this.query, category_id: this.selectedCategory}})
-                // this.updateFilters(this.prepareFilters(false));
+                // this.$router.push({name: 'search', query: {query: this.query, category_id: this.selectedCategory}})
+                this.$helper.showLoader();
+                this.updateFilters(this.prepareFilters(false));
             },
             isSelectedCategory(id) {
                 let selectedCategory = JSON.parse(JSON.stringify(this.selectedCategory));

@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="col-12 mt-5 text-center">
-                    <infinite-loading :distance="400" @infinite="search"></infinite-loading>
+                    <infinite-loading ref="infiniteLoading" :distance="10" @infinite="search"></infinite-loading>
                 </div>
             </div>
         </div>
@@ -116,6 +116,7 @@
                 vm.products = [];
                 vm.page = 1;
                 vm.filters = filters;
+                this.$refs.infiniteLoading.stateChanger.reset()
                 if (vm.filters.isMount) {
                     this.search(null);
                 }
