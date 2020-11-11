@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="container mt-5">
                         <div class="row">
-                            <div class="col-md-6 text-md-left text-center">
+                            <div class="col-md-6 d-none  d-md-flex text-md-left text-center">
                                 <img :src="about.image" class="w-75 mb-3" alt="">
                             </div>
                             <div class="col-md-6 text-black text-left">
@@ -27,6 +27,10 @@
                                     {{about.translated.description}}
                                 </p>
                             </div>
+                            <div class="col-md-6 d-md-none text-md-left text-center">
+                                <img :src="about.image" class="w-75 mb-3" alt="">
+                            </div>
+
                         </div>
                     </div>
 
