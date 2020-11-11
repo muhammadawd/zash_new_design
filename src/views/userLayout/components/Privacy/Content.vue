@@ -35,7 +35,9 @@
             getBranchInfo() {
                 let vm = this;
                 vm.$helper.showLoader();
-                let dispatch = this.$store.dispatch('moduleCommon/fetchBranchSetting', {});
+                let dispatch = this.$store.dispatch('moduleCommon/fetchBranchSetting', {
+                    lang: vm.$i18n.locale
+                });
                 dispatch.then((response) => {
                     let status = response.data.status;
                     let data = response.data.data;
