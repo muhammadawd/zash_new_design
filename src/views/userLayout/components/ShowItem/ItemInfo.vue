@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row direction text-left">
                 <div class="col-md-12">
-                    <h4>{{getProduct.model_number}}</h4>
+                    <h6>{{getProduct.model_number}}</h6>
                 </div>
                 <div class="col-md-12">
                     <h2>{{getProduct.translated.title}}</h2>

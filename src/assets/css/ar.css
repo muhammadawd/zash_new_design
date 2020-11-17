@@ -806,23 +806,23 @@ html[lang=ar] .view_more_before:before {
     transform: scale(1.3);
 }
 
-.animationIcon:hover i[class*="fa-facebook"] {
+.animationIcon:hover .facebook {
     color: #3b5a9a !important;
 }
 
-.animationIcon:hover i[class*="fa-twitter"] {
+.animationIcon:hover .twitter {
     color: #56adf2 !important;
 }
 
-.animationIcon:hover i[class*="fa-youtube"] {
+.animationIcon:hover .youtube {
     color: #f44336 !important;
 }
 
-.animationIcon:hover i[class*="fa-instagram"] {
+.animationIcon:hover .instagram {
     color: #23272b !important;
 }
 
-.animationIcon:hover i[class*="fa-whatsapp"] {
+.animationIcon:hover .whatsapp {
     color: #0eb987 !important;
 }
 
