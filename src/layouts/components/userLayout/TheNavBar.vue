@@ -42,11 +42,11 @@
                             <!--{{category.translated.title}}-->
                             <!--</a>-->
                             <!--</li>-->
-                            <li v-if="getAllCategoriesMain.length">
+                            <li v-if="getAllCategoriesMain && getAllCategoriesMain.categories.length">
                                 <a href="#" @click.prevent>{{$t('categories')}}<span
                                         class="submenu-indicator"></span></a>
                                 <ul class="nav-dropdown nav-submenu">
-                                    <li v-for="(category , index) in getAllCategoriesMain">
+                                    <li v-for="(category , index) in getAllCategoriesMain.categories">
                                         <a href="#"
                                            @click.prevent="$router.push({name:'search',query:{category_id:category.id}})">{{category.translated.title}}
                                             <span class="submenu-indicator"
@@ -127,7 +127,10 @@
         },
         computed: {
             getAllCategoriesMain() {
-                return this.$store.getters['moduleCommon/getAllCategoriesMain']
+                return {
+                    categories: this.$store.getters['moduleCommon/getAllCategoriesMain'],
+                    vm: this
+                }
             }
         },
         data() {
@@ -137,6 +140,12 @@
             }
         },
         watch: {
+            getAllCategoriesMain: (newVal) => {
+                let vm = newVal.vm;
+                setTimeout(() => {
+                    vm.navigationBarFunctionality();
+                }, 800)
+            },
             '$route'(to, from) {
                 this.auth = this.$helper.getLocalStorage('userInfo');
                 setTimeout(() => {
@@ -146,7 +155,8 @@
             }
         },
         methods: {
-            navigationBarFunctionality() {
+            navigationBarFunctionality(){
+                console.log('test')
                 $(function () {
                     "use strict";
 
