@@ -117,8 +117,10 @@
             </div>
         </div>
 
-        <div class="map" v-if="getSettings.map">
-            <div v-html="getSettings.map[0].value"></div>
+        <div v-if="getSettings">
+            <div class="map" v-if="getSettings.map">
+                <div v-if="getSettings.map[0]" v-html="getSettings.map[0].value"></div>
+            </div>
         </div>
     </div>
 </template>
@@ -137,6 +139,9 @@
             }
         },
         mounted() {
+            if (this.getSettings && this.getSettings.facebook) {
+                this.$helper.hideLoader(['contact'])
+            }
         },
         computed: {
             getSettings() {

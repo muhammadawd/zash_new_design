@@ -15,7 +15,8 @@
                                @click="$router.push({name:'show_item',params:{slug:product.slug}})">
                             <div class="collection_slide p-2"
                                  @click="$router.push({name:'show_item',params:{slug:product.slug}})">
-                                <img :src="product.main_image ? product.main_image:  require('@/assets/img/noimage.png')" class="w-100 bg-white" alt="">
+                                <img :src="product.main_image ? product.main_image:  require('@/assets/img/noimage.png')"
+                                     class="w-100 bg-white" alt="">
                             </div>
                         </slide>
                         <hooper-navigation class="black_navigation" slot="hooper-addons"></hooper-navigation>
@@ -52,6 +53,11 @@
             },
             getSettings() {
                 return this.$store.getters['moduleCommon/getAllSettings']
+            }
+        },
+        mounted() {
+            if (this.getRecentProducts.length) {
+                this.$helper.hideLoader(['recent_products'])
             }
         },
         data() {

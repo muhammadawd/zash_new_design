@@ -51,8 +51,12 @@ export default {
         career: 'الوظائف',
         cv: 'السيرة الذاتية',
         your_cv: 'قم برفع ملف السيرة الذاتية',
+        didntfind: 'لم نجد ما تبحث عنه',
+        didntfindp: 'لسوء الحظ ، لم تكن هناك عناصر مطابقة تمامًا لطلبك. يرجى تجربة كلمة رئيسية جديدة ، أو دعنا نلهمك.',
+        current_filters: 'الفلاتر',
     },
     en: {
+        current_filters: 'Selected Filter',
         your_cv: 'Please Upload Your CV',
         cv: 'Your Cv',
         privacy: 'Privacy',
@@ -63,7 +67,7 @@ export default {
         image360: '3D experience Images',
         hide360: 'Hide 3D Images',
         show360: 'Show 3D Images',
-        by_query: 'by query',
+        by_query: 'by key word',
         address: 'Address',
         search: 'Search',
         currency: 'KWD',
@@ -103,5 +107,8 @@ export default {
         by_price: 'By Price',
         by_size: 'By Size',
         by_color: 'By Color',
+        didntfind: 'WE DIDN\'T FIND ANY MATCHES',
+        didntfindp: 'Unfortunately there were no items corresponding exactly to your request.\n' +
+            'Please try a new keyword, or let us inspire you.',
     }
 }

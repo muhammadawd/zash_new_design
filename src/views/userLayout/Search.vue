@@ -9,14 +9,14 @@
     import Header from './components/Search/Header'
     import Filters from './components/Search/Filters'
     import Content from './components/Search/Content'
+    import searchSkeleton from './components/SkeletonLoaders/searchSkeleton'
 
     export default {
         name: "Search",
         components: {
-            Header, Content, Filters
+            Header, Content, Filters, searchSkeleton
         },
         mounted() {
-
         },
         watch: {
             '$route'(to, from) {

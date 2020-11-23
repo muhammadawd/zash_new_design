@@ -236,10 +236,10 @@
                 });
                 dispatch.then((response) => {
                     // response = response.data;
-                    vm.$helper.hideLoader();
+                    vm.$helper.hideLoader(['recent_products', 'contact']);
                 }).catch((error) => {
                     vm.$helper.handleError(error, vm);
-                    vm.$helper.hideLoader();
+                    vm.$helper.hideLoader(['recent_products', 'contact']);
                 });
             },
             getAllCategoriesMain() {
@@ -251,10 +251,10 @@
                 });
                 dispatch.then((response) => {
                     // response = response.data;
-                    vm.$helper.hideLoader();
+                    vm.$helper.hideLoader(['main_categories','search_filter']);
                 }).catch((error) => {
                     vm.$helper.handleError(error, vm);
-                    vm.$helper.hideLoader();
+                    vm.$helper.hideLoader('main_categories','search_filter');
                 });
             },
             getAllCategoriesSub() {
@@ -266,10 +266,10 @@
                 });
                 dispatch.then((response) => {
                     // response = response.data;
-                    vm.$helper.hideLoader();
+                    vm.$helper.hideLoader(['sub_categories','search_filter']);
                 }).catch((error) => {
                     vm.$helper.handleError(error, vm);
-                    vm.$helper.hideLoader();
+                    vm.$helper.hideLoader(['sub_categories','search_filter']);
                 });
             },
         }

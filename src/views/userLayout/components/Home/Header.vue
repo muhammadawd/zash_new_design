@@ -1,31 +1,33 @@
 <template>
-    <div class="home_slider pt-5" v-if="getSliders.length" :style="{background: bgColor}">
-        <div class="containers  ">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-md-12">
-                    <hooper :settings="hooperSettings" style="height: auto">
-                        <!--class="pointer" @click="$router.push({name:'show_item',params:{slug:product.slug}})"-->
-                        <slide v-for="(slide ,k) in getSliders">
-                            <div class="collection_slide p-md-2">
-                                <img :src="slide.image" class="w-100 bg-white" alt="">
-                            </div>
-                        </slide>
-                        <hooper-navigation class="black_navigation d-md-none"
-                                           slot="hooper-addons"></hooper-navigation>
-                    </hooper>
+    <div>
+        <div class="home_slider pt-5" v-if="getSliders.length" :style="{background: bgColor}">
+            <div class="containers  ">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-md-12">
+                        <hooper :settings="hooperSettings" style="height: auto">
+                            <!--class="pointer" @click="$router.push({name:'show_item',params:{slug:product.slug}})"-->
+                            <slide v-for="(slide ,k) in getSliders">
+                                <div class="collection_slide p-md-2">
+                                    <img :src="slide.image" class="w-100 bg-white" alt="">
+                                </div>
+                            </slide>
+                            <hooper-navigation class="black_navigation d-md-none"
+                                               slot="hooper-addons"></hooper-navigation>
+                        </hooper>
+                    </div>
                 </div>
-            </div>
-            <div class="row justify-content-start text-center" style="position:absolute;width: 100%;bottom: 0;">
-                <div class="col-md-11">
-                    <div class="new_collection pointer" @click="$router.push({name:'search'})">
-                        <!--<div class="border_collection"></div>-->
-                        {{$t('new_collection')}}
-                        <i class="ti-arrow-right"></i>
+                <div class="row justify-content-start text-center" style="position:absolute;width: 100%;bottom: 0;">
+                    <div class="col-md-11">
+                        <div class="new_collection pointer" @click="$router.push({name:'search'})">
+                            <!--<div class="border_collection"></div>-->
+                            {{$t('new_collection')}}
+                            <i class="ti-arrow-right"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </template>
 

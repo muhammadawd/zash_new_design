@@ -58,6 +58,11 @@
             HooperPagination,
             HooperNavigation
         },
+        mounted() {
+            if (this.getAllCategoriesSub.length) {
+                this.$helper.hideLoader(['sub_categories'])
+            }
+        },
         computed: {
             getAllCategoriesSub() {
                 return this.$store.getters['moduleCommon/getAllCategoriesSub']

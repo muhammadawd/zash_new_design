@@ -1,18 +1,24 @@
 <template>
     <div>
-        <Header/>
-        <Content/>
+        <div id="contact_loader">
+            <ContactSkeleton/>
+        </div>
+        <div id="contact_content" style="display: none">
+            <Header/>
+            <Content/>
+        </div>
     </div>
 </template>
 
 <script>
     import Header from './components/Contact/Header'
     import Content from './components/Contact/Content'
+    import ContactSkeleton from './components/SkeletonLoaders/ContactSkeleton'
 
     export default {
         name: "ContactUs",
         components: {
-            Header, Content
+            Header, Content, ContactSkeleton
         },
         mounted() {
 

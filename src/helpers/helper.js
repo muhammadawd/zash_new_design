@@ -15,7 +15,7 @@ const helper = {
         try {
             let result = codeLine.substr(codeLine.indexOf(" ") + 1);
             return result;
-        }catch (e) {
+        } catch (e) {
             return codeLine
         }
     },
@@ -37,25 +37,34 @@ const helper = {
     splitFirst(str) {
         return str.split(' ')[0]
     },
-    showLoader(message = null) {
+    showLoader() {
         // show initial loading
         const appLoading = document.getElementById('preloader');
-        // const appLoadingText = document.getElementById('loader_message');
-        if (appLoading) {
-            appLoading.style.display = "block";
-            // if (message) {
-            //     // appLoadingText.innerText = message
-            // }
-        }
-    },
-    hideLoader() {
-        // show initial loading
-        const appLoading = document.getElementById('preloader');
-        // const appLoadingText = document.getElementById('loader_message');
+
         if (appLoading) {
             appLoading.style.display = "none";
-            // appLoadingText.innerText = "";
         }
+    },
+
+    hideLoader(selectors = []) {
+        // show initial loading
+        const appLoading = document.getElementById('preloader');
+
+        if (appLoading) {
+            appLoading.style.display = "none";
+        }
+
+        _.forEach(selectors, (selector) => {
+            let appLoader = document.getElementById(`${selector}_loader`);
+            let appContent = document.getElementById(`${selector}_content`);
+            console.log(selector, appLoader, appContent);
+            if (appLoader && appContent) {
+                appLoader.style.display = "none";
+                appContent.style.display = null;
+            }
+        });
+        window.dispatchEvent(new Event('resize'));
+
     },
     setLocalStorage(key, data) {
         localStorage.setItem(key, JSON.stringify(data))

@@ -1,9 +1,17 @@
 <template>
-    <div v-if="product">
-        <Header :category="product.category"/>
-        <MainContainer :product="product" :previous="previous" :next="next"/>
-        <ItemDescription :productDescription="product.translated"/>
-        <RecommendedItems :relatedProducts="relatedProducts"/>
+    <div>
+        <div id="itemProduct_loader">
+            <itemSkeleton/>
+        </div>
+        <div id="itemProduct_content" style="display: none">
+            <div v-if="product">
+                <Header :category="product.category"/>
+                <MainContainer :product="product" :previous="previous" :next="next"/>
+                <ItemDescription :productDescription="product.translated"/>
+                <RecommendedItems :relatedProducts="relatedProducts"/>
+            </div>
+        </div>
+
     </div>
 </template>
 
@@ -12,11 +20,13 @@
     import RecommendedItems from './components/ShowItem/RecommendedItems'
     import ItemDescription from './components/ShowItem/ItemDescription'
     import MainContainer from './components/ShowItem/MainContainer'
+    import itemSkeleton from './components/SkeletonLoaders/itemSkeleton'
 
     export default {
         name: "ShowItem",
         components: {
-            Header, RecommendedItems, MainContainer, ItemDescription
+            Header, RecommendedItems, MainContainer, ItemDescription,
+            itemSkeleton
         },
         mounted() {
             this.findProduct()
@@ -51,10 +61,10 @@
                     vm.next = response.data.next;
                     vm.previous = response.data.previous;
                     vm.relatedProducts = response.data.related_products;
-                    vm.$helper.hideLoader();
+                    vm.$helper.hideLoader(['itemProduct']);
                 }).catch((error) => {
                     vm.$helper.handleError(error, vm);
-                    vm.$helper.hideLoader();
+                    vm.$helper.hideLoader(['itemProduct']);
                 });
             },
         }

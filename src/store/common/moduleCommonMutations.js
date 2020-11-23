@@ -27,7 +27,7 @@ export default {
         state.categories_sub = categories
     },
     SET_BAR(state, categories) {
-return
+        return;
         $(function () {
             "use strict";
 

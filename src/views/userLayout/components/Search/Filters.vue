@@ -1,6 +1,34 @@
 <template>
     <div class="border-shadows text-left p-2" id="filterMenu">
         <div class="row">
+            <div class="col-12 mb-5" v-if="query || selectedCategory.length">
+                <h2 class="font-weight-bold fun_font m-0">{{$t('current_filters')}}</h2>
+                <div class="progress">
+                    <div class="progress-bar bg-black" style="height: 2px;width:40%"></div>
+                </div>
+                <div class="">
+                    <ul class="direction p-0 m-0">
+                        <li class="list-inline-item" v-if="query">
+                            <label class="badge badge-dark p-2 badge-lg">
+                                {{query}}
+                                <span class="float-left mr-2 ml-2 pointer"
+                                      @click="query = '';searchQuery()">
+                                    &nbsp; <i class="fa fa-times fa-lg "></i> &nbsp;
+                                </span>
+                            </label>
+                        </li>
+                        <li v-for="(cat_id , k) in selectedCategory" class="list-inline-item">
+                            <label class="badge badge-dark p-2 badge-lg">
+                                {{getCatName(cat_id)}}
+                                <span class="float-left mr-2 ml-2 pointer"
+                                      @click="removeCategory(cat_id)">
+                               &nbsp; <i class="fa fa-times fa-lg "></i> &nbsp;
+                            </span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <div class="col-12 mb-5">
 
                 <h2 class="font-weight-bold fun_font m-0">{{$t('by_query')}}</h2>
@@ -120,7 +148,10 @@
             }
         },
         mounted() {
-            this.fetchOptions();
+            // this.fetchOptions();
+            if (this.getAllCategoriesMain.length) {
+                this.$helper.hideLoader(['search_filter'])
+            }
             let update_filter = false;
             let query = this.$route.query.query;
             if (query) {
@@ -156,6 +187,25 @@
             }
         },
         methods: {
+            removeCategory(cat_id) {
+                let arr = JSON.parse(JSON.stringify(this.selectedCategory));
+                this.selectedCategory = this.$helper.removeFromArray(arr, cat_id)
+                this.updateFilters(this.prepareFilters(false));
+            },
+            getCatName(cat_id) {
+                let name = '';
+                _.forEach(this.getAllCategoriesMain, (category) => {
+                    if (category.id == cat_id) {
+                        name = category.translated.title
+                    }
+                    _.forEach(category.sub_categories, (sub_category) => {
+                        if (sub_category.id == cat_id) {
+                            name = sub_category.translated.title
+                        }
+                    })
+                });
+                return name
+            },
             searchQuery() {
                 let category_id = this.$route.query.category_id;
                 let query = this.$route.query.query;

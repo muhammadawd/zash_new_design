@@ -42,7 +42,53 @@
                             <!--{{category.translated.title}}-->
                             <!--</a>-->
                             <!--</li>-->
-                            <li v-if="getAllCategoriesMain && getAllCategoriesMain.categories.length">
+
+                            <!--<li style="" class="">-->
+                            <!--<a href="#">{{$t('categories')}}-->
+                            <!--<span class="submenu-indicator"></span>-->
+                            <!--<span class="submenu-indicator">-->
+                            <!--<span class="submenu-indicator-chevron"></span>-->
+                            <!--</span>-->
+                            <!--</a>-->
+                            <!--<ul class="nav-dropdown nav-submenu">-->
+                            <!--<li><a href="#">Item 1</a></li>-->
+                            <!--<li><a href="#">Item 2</a></li>-->
+                            <!--</ul>-->
+                            <!--</li>-->
+
+                            <!--mega menu-->
+                            <!--<li class="dropdown dropdown-large open" v-if="getAllCategoriesMain.length">-->
+                            <!--<a href="#" @click.prevent>-->
+                            <!--{{$t('categories')}}-->
+                            <!--<span class="submenu-indicator"><span-->
+                            <!--class="submenu-indicator-chevron"></span></span>-->
+                            <!--</a>-->
+                            <!--<ul class="dropdown-menu dropdown-menu-large row">-->
+                            <!--<li class="col-sm-3" v-for="(category , index) in getAllCategoriesMain">-->
+                            <!--<ul>-->
+                            <!--<li class="dropdown-header gradient-text ">{{category.translated.title}}-->
+                            <!--</li>-->
+                            <!--<template v-if="!category.sub_categories.length">-->
+                            <!--<li>-->
+                            <!--<a href=""-->
+                            <!--@click.prevent="$router.push({name:'search',query:{category_id:category.id}})">{{category.translated.title}}</a>-->
+                            <!--</li>-->
+                            <!--</template>-->
+                            <!--<template v-if="category.sub_categories.length">-->
+                            <!--<li v-for="(_category, index) in category.sub_categories">-->
+                            <!--<a href="#"-->
+                            <!--@click.prevent="$router.push({name:'search',query:{category_id:_category.id}})">{{_category.translated.title}}</a>-->
+                            <!--</li>-->
+                            <!--</template>-->
+                            <!--&lt;!&ndash;<li class="disabled"><a href="#">How to use</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="#">Examples</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li class="divider"></li>&ndash;&gt;-->
+                            <!--</ul>-->
+                            <!--</li>-->
+                            <!--</ul>-->
+                            <!--</li>-->
+
+                            <li v-if="getAllCategoriesMain.categories.length">
                                 <a href="#" @click.prevent>{{$t('categories')}}<span
                                         class="submenu-indicator"></span></a>
                                 <ul class="nav-dropdown nav-submenu">
@@ -119,17 +165,17 @@
             let vm = this;
             vm.locale = vm.$i18n.locale;
             vm.auth = vm.$helper.getLocalStorage('userInfo');
-            vm.$nextTick(function () {
-                setTimeout(() => {
-                    vm.navigationBarFunctionality();
-                }, 2000)
-            });
+            // vm.$nextTick(function () {
+            // setInterval(() => {
+            //     vm.navigationBarFunctionality();
+            // }, 2000)
+            // });
         },
         computed: {
             getAllCategoriesMain() {
                 return {
-                    categories: this.$store.getters['moduleCommon/getAllCategoriesMain'],
-                    vm: this
+                    vm: this,
+                    categories: this.$store.getters['moduleCommon/getAllCategoriesMain']
                 }
             }
         },
@@ -141,22 +187,21 @@
         },
         watch: {
             getAllCategoriesMain: (newVal) => {
-                let vm = newVal.vm;
-                setTimeout(() => {
-                    vm.navigationBarFunctionality();
-                }, 800)
+                if (newVal.vm) {
+                    let vm = newVal.vm;
+                    vm.$nextTick(function () {
+                        // setTimeout(() => {
+                        vm.navigationBarFunctionality();
+                        // }, 2000)
+                    });
+                }
             },
             '$route'(to, from) {
                 this.auth = this.$helper.getLocalStorage('userInfo');
-                setTimeout(() => {
-                    this.navigationBarFunctionality();
-                }, 800)
-
             }
         },
         methods: {
-            navigationBarFunctionality(){
-                console.log('test')
+            navigationBarFunctionality() {
                 $(function () {
                     "use strict";
 
@@ -342,5 +387,111 @@
 </script>
 
 <style scoped>
+    .dropdown-large {
+        position: static !important;
+    }
+
+    .dropdown-menu-large {
+        margin-left: 16px;
+        margin-right: 16px;
+        padding: 20px 0px;
+        top: 75px;
+        z-index: 999999;
+    }
+
+    .dropdown-large,
+    .dropdown-menu-large {
+        transition: all ease-in-out 0.5s;
+    }
+
+    .dropdown-large:hover .dropdown-menu-large {
+        display: flex;
+    }
+
+    .dropdown-menu-large > li > ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    .dropdown-menu-large > li > ul > li {
+        list-style: none;
+    }
+
+    .dropdown-menu-large > li > ul > li > a {
+        display: block;
+        padding: 3px 20px;
+        clear: both;
+        font-weight: normal;
+        line-height: 1.428571429;
+        color: #333333;
+        white-space: normal;
+    }
+
+    .dropdown-menu-large > li ul > li > a:hover,
+    .dropdown-menu-large > li ul > li > a:focus {
+        text-decoration: none;
+        color: #262626;
+        background-color: #f5f5f5;
+    }
+
+    .dropdown-menu-large .disabled > a,
+    .dropdown-menu-large .disabled > a:hover,
+    .dropdown-menu-large .disabled > a:focus {
+        color: #999999;
+    }
+
+    .dropdown-menu-large .disabled > a:hover,
+    .dropdown-menu-large .disabled > a:focus {
+        text-decoration: none;
+        background-color: transparent;
+        background-image: none;
+        filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+        cursor: not-allowed;
+    }
+
+    .dropdown-menu-large .dropdown-header {
+        color: #428bca;
+        font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+        .dropdown-menu-large {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .dropdown-menu-large > li {
+            margin-bottom: 30px;
+        }
+
+        .dropdown-menu-large > li:last-child {
+            margin-bottom: 0;
+        }
+
+        .dropdown-menu-large .dropdown-header {
+            padding: 3px 15px !important;
+        }
+    }
+
+    .gradient-text {
+        /* Fallback: Set a background color. */
+        background-color: red;
+
+        /* Create the gradient. */
+        background-image: linear-gradient(45deg, #ab882d, #af4261);
+        /*background-image: linear-gradient(245deg, #007a3d, #000, #ce1126);*/
+
+        /* Set the background size and repeat properties. */
+        background-size: 100%;
+        background-repeat: repeat;
+
+        /* Use the text as a mask for the background. */
+        /* This will show the gradient as a text color rather than element bg. */
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -moz-background-clip: text;
+        -moz-text-fill-color: transparent;
+    }
+
 
 </style>

@@ -56,14 +56,16 @@
             getAboutus() {
                 let vm = this;
                 vm.$helper.showLoader();
-                let dispatch = this.$store.dispatch('moduleCommon/fetchAbout', {});
+                let dispatch = this.$store.dispatch('moduleCommon/fetchAbout', {
+                    lang: vm.$i18n.locale
+                });
                 dispatch.then((response) => {
                     let status = response.data.status;
                     let data = response.data.data;
                     vm.abouts = data.abouts;
-                    vm.$helper.hideLoader();
+                    vm.$helper.hideLoader(['about']);
                 }).catch((error) => {
-                    vm.$helper.hideLoader();
+                    vm.$helper.hideLoader(['about']);
                     vm.$helper.handleError(error, vm);
                 });
             }
