@@ -69,6 +69,16 @@ const router = new Router({
                     }
                 },
                 {
+                    path: '/snapChat',
+                    name: 'snapChat',
+                    component: () => import('./views/userLayout/snapChat.vue'),
+                    meta: {
+                        pageTitle: 'snap Chat',
+                        authRequired: false,
+                        isAdmin: false,
+                    }
+                },
+                {
                     path: '/contact_us',
                     name: 'contact_us',
                     component: () => import('./views/userLayout/ContactUs.vue'),

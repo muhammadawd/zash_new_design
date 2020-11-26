@@ -208,6 +208,7 @@
             },
             searchQuery() {
                 let category_id = this.$route.query.category_id;
+                category_id = this.selectedCategory
                 let query = this.$route.query.query;
                 this.$router.push({name: 'search', query: {query: this.query, category_id: category_id}})
                 let filters = this.prepareFilters();

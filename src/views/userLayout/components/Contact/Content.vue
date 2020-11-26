@@ -88,24 +88,34 @@
                                 </ul>
                                 <div class="text-center">
                                     <ul class="mt-4">
-                                        <li class="list-inline-item animationIcon p-2" v-if="getSettings.facebook">
+                                        <li class="list-inline-item animationIcon p-2"
+                                            v-if="getSettings.facebook && getSettings.facebook[0].value">
                                             <a class="text-black" :href="getSettings.facebook[0].value">
                                                 <i class="fab fa-facebook  fa-2x"></i>
                                             </a>
                                         </li>
-                                        <li class="list-inline-item animationIcon p-2" v-if="getSettings.twitter">
+                                        <li class="list-inline-item animationIcon p-2"
+                                            v-if="getSettings.twitter && getSettings.twitter[0].value">
                                             <a class="text-black" :href="getSettings.twitter[0].value">
                                                 <i class="fab fa-twitter fa-2x"></i>
                                             </a>
                                         </li>
-                                        <li class="list-inline-item animationIcon p-2" v-if="getSettings.instagram">
+                                        <li class="list-inline-item animationIcon p-2"
+                                            v-if="getSettings.instagram && getSettings.instagram[0].value">
                                             <a class="text-black" :href="getSettings.instagram[0].value">
                                                 <i class="fab fa-instagram  fa-2x"></i>
                                             </a>
                                         </li>
-                                        <li class="list-inline-item animationIcon p-2" v-if="getSettings.youtube">
+                                        <li class="list-inline-item animationIcon p-2"
+                                            v-if="getSettings.youtube && getSettings.youtube[0].value">
                                             <a class="text-black" :href="getSettings.youtube[0].value">
                                                 <i class="fab fa-youtube fa-2x"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item animationIcon p-2"
+                                            v-if="getSettings.snap_image && getSettings.snap_image[0].path">
+                                            <a class="text-black" href="" @click.prevent="$router.push({name:'snapChat'})">
+                                                <i class="fab fa-snapchat fa-2x"></i>
                                             </a>
                                         </li>
                                     </ul>

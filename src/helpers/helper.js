@@ -42,7 +42,7 @@ const helper = {
         const appLoading = document.getElementById('preloader');
 
         if (appLoading) {
-            appLoading.style.display = "none";
+            appLoading.style.display = "block";
         }
     },
 

@@ -137,23 +137,33 @@
                     <div class="col-md-1"></div>
                     <div class="col-md-2 text-center">
                         <ul class="mt-0 mb-4">
-                            <li class="list-inline-item animationIcon pr-1 pl-1" v-if="getSettings.facebook">
+                            <li class="list-inline-item animationIcon pr-1 pl-1"
+                                v-if="getSettings.facebook && getSettings.facebook[0].value">
                                 <a class="text-black" :href="getSettings.facebook[0].value">
                                     <i class="fab fa-facebook-square text-white fa-lg"></i>
                                 </a>
                             </li>
-                            <li class="list-inline-item animationIcon pr-1 pl-1" v-if="getSettings.twitter">
+                            <li class="list-inline-item animationIcon pr-1 pl-1"
+                                v-if="getSettings.twitter && getSettings.twitter[0].value">
                                 <a class="text-black" :href="getSettings.twitter[0].value">
                                     <i class="fab fa-twitter-square text-white fa-lg"></i>
                                 </a>
                             </li>
-                            <li class="list-inline-item animationIcon pr-1 pl-1" v-if="getSettings.instagram">
+                            <li class="list-inline-item animationIcon pr-1 pl-1"
+                                v-if="getSettings.youtube && getSettings.youtube[0].value">
+                                <a class="text-black" :href="getSettings.youtube[0].value">
+                                    <i class="fab fa-youtube text-white fa-lg"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item animationIcon pr-1 pl-1"
+                                v-if="getSettings.instagram && getSettings.instagram[0].value">
                                 <a class="text-black" :href="getSettings.instagram[0].value">
                                     <i class="fab fa-instagram text-white fa-lg"></i>
                                 </a>
                             </li>
-                            <li class="list-inline-item animationIcon pr-1 pl-1" v-if="getSettings.snapchat">
-                                <a class="text-black" :href="getSettings.snapchat[0].value">
+                            <li class="list-inline-item animationIcon pr-1 pl-1"
+                                v-if="getSettings.snap_image && getSettings.snap_image[0].path">
+                                <a class="text-black" href="" @click.prevent="$router.push({name:'snapChat'})">
                                     <i class="fab fa-snapchat text-white fa-lg"></i>
                                 </a>
                             </li>
@@ -161,22 +171,22 @@
                     </div>
                     <div class="col-md-2 text-center">
                         <ul class="text-white text-center text-md-left  mb-4 mt-4  md-md-0 mt-md-0 font-weight-bold d-none d-md-block">
-                            <li class="mb-1" v-if="getSettings.front_email">
+                            <li class="mb-1" v-if="getSettings.front_email && getSettings.front_email[0].value">
                                 <a class="text-white" :href="'mailto:'+getSettings.front_email[0].value">
                                     {{getSettings.front_email[0].value}}
                                 </a>
                             </li>
-                            <li class="mb-1" v-if="getSettings.phone1" dir="ltr">
+                            <li class="mb-1" v-if="getSettings.phone1 && getSettings.phone1[0].value" dir="ltr">
                                 <a class="text-white" :href="'tel:'+getSettings.phone1[0].value">
                                     {{getSettings.phone1[0].value}}
                                 </a>
                             </li>
-                            <li class="mb-1" v-if="getSettings.phone2" dir="ltr">
+                            <li class="mb-1" v-if="getSettings.phone2 && getSettings.phone2[0].value" dir="ltr">
                                 <a class="text-white" :href="'tel:'+getSettings.phone2[0].value">
                                     {{getSettings.phone2[0].value}}
                                 </a>
                             </li>
-                            <li class="mb-1" v-if="getSettings.address_en">
+                            <li class="mb-1" v-if="getSettings.address_en && getSettings.address_en[0].value">
                                 <a class="text-white size-15" href="#">
                                     {{getSettings.address_en[0].value}}
                                 </a>
@@ -236,10 +246,10 @@
                 });
                 dispatch.then((response) => {
                     // response = response.data;
-                    vm.$helper.hideLoader(['recent_products', 'contact']);
+                    vm.$helper.hideLoader(['recent_products', 'contact', 'snapchat']);
                 }).catch((error) => {
                     vm.$helper.handleError(error, vm);
-                    vm.$helper.hideLoader(['recent_products', 'contact']);
+                    vm.$helper.hideLoader(['recent_products', 'contact', 'snapchat']);
                 });
             },
             getAllCategoriesMain() {
@@ -251,10 +261,10 @@
                 });
                 dispatch.then((response) => {
                     // response = response.data;
-                    vm.$helper.hideLoader(['main_categories','search_filter']);
+                    vm.$helper.hideLoader(['main_categories', 'search_filter']);
                 }).catch((error) => {
                     vm.$helper.handleError(error, vm);
-                    vm.$helper.hideLoader('main_categories','search_filter');
+                    vm.$helper.hideLoader('main_categories', 'search_filter');
                 });
             },
             getAllCategoriesSub() {
@@ -266,10 +276,10 @@
                 });
                 dispatch.then((response) => {
                     // response = response.data;
-                    vm.$helper.hideLoader(['sub_categories','search_filter']);
+                    vm.$helper.hideLoader(['sub_categories', 'search_filter']);
                 }).catch((error) => {
                     vm.$helper.handleError(error, vm);
-                    vm.$helper.hideLoader(['sub_categories','search_filter']);
+                    vm.$helper.hideLoader(['sub_categories', 'search_filter']);
                 });
             },
         }

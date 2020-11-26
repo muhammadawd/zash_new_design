@@ -57,38 +57,41 @@
                             <!--</li>-->
 
                             <!--mega menu-->
-                            <!--<li class="dropdown dropdown-large open" v-if="getAllCategoriesMain.length">-->
-                            <!--<a href="#" @click.prevent>-->
-                            <!--{{$t('categories')}}-->
-                            <!--<span class="submenu-indicator"><span-->
-                            <!--class="submenu-indicator-chevron"></span></span>-->
-                            <!--</a>-->
-                            <!--<ul class="dropdown-menu dropdown-menu-large row">-->
-                            <!--<li class="col-sm-3" v-for="(category , index) in getAllCategoriesMain">-->
-                            <!--<ul>-->
-                            <!--<li class="dropdown-header gradient-text ">{{category.translated.title}}-->
-                            <!--</li>-->
-                            <!--<template v-if="!category.sub_categories.length">-->
-                            <!--<li>-->
-                            <!--<a href=""-->
-                            <!--@click.prevent="$router.push({name:'search',query:{category_id:category.id}})">{{category.translated.title}}</a>-->
-                            <!--</li>-->
-                            <!--</template>-->
-                            <!--<template v-if="category.sub_categories.length">-->
-                            <!--<li v-for="(_category, index) in category.sub_categories">-->
-                            <!--<a href="#"-->
-                            <!--@click.prevent="$router.push({name:'search',query:{category_id:_category.id}})">{{_category.translated.title}}</a>-->
-                            <!--</li>-->
-                            <!--</template>-->
-                            <!--&lt;!&ndash;<li class="disabled"><a href="#">How to use</a></li>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<li><a href="#">Examples</a></li>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<li class="divider"></li>&ndash;&gt;-->
-                            <!--</ul>-->
-                            <!--</li>-->
-                            <!--</ul>-->
-                            <!--</li>-->
+                            <li class="dropdown dropdown-large open" v-if="getAllCategoriesMain.categories.length">
+                                <a href="#" @click.prevent>
+                                    {{$t('categories')}}
+                                    <span class="submenu-indicator"><span
+                                            class="submenu-indicator-chevron"></span></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-large">
+                                    <div class="row p-0">
+                                        <div class="col-sm-3 text-left"
+                                             v-for="(category , index) in getAllCategoriesMain.categories">
+                                            <ul>
+                                                <li class="dropdown-header gradient-text ">{{category.translated.title}}
+                                                </li>
+                                                <template v-if="!category.sub_categories.length">
+                                                    <li class="padding-list">
+                                                        <a href=""
+                                                           @click.prevent="$router.push({name:'search',query:{category_id:category.id}})">{{category.translated.title}}</a>
+                                                    </li>
+                                                </template>
+                                                <template v-if="category.sub_categories.length">
+                                                    <li v-for="(_category, index) in category.sub_categories" class="padding-list">
+                                                        <a href="#"
+                                                           @click.prevent="$router.push({name:'search',query:{category_id:_category.id}})">{{_category.translated.title}}</a>
+                                                    </li>
+                                                </template>
+                                                <!--<li class="disabled"><a href="#">How to use</a></li>-->
+                                                <!--<li><a href="#">Examples</a></li>-->
+                                                <!--<li class="divider"></li>-->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
 
-                            <li v-if="getAllCategoriesMain.categories.length">
+                            <li v-if="false && getAllCategoriesMain.categories.length">
                                 <a href="#" @click.prevent>{{$t('categories')}}<span
                                         class="submenu-indicator"></span></a>
                                 <ul class="nav-dropdown nav-submenu">
@@ -447,6 +450,10 @@
         background-image: none;
         filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
         cursor: not-allowed;
+    }
+
+    .padding-list {
+        padding: 3px 25px !important;
     }
 
     .dropdown-menu-large .dropdown-header {

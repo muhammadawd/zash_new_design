@@ -1,5 +1,5 @@
 <template>
-    <div class="border-shadows bg-gray text-left   p-2">
+    <div class="border-shadows   text-left   p-2">
         <div class="row justify-content-center align-items-center" v-for="count in [1]">
             <div class="col-12">
                 <br/><br/><br/><br/>

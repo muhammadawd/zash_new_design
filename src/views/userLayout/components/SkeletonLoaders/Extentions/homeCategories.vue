@@ -15,6 +15,9 @@
                     <div class="post d-md-block d-none">
                         <div class="avatar"></div>
                     </div>
+                    <div class="post d-md-block d-none">
+                        <div class="avatar"></div>
+                    </div>
                 </div>
                 <div class="col-md-3" v-for="count in [1,2]" :class="count == 1 ? '':'d-md-flex d-none'">
                     <div class="header_skeleton">
